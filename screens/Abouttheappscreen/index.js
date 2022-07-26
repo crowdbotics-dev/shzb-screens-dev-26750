@@ -33,20 +33,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#fff',
-    padding: 20,
   },
   imgScroller: {
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginVertical: 20,
   },
   threeDots: {
-    marginVertical: 20,
+    marginTop: 20,
+  },
+  textContainer: {
+    paddingHorizontal: 20,
   },
   text: {
     fontSize: 14,
     textAlign: 'justify',
-    fontFamily: 'roboto',
+    lineHeight: 18,
     marginVertical: 10,
   },
 });
