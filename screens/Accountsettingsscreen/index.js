@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, SafeAreaView, TextInput, Switch, ScrollView } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  TextInput,
+  Switch,
+  ScrollView,
+} from 'react-native';
 
 const AccountSettingsScreen = params => {
   const [name, setName] = useState('');
@@ -9,7 +17,8 @@ const AccountSettingsScreen = params => {
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [smsNotifications, setSmsNotifications] = useState(false);
   const [deactivateAccount, setDeactivateAccount] = useState(false);
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.subContainer}>
           <Text style={styles.subText}>Subscription</Text>
@@ -28,55 +37,96 @@ const AccountSettingsScreen = params => {
           <Text style={styles.billingText}>Billing informations</Text>
           <View style={styles.nameInput}>
             <Text style={styles.inputText}>Full Name</Text>
-            <TextInput style={styles.input} placeholder="Enter your full name" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={name} onChangeText={text => setName(text)} />
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your full name"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={name}
+              onChangeText={text => setName(text)}
+            />
           </View>
           <View style={styles.nameInput}>
             <Text style={styles.inputText}>Email Adress</Text>
-            <TextInput style={styles.input} placeholder="Enter your Email Adress" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={email} onChangeText={text => setEmail(text)} />
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your Email Adress"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={email}
+              onChangeText={text => setEmail(text)}
+            />
           </View>
           <View style={styles.nameInput}>
             <Text style={styles.inputText}>Card number</Text>
-            <TextInput style={styles.input} placeholder="Enter your Card Number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} value={cardNumber} onChangeText={text => setCardNumber(text)} />
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your Card Number"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+              value={cardNumber}
+              onChangeText={text => setCardNumber(text)}
+            />
           </View>
         </View>
         <View style={styles.togglesContainer}>
           <View style={styles.toggle}>
             <Text style={styles.toggleText}>Notifications</Text>
-            <Switch style={styles.toggleSwitch} value={notifications} onValueChange={value => setNotifications(value)} />
+            <Switch
+              style={styles.toggleSwitch}
+              value={notifications}
+              onValueChange={value => setNotifications(value)}
+            />
           </View>
           <View style={styles.toggle}>
             <Text style={styles.toggleText}>Email Notifications</Text>
-            <Switch style={styles.toggleSwitch} value={emailNotifications} onValueChange={value => setEmailNotifications(value)} />
+            <Switch
+              style={styles.toggleSwitch}
+              value={emailNotifications}
+              onValueChange={value => setEmailNotifications(value)}
+            />
           </View>
           <View style={styles.toggle}>
             <Text style={styles.toggleText}>SMS Notifications</Text>
-            <Switch style={styles.toggleSwitch} value={smsNotifications} onValueChange={value => setSmsNotifications(value)} />
+            <Switch
+              style={styles.toggleSwitch}
+              value={smsNotifications}
+              onValueChange={value => setSmsNotifications(value)}
+            />
           </View>
           <View style={styles.toggle}>
             <Text style={styles.toggleText}>Deactivate Account</Text>
-            <Switch style={styles.toggleSwitch} value={deactivateAccount} onValueChange={value => setDeactivateAccount(value)} />
+            <Switch
+              style={styles.toggleSwitch}
+              value={deactivateAccount}
+              onValueChange={value => setDeactivateAccount(value)}
+            />
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   subContainer: {
     paddingHorizontal: 20,
     flex: 0.2,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   subText: {
     fontSize: 16,
     fontWeight: 'bold',
     padding: 2,
     marginVertical: 12,
-    marginLeft: 20
+    marginLeft: 20,
   },
   subPallete: {
     backgroundColor: '#fff',
@@ -86,7 +136,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   planDes: {
     flex: 0.4,
@@ -94,7 +144,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#979797',
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   subPricing: {
     flex: 0.6,
@@ -103,33 +153,32 @@ const styles = StyleSheet.create({
     // borderColor: '#979797',
     flexDirection: 'row',
     alignItems: 'flex-end',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   boldText: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   fnt25: {
-    fontSize: 25
+    fontSize: 25,
   },
   fnt16: {
-    fontSize: 16
+    fontSize: 16,
   },
   billingContainer: {
     flex: 0.5,
-    paddingHorizontal: 20 // borderWidth: 1,
+    paddingHorizontal: 20, // borderWidth: 1,
     // borderColor: '#979797',
-
   },
   billingText: {
     fontSize: 16,
     fontWeight: 'bold',
     padding: 2,
     marginVertical: 12,
-    marginLeft: 20
+    marginLeft: 20,
   },
   inputText: {
     fontSize: 16,
-    marginLeft: 20
+    marginLeft: 20,
   },
   input: {
     borderWidth: 1,
@@ -138,23 +187,23 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 20,
     marginVertical: 10,
-    width: '100%'
+    width: '100%',
   },
   togglesContainer: {
     flex: 0.3,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   toggle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   toggleText: {
     fontSize: 16,
     fontWeight: 'bold',
     padding: 2,
     marginVertical: 12,
-    marginLeft: 20
-  }
+    marginLeft: 20,
+  },
 });
 export default AccountSettingsScreen;
