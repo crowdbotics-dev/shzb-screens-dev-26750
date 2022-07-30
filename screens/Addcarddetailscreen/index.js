@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
-const AccountSettingsScreen = params => {
+const AddCardDetailsScreen = params => {
   return <View style={styles.container}>
-      <Text style={styles.headingTxt}>Account Settings Screen</Text>
+      <Text style={styles.headingTxt}>Add Card Details Screen</Text>
     </View>;
 };
 
@@ -20,4 +20,4 @@ const styles = StyleSheet.create({
     marginVertical: 12
   }
 });
-export default AccountSettingsScreen;
+export default AddCardDetailsScreen;
