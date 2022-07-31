@@ -2,7 +2,7 @@ import mods from './*/index.js';
 import { getModules } from './modules.js';
 
 export const modules = getModules(mods);
-export const initialRoute = 'Appointmentlistingscreen';
+export const initialRoute = 'Accountsettingsscreen';
 export const slices = modules
   .filter(mod => mod.value.slice)
   .map(mod => mod.value.slice);

@@ -1,16 +1,36 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, ScrollView, SafeAreaView, Pressable, Image, TextInput } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Pressable,
+  Image,
+  TextInput,
+} from 'react-native';
 
 const AddReviewScreen = params => {
   const [review, setReview] = useState('');
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.rating}>
           <Image source={require('./assets/Stars.png')} style={styles.star} />
         </View>
         <View style={styles.review}>
           <Text>Give you review:</Text>
-          <TextInput style={styles.input} onChangeText={text => setReview(text)} value={review} placeholder="Enter your review" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} multiline={true} numberOfLines={10} />
+          <TextInput
+            style={styles.input}
+            onChangeText={text => setReview(text)}
+            value={review}
+            placeholder="Enter your review"
+            placeholderTextColor="#9B9B9B"
+            autoCapitalize="none"
+            autoCorrect={false}
+            multiline={true}
+            numberOfLines={10}
+          />
         </View>
         <View style={styles.btnContainer}>
           <Pressable style={styles.btn}>
@@ -18,26 +38,27 @@ const AddReviewScreen = params => {
           </Pressable>
         </View>
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   rating: {
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20
+    marginTop: 20,
   },
   review: {
-    padding: 20
+    padding: 20,
   },
   inputText: {
     fontSize: 16,
-    marginLeft: 20
+    marginLeft: 20,
   },
   input: {
     borderWidth: 1,
@@ -45,17 +66,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     paddingTop: 0,
-    // height: 200,
+    height: 200,
     paddingLeft: 20,
     marginVertical: 10,
-    width: '100%'
+    width: '100%',
   },
   btnContainer: {
     padding: 30,
     paddingTop: 10,
     paddingHorizontal: 40,
     justifyContent: 'center',
-    marginTop: 20
+    marginTop: 20,
   },
   btn: {
     backgroundColor: 'black',
@@ -65,12 +86,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   btnText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 export default AddReviewScreen;
