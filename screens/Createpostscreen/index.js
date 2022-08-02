@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  Pressable,
-  Image,
-  FlatList,
-} from 'react-native';
+import { Text, StyleSheet, View, TextInput, Pressable, Image } from 'react-native';
 
 const CreatePostScreen2 = params => {
   const [caption, setCaption] = useState('');
@@ -15,43 +7,19 @@ const CreatePostScreen2 = params => {
   const [username, setUsername] = useState('Username');
   const [date, setDate] = useState('18 June 2022');
   const [time, setTime] = useState('13:00 PM');
-  const [images, setImages] = useState([
-    require('./assets/crowdbotics.png'),
-    require('./assets/crowdbotics.png'),
-    require('./assets/crowdbotics.png'),
-    require('./assets/crowdbotics.png'),
-  ]);
-  return (
-    <View style={styles.container}>
+  const [images, setImages] = useState([require('./assets/crowdbotics.png'), require('./assets/crowdbotics.png'), require('./assets/crowdbotics.png'), require('./assets/crowdbotics.png')]);
+  return <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Caption</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={text => setCaption(text)}
-          value={caption}
-          placeholder="Enter your caption"
-          placeholderTextColor="#9B9B9B"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+        <TextInput style={styles.input} onChangeText={text => setCaption(text)} value={caption} placeholder="Enter your caption" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
       </View>
       <Text style={styles.inputText}>Add Image</Text>
       <View style={styles.addImages}>
-        {images.map((image, index) => (
-          <Image source={image} style={styles.image} />
-        ))}
+        {images.map((image, index) => <Image source={image} style={styles.image} />)}
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Add Tags</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={text => setTags(text)}
-          value={tags}
-          placeholder="Enter your caption"
-          placeholderTextColor="#9B9B9B"
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
+        <TextInput style={styles.input} onChangeText={text => setTags(text)} value={tags} placeholder="Enter your caption" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
       </View>
       <View style={styles.userInfo}>
         <Text>{username}</Text>
@@ -66,25 +34,24 @@ const CreatePostScreen2 = params => {
           <Text style={styles.btnText}>Submit</Text>
         </Pressable>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   inputContainer: {
     flexDirection: 'column',
-    justifyContent: 'center',
-    // marginHorizontal: 5,
+    justifyContent: 'center' // marginHorizontal: 5,
+
   },
   inputText: {
     fontSize: 16,
     marginLeft: 20,
-    color: '#111112',
+    color: '#111112'
   },
   input: {
     borderWidth: 1,
@@ -94,41 +61,41 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginVertical: 10,
     width: '100%',
-    height: 150,
+    height: 150
   },
   addImages: {
     paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   image: {
     height: 80,
     width: 80,
     marginHorizontal: 5,
     borderRadius: 10,
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   list: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    alignItems: 'flex-end'
   },
   userInfo: {
     marginTop: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   dateTime: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   btnContainer: {
     padding: 30,
     paddingTop: 10,
     paddingHorizontal: 40,
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 20
   },
   btn: {
     backgroundColor: 'black',
@@ -138,12 +105,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   btnText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
-  },
+    fontWeight: 'bold'
+  }
 });
 export default CreatePostScreen2;
