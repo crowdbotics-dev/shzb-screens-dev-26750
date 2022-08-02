@@ -2,8 +2,7 @@ import React from 'react';
 import { Image, Text, StyleSheet, View, ScrollView } from 'react-native';
 
 const LedgerGraphScreen = params => {
-  return (
-    <ScrollView>
+  return <ScrollView>
       <View>
         <View style={styles.container}>
           <View>
@@ -12,37 +11,20 @@ const LedgerGraphScreen = params => {
             <Text>Bank Account: 0954 4543 2112 3116</Text>
           </View>
           <View>
-            <Image
-              resizeMode="contain"
-              style={styles.withdrawImage}
-              source={require('./assets/withdraw.png')}
-            />
+            <Image resizeMode="contain" style={styles.withdrawImage} source={require('./assets/withdraw.png')} />
           </View>
         </View>
         <View style={styles.balanceImage}>
-          <Image
-            resizeMode="contain"
-            style={styles.imageHW}
-            source={require('./assets/balance.png')}
-          />
+          <Image resizeMode="contain" style={styles.imageHW} source={require('./assets/balance.png')} />
         </View>
         <View style={styles.monthlySpendingImage}>
-          <Image
-            resizeMode="contain"
-            style={styles.imageHW}
-            source={require('./assets/monthly-spending.png')}
-          />
+          <Image resizeMode="contain" style={styles.imageHW} source={require('./assets/monthly-spending.png')} />
         </View>
         <View style={styles.totalSpendingImage}>
-          <Image
-            resizeMode="contain"
-            style={styles.imageHW}
-            source={require('./assets/total-spending.png')}
-          />
+          <Image resizeMode="contain" style={styles.imageHW} source={require('./assets/total-spending.png')} />
         </View>
       </View>
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -52,31 +34,31 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    marginVertical: 20,
+    marginVertical: 20
   },
   currentBalance: {
     fontSize: 36,
-    marginVertical: 5,
+    marginVertical: 5
   },
   withdrawImage: {
     width: 52,
-    height: 73,
+    height: 73
   },
   balanceImage: {
     backgroundColor: '#FFF',
-    height: 610,
+    height: 610
   },
   monthlySpendingImage: {
     backgroundColor: '#FFF',
-    height: 200,
+    height: 200
   },
   totalSpendingImage: {
     backgroundColor: '#FFF',
-    height: 600,
+    height: 600
   },
   imageHW: {
     width: '100%',
-    height: '100%',
-  },
+    height: '100%'
+  }
 });
 export default LedgerGraphScreen;

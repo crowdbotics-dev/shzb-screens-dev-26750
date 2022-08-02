@@ -1,56 +1,40 @@
 import React, { useState } from 'react';
-import {
-  Image,
-  Text,
-  StyleSheet,
-  View,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import { Image, Text, StyleSheet, View, ScrollView, FlatList } from 'react-native';
 
 const LedgerListingScreen = params => {
-  const [todayHistory, setTodayHistory] = useState([
-    {
-      id: 1,
-      title: 'Sports Center',
-      price: '$125.90',
-      type: 'debit',
-    },
-    {
-      id: 2,
-      title: 'Shopping',
-      price: '$552.68',
-      type: 'credit',
-    },
-    {
-      id: 3,
-      title: 'Income',
-      price: '$345.00',
-      type: 'credit',
-    },
-  ]);
-  const [aprilHistory, setAprilHistory] = useState([
-    {
-      id: 1,
-      title: 'Sports Center',
-      price: '$125.90',
-      type: 'debit',
-    },
-    {
-      id: 2,
-      title: 'Shopping',
-      price: '$552.68',
-      type: 'credit',
-    },
-    {
-      id: 3,
-      title: 'Income',
-      price: '$345.00',
-      type: 'credit',
-    },
-  ]);
-  return (
-    <View style={styles.container}>
+  const [todayHistory, setTodayHistory] = useState([{
+    id: 1,
+    title: 'Sports Center',
+    price: '$125.90',
+    type: 'debit'
+  }, {
+    id: 2,
+    title: 'Shopping',
+    price: '$552.68',
+    type: 'credit'
+  }, {
+    id: 3,
+    title: 'Income',
+    price: '$345.00',
+    type: 'credit'
+  }]);
+  const [aprilHistory, setAprilHistory] = useState([{
+    id: 1,
+    title: 'Sports Center',
+    price: '$125.90',
+    type: 'debit'
+  }, {
+    id: 2,
+    title: 'Shopping',
+    price: '$552.68',
+    type: 'credit'
+  }, {
+    id: 3,
+    title: 'Income',
+    price: '$345.00',
+    type: 'credit'
+  }]);
+  return <View style={styles.container}>
       <View style={styles.header}>
         <View>
           <Text>Current Balance</Text>
@@ -58,11 +42,7 @@ const LedgerListingScreen = params => {
           <Text>Bank Account: 0954 4543 2112 3116</Text>
         </View>
         <View>
-          <Image
-            resizeMode="contain"
-            style={styles.withdrawImage}
-            source={require('./assets/withdraw.png')}
-          />
+          <Image resizeMode="contain" style={styles.withdrawImage} source={require('./assets/withdraw.png')} />
         </View>
       </View>
       <View style={styles.paletteContainer}>
@@ -79,64 +59,49 @@ const LedgerListingScreen = params => {
       <ScrollView>
         <View style={styles.historyList}>
           <Text style={styles.historyDate}>TODAY's</Text>
-          <FlatList
-            data={todayHistory}
-            renderItem={({ item }) => <HistoryItem transaction={item} />}
-            keyExtractor={item => item.id}
-            scrollEnabled={false}
-          />
+          <FlatList data={todayHistory} renderItem={({
+          item
+        }) => <HistoryItem transaction={item} />} keyExtractor={item => item.id} scrollEnabled={false} />
         </View>
         <View style={styles.historyList}>
           <Text style={styles.historyDate}>April 01</Text>
-          <FlatList
-            scrollEnabled={false}
-            data={aprilHistory}
-            renderItem={({ item }) => <HistoryItem transaction={item} />}
-            keyExtractor={item => item.id}
-          />
+          <FlatList scrollEnabled={false} data={aprilHistory} renderItem={({
+          item
+        }) => <HistoryItem transaction={item} />} keyExtractor={item => item.id} />
         </View>
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
-const HistoryItem = ({ transaction }) => {
+const HistoryItem = ({
+  transaction
+}) => {
   const pricingTextColor = {
-    color: transaction.type === 'debit' ? '#EA4335' : '#05B417',
+    color: transaction.type === 'debit' ? '#EA4335' : '#05B417'
   };
-  return (
-    <View style={styles.historyItem}>
+  return <View style={styles.historyItem}>
       <View style={styles.description}>
         <Text style={styles.titleText}>{transaction.title}</Text>
-        <Text
-          style={{
-            color: 'grey',
-          }}>
+        <Text style={{
+        color: 'grey'
+      }}>
           Invoice
         </Text>
       </View>
       <View style={styles.pricing}>
-        {transaction.type === 'debit' ? (
-          <Text style={[styles.pricingText, pricingTextColor]}>- </Text>
-        ) : (
-          <Text style={[styles.pricingText, pricingTextColor]}>+ </Text>
-        )}
+        {transaction.type === 'debit' ? <Text style={[styles.pricingText, pricingTextColor]}>- </Text> : <Text style={[styles.pricingText, pricingTextColor]}>+ </Text>}
         <Text style={[styles.pricingText, pricingTextColor]}>
           {transaction.price}
         </Text>
-        <Image
-          source={require('./assets/arrow.png')}
-          style={styles.arrowIcon}
-        />
+        <Image source={require('./assets/arrow.png')} style={styles.arrowIcon} />
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   header: {
     padding: 10,
@@ -146,15 +111,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 20,
     backgroundColor: '#e6e6e6',
-    paddingBottom: 10,
+    paddingBottom: 10
   },
   currentBalance: {
     fontSize: 36,
-    marginVertical: 5,
+    marginVertical: 5
   },
   withdrawImage: {
     width: 52,
-    height: 73,
+    height: 73
   },
   paletteContainer: {
     // width: '70%',
@@ -165,7 +130,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 6,
     marginVertical: 10,
-    marginHorizontal: 20,
+    marginHorizontal: 20
   },
   selected: {
     borderRadius: 10,
@@ -175,7 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: 'gray',
-    elevation: 10,
+    elevation: 10
   },
   unSelected: {
     flex: 1,
@@ -183,13 +148,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F1F1F1',
-    borderRadius: 10,
+    borderRadius: 10
   },
   historyDate: {
     fontSize: 16,
     marginVertical: 10,
     color: '#9B9B9B',
-    marginLeft: 20,
+    marginLeft: 20
   },
   historyList: {
     marginVertical: 10,
@@ -200,7 +165,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     shadowColor: 'gray',
     elevation: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   historyItem: {
     flexDirection: 'row',
@@ -210,34 +175,34 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderBottomWidth: 1,
     borderColor: '#e6e6e6',
-    height: 80,
+    height: 80
   },
   description: {
     flex: 3,
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   titleText: {
     fontSize: 16,
-    color: '#111112',
+    color: '#111112'
   },
   pricing: {
     marginRight: 20,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   pricingText: {
     fontSize: 16,
     color: '#111112',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   arrowIcon: {
     marginLeft: 10,
     width: 15,
     height: 15,
-    resizeMode: 'contain',
-  },
+    resizeMode: 'contain'
+  }
 });
 export default LedgerListingScreen;
