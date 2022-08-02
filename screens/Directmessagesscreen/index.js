@@ -143,6 +143,7 @@ const ConversationElement = ({ message }) => {
       </View>
       <View style={[styles.messageTextContainer, messageTextContainer]}>
         <Text style={styles.messageText}>{message.text}</Text>
+        <Text style={styles.messageTime}>{message.sentTime}</Text>
       </View>
     </View>
   );
@@ -193,7 +194,6 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    paddingVertical: 10,
     marginTop: 10,
   },
   footer: {
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 10,
     justifyContent: 'flex-start',
+    marginVertical: 20,
   },
   messageTextContainer: {
     minHeight: 70,
@@ -251,6 +252,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     top: 40,
+  },
+  messageTime: {
+    position: 'absolute',
+    right: 5,
+    bottom: -20,
+    color: 'grey',
+    fontSize: 12,
   },
 });
 export default DirectMessagesScreen;
