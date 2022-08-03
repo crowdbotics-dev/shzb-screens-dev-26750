@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Slider } from "react-native-elements";
 import {
   Text,
@@ -15,51 +15,55 @@ import {
 
 const AdvanceSearchScreen = params => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [data, setData] = useState([
-    {
-      name: "Resturants",
-      selected: true,
-    },
-    {
-      name: "Entertainment",
-      selected: false,
-    },
-    {
-      name: "Sports",
-      selected: false,
-    },
-    {
-      name: "Events",
-      selected: false,
-    },
-    {
-      name: "Charging Stations",
-      selected: false,
-    },
-    {
-      name: "Pharmacies",
-      selected: true,
-    },
-    {
-      name: "Gas Stations",
-      selected: false,
-    },
-    {
-      name: "Festivals",
-      selected: false,
-    },
-    {
-      name: "Shops",
-      selected: false,
-    },
-  ]);
-  const [ratingImages, setRatingImages] = useState([
-    require("./assets/1star.png"),
-    require("./assets/2star.png"),
-    require("./assets/3star.png"),
-    require("./assets/4star.png"),
-    require("./assets/5star.png"),
-  ]);
+  const [data, setData] = useState([]);
+  const [ratingImages, setRatingImages] = useState([]);
+  useEffect(() => {
+    setData([
+      {
+        name: "Resturants",
+        selected: true,
+      },
+      {
+        name: "Entertainment",
+        selected: false,
+      },
+      {
+        name: "Sports",
+        selected: false,
+      },
+      {
+        name: "Events",
+        selected: false,
+      },
+      {
+        name: "Charging Stations",
+        selected: false,
+      },
+      {
+        name: "Pharmacies",
+        selected: true,
+      },
+      {
+        name: "Gas Stations",
+        selected: false,
+      },
+      {
+        name: "Festivals",
+        selected: false,
+      },
+      {
+        name: "Shops",
+        selected: false,
+      },
+    ]);
+    setRatingImages([
+      require("./assets/1star.png"),
+      require("./assets/2star.png"),
+      require("./assets/3star.png"),
+      require("./assets/4star.png"),
+      require("./assets/5star.png"),
+    ]);
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -147,15 +151,6 @@ const AdvanceSearchScreen = params => {
   );
 };
 
-const Filter = ({ name, selected }) => {
-  const filterStyle = selected ? styles.selected : styles.unSelected;
-  return (
-    <View style={[styles.filter, filterStyle]}>
-      <Text style={filterStyle}>{name}</Text>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -237,21 +232,7 @@ const styles = StyleSheet.create({
   filterList: {
     justifyContent: "center",
   },
-  filter: {
-    height: 50,
-    width: 100,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 5,
-  },
-  selected: {
-    backgroundColor: "#000000",
-    color: "#fff",
-  },
-  unSelected: {
-    color: "grey",
-  },
+
   pricing: {},
   pricingHeader: {
     flexDirection: "row",
@@ -271,3 +252,32 @@ const styles = StyleSheet.create({
   },
 });
 export default AdvanceSearchScreen;
+
+const Filter = ({ name, selected }) => {
+  const filterStyle = selected
+    ? filterStyles.selected
+    : filterStyles.unSelected;
+  return (
+    <View style={[filterStyles.filter, filterStyle]}>
+      <Text style={filterStyle}>{name}</Text>
+    </View>
+  );
+};
+
+const filterStyles = StyleSheet.create({
+  filter: {
+    height: 50,
+    width: 100,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 5,
+  },
+  selected: {
+    backgroundColor: "#000000",
+    color: "#fff",
+  },
+  unSelected: {
+    color: "grey",
+  },
+});
