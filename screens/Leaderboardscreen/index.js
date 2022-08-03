@@ -1,45 +1,71 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, View, Image, TextInput, FlatList } from 'react-native';
+import React, { useState } from "react";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  TextInput,
+  FlatList,
+} from "react-native";
 
 const LeaderboardScreen = params => {
-  const [username, setUsername] = useState('');
-  const [users, setUsers] = useState([{
-    id: 1,
-    name: 'Albert Flores',
-    profileImage: require('./assets/profile.png'),
-    score: '15999'
-  }, {
-    id: 2,
-    name: 'Annette Black',
-    profileImage: require('./assets/profile.png'),
-    score: '14565'
-  }, {
-    id: 3,
-    name: 'Theresa Webb',
-    profileImage: require('./assets/profile.png'),
-    score: '13569'
-  }, {
-    id: 4,
-    name: 'Courteny Henry',
-    profileImage: require('./assets/profile.png'),
-    score: '12565'
-  }, {
-    id: 5,
-    name: 'Cody Fisher',
-    profileImage: require('./assets/profile.png'),
-    score: '11599'
-  }, {
-    id: 6,
-    name: 'Dianne Russell',
-    profileImage: require('./assets/profile.png'),
-    score: '11599'
-  }]);
-  return <View style={styles.container}>
+  const [username, setUsername] = useState("");
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      name: "Albert Flores",
+      profileImage: require("./assets/profile.png"),
+      score: "15999",
+    },
+    {
+      id: 2,
+      name: "Annette Black",
+      profileImage: require("./assets/profile.png"),
+      score: "14565",
+    },
+    {
+      id: 3,
+      name: "Theresa Webb",
+      profileImage: require("./assets/profile.png"),
+      score: "13569",
+    },
+    {
+      id: 4,
+      name: "Courteny Henry",
+      profileImage: require("./assets/profile.png"),
+      score: "12565",
+    },
+    {
+      id: 5,
+      name: "Cody Fisher",
+      profileImage: require("./assets/profile.png"),
+      score: "11599",
+    },
+    {
+      id: 6,
+      name: "Dianne Russell",
+      profileImage: require("./assets/profile.png"),
+      score: "11599",
+    },
+  ]);
+  return (
+    <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.inputContainer}>
           <Text style={styles.inputText}>Search</Text>
-          <TextInput style={styles.input} onChangeText={text => setUsername(text)} value={username} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
-          <Image source={require('./assets/Vector.png')} style={styles.searchIcon} />
+          <TextInput
+            style={styles.input}
+            onChangeText={text => setUsername(text)}
+            value={username}
+            placeholder="Search Username"
+            placeholderTextColor="#9B9B9B"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <Image
+            source={require("./assets/Vector.png")}
+            style={styles.searchIcon}
+          />
         </View>
       </View>
       <View style={styles.paletteContainer}>
@@ -57,138 +83,141 @@ const LeaderboardScreen = params => {
         <Text style={[styles.fnt16, styles.grey]}>Player</Text>
         <Text style={[styles.fnt16, styles.grey]}>Score</Text>
       </View>
-      <FlatList data={users} keyExtractor={(item, index) => item.id.toString()} renderItem={({
-      item
-    }) => <User user={item} />} />
-    </View>;
+      <FlatList
+        data={users}
+        keyExtractor={(item, index) => item.id.toString()}
+        renderItem={({ item }) => <User user={item} />}
+      />
+    </View>
+  );
 };
 
-const User = ({
-  user
-}) => {
-  return <View style={styles.userContainer}>
+const User = ({ user }) => {
+  return (
+    <View style={styles.userContainer}>
       <View style={styles.userInfo}>
         <Image source={user.profileImage} style={styles.profileImage} />
         <Text style={styles.username}>{user.name}</Text>
       </View>
       <Text style={styles.scoreText}>{user.score}</Text>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start'
+    backgroundColor: "#fff",
+    justifyContent: "flex-start",
   },
   header: {
     padding: 20,
-    height: 100
+    height: 100,
   },
   inputContainer: {
-    flexDirection: 'column',
+    flexDirection: "column",
     flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 5
+    justifyContent: "center",
+    marginHorizontal: 5,
   },
   inputText: {
     fontSize: 16,
     marginLeft: 20,
-    color: '#111112'
+    color: "#111112",
   },
   input: {
     borderWidth: 1,
-    borderColor: '#e6e6e6',
+    borderColor: "#e6e6e6",
     borderRadius: 10,
     padding: 10,
     paddingLeft: 20,
     marginVertical: 10,
-    width: '100%',
-    height: 50
+    width: "100%",
+    height: 50,
   },
   searchIcon: {
-    position: 'absolute',
+    position: "absolute",
     right: 30,
-    top: 35
+    top: 35,
   },
   paletteContainer: {
     // width: '70%',
     height: 48,
-    backgroundColor: '#F1F1F1',
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: "#F1F1F1",
+    flexDirection: "row",
+    alignItems: "center",
     borderRadius: 10,
     padding: 6,
     marginVertical: 10,
-    marginHorizontal: 20
+    marginHorizontal: 20,
   },
   selected: {
     borderRadius: 10,
     flex: 1,
-    backgroundColor: '#fff',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: 'gray',
-    elevation: 10
+    backgroundColor: "#fff",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "gray",
+    elevation: 10,
   },
   unSelected: {
     flex: 1,
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F1F1F1',
-    borderRadius: 10
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F1F1F1",
+    borderRadius: 10,
   },
   frequentBar: {
     paddingHorizontal: 40,
     marginVertical: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   fnt16: {
-    fontSize: 16
+    fontSize: 16,
   },
   bold: {
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   grey: {
-    color: 'grey'
+    color: "grey",
   },
   black: {
-    color: 'black'
+    color: "black",
   },
   userContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: '#e6e6e6',
+    borderBottomColor: "#e6e6e6",
     marginHorizontal: 20,
-    justifyContent: 'space-between'
+    justifyContent: "space-between",
   },
   userInfo: {
     flex: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
   profileImage: {
     borderRadius: 50,
     width: 70,
     height: 70,
-    resizeMode: 'contain'
+    resizeMode: "contain",
   },
   username: {
     fontSize: 16,
     marginLeft: 20,
-    color: '#111112'
+    color: "#111112",
   },
   scoreText: {
     fontSize: 17,
-    color: '#111112',
-    fontWeight: 'bold'
-  }
+    color: "#111112",
+    fontWeight: "bold",
+  },
 });
 export default LeaderboardScreen;

@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
+import React, { useState } from "react";
+import { Text, StyleSheet, View, Image } from "react-native";
 
 const MapLiveTrackingScreen = params => {
   const [order, setOrder] = useState({
-    orderName: 'Order Name',
-    customerName: 'Customer Name',
-    shopLocation: 'S Main St, Los Angeles',
-    deliveryLocation: 'Maple Ave , Los Angeles',
-    orderPrice: '$18',
-    shipping: 'Free Shipping'
+    orderName: "Order Name",
+    customerName: "Customer Name",
+    shopLocation: "S Main St, Los Angeles",
+    deliveryLocation: "Maple Ave , Los Angeles",
+    orderPrice: "$18",
+    shipping: "Free Shipping",
   });
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View style={styles.orderContainer}>
         <Text style={styles.bold}>Order details</Text>
         <View style={styles.shippingDetails}>
           <Text style={styles.grey}>{order.shipping}</Text>
-          <Image source={require('./assets/Score.png')} />
+          <Image source={require("./assets/Score.png")} />
         </View>
         <View style={styles.detailPallete}>
           <View style={styles.orderDetails}>
@@ -34,7 +35,10 @@ const MapLiveTrackingScreen = params => {
           </View>
         </View>
         <View style={styles.locationContainer}>
-          <Image source={require('./assets/Progress.png')} style={styles.progressImage} />
+          <Image
+            source={require("./assets/Progress.png")}
+            style={styles.progressImage}
+          />
           <View style={styles.locationDetails}>
             <View style={styles.shopLocation}>
               <Text style={[styles.black, styles.fnt16]}>
@@ -51,90 +55,90 @@ const MapLiveTrackingScreen = params => {
           </View>
         </View>
       </View>
-      <Image source={require('./assets/map.png')} style={styles.mapImage} />
-    </View>;
+      <Image source={require("./assets/map.png")} style={styles.mapImage} />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1 // backgroundColor: '#fff',
-
+    flex: 1, // backgroundColor: '#fff',
   },
   orderContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     // shadowColor: '#000',
     // elevation: 5,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   shippingDetails: {
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingVertical: 10,
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   bold: {
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   grey: {
-    color: '#8e8e8e'
+    color: "#8e8e8e",
   },
   black: {
-    color: '#000'
+    color: "#000",
   },
   fnt16: {
-    fontSize: 16
+    fontSize: 16,
   },
   mapImage: {
     // borderWidth: 1,
     // borderColor: '#000',
     flex: 1,
-    width: '90%',
-    height: '90%',
-    resizeMode: 'contain',
-    alignSelf: 'center'
+    width: "90%",
+    height: "90%",
+    resizeMode: "contain",
+    alignSelf: "center",
   },
   detailPallete: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     paddingVertical: 10,
-    alignItems: 'center',
+    alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: '#e6e6e6'
+    borderBottomColor: "#e6e6e6",
   },
   orderDetails: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    paddingRight: 10
+    flexDirection: "column",
+    justifyContent: "space-between",
+    paddingRight: 10,
   },
   pricing: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end'
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   mainText: {
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: "bold",
   },
   subText: {
     fontSize: 14,
-    color: '#8e8e8e',
-    marginTop: 5
+    color: "#8e8e8e",
+    marginTop: 5,
   },
   locationContainer: {
-    flexDirection: 'row',
-    paddingTop: 20
+    flexDirection: "row",
+    paddingTop: 20,
   },
   locationDetails: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
     marginLeft: 10,
-    justifyContent: 'space-between',
-    alignItems: 'flex-start'
-  }
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
 });
 export default MapLiveTrackingScreen;
