@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   StyleSheet,
@@ -7,29 +7,33 @@ import {
   TextInput,
   Image,
   FlatList,
-  Pressable,
+  Pressable
 } from "react-native";
 
 const SocialBlockedUsersScreen = params => {
-  const [followers, setFollowers] = useState(4513);
+  const [followers, setFollowers] = useState();
   const [username, setUsername] = useState("");
-  const [blockedUsers, setBlockedUsers] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      profileImage: require("./assets/profile.png"),
-    },
-    {
-      id: 2,
-      name: "Cody Fisher",
-      profileImage: require("./assets/profile.png"),
-    },
-    {
-      id: 3,
-      name: "Jenny Wilson",
-      profileImage: require("./assets/profile.png"),
-    },
-  ]);
+  const [blockedUsers, setBlockedUsers] = useState([]);
+  useEffect(() => {
+    setFollowers(4513);
+    setBlockedUsers([
+      {
+        id: 1,
+        name: "John Doe",
+        profileImage: require("./assets/profile.png")
+      },
+      {
+        id: 2,
+        name: "Cody Fisher",
+        profileImage: require("./assets/profile.png")
+      },
+      {
+        id: 3,
+        name: "Jenny Wilson",
+        profileImage: require("./assets/profile.png")
+      }
+    ]);
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -66,41 +70,27 @@ const SocialBlockedUsersScreen = params => {
   );
 };
 
-const User = ({ user }) => {
-  return (
-    <View style={styles.userContainer}>
-      <View style={styles.userInfo}>
-        <Image source={user.profileImage} style={styles.profileImage} />
-        <Text style={styles.username}>{user.name}</Text>
-      </View>
-      <Pressable style={styles.btnContainer}>
-        <Text style={styles.btntext}>Unblock</Text>
-      </Pressable>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "flex-start",
+    justifyContent: "flex-start"
   },
   header: {
     padding: 20,
     // flex: 1,
-    height: 100,
+    height: 100
   },
   inputContainer: {
     flexDirection: "column",
     flex: 1,
     justifyContent: "center",
-    marginHorizontal: 5,
+    marginHorizontal: 5
   },
   inputText: {
     fontSize: 16,
     marginLeft: 20,
-    color: "#111112",
+    color: "#111112"
   },
   input: {
     borderWidth: 1,
@@ -110,36 +100,54 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginVertical: 10,
     width: "100%",
-    height: 50,
+    height: 50
   },
   searchIcon: {
     position: "absolute",
     right: 30,
-    top: 35,
+    top: 35
   },
   follower_blocked: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 30,
+    paddingHorizontal: 30
   },
   frequentBar: {
     paddingHorizontal: 40,
     paddingVertical: 15,
     backgroundColor: "#e6e6e6",
-    marginVertical: 10,
+    marginVertical: 10
   },
   fnt16: {
-    fontSize: 16,
+    fontSize: 16
   },
   bold: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   grey: {
-    color: "grey",
+    color: "grey"
   },
   black: {
-    color: "black",
-  },
+    color: "black"
+  }
+});
+export default SocialBlockedUsersScreen;
+
+const User = ({ user }) => {
+  return (
+    <View style={useStyles.userContainer}>
+      <View style={useStyles.userInfo}>
+        <Image source={user.profileImage} style={useStyles.profileImage} />
+        <Text style={useStyles.username}>{user.name}</Text>
+      </View>
+      <Pressable style={useStyles.btnContainer}>
+        <Text style={useStyles.btntext}>Unblock</Text>
+      </Pressable>
+    </View>
+  );
+};
+
+const useStyles = StyleSheet.create({
   userContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -148,32 +156,31 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#e6e6e6",
     marginHorizontal: 20,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   userInfo: {
     flex: 2,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "flex-start"
   },
   profileImage: {
     borderRadius: 50,
     width: 70,
     height: 70,
-    resizeMode: "contain",
+    resizeMode: "contain"
   },
   username: {
     fontSize: 16,
     marginLeft: 20,
-    color: "#111112",
+    color: "#111112"
   },
   btnContainer: {
     flex: 1,
-    alignItems: "flex-end",
+    alignItems: "flex-end"
   },
   btntext: {
     fontSize: 17,
-    color: "#12D790",
-  },
+    color: "#12D790"
+  }
 });
-export default SocialBlockedUsersScreen;
