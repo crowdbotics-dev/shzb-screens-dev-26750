@@ -2,7 +2,7 @@ import mods from "./*/index.js";
 import { getModules } from "./modules.js";
 
 export const modules = getModules(mods);
-export const initialRoute = "Advancesearchscreen";
+export const initialRoute = "Appointmentlistscreen";
 export const slices = modules
   .filter(mod => mod.value.slice)
   .map(mod => mod.value.slice);
@@ -16,7 +16,7 @@ export const navigators = modules
   .map(mod => {
     return {
       name: mod.name,
-      value: mod.value.navigator,
+      value: mod.value.navigator
     };
   });
 export const hooks = modules
@@ -24,6 +24,6 @@ export const hooks = modules
   .map(mod => {
     return {
       name: mod.name,
-      value: mod.value.hook,
+      value: mod.value.hook
     };
   });
