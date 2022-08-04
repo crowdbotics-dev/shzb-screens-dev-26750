@@ -6,35 +6,69 @@ const NotificationPreferenceScreen = params => {
   const [emailNotifications, setEmailNotifications] = useState(false);
   const [smsNotifications, setSmsNotifications] = useState(false);
   const [loremIpsum, setLoremIpsum] = useState(false);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <TabView tabTitles={["Preferences", "Extended"]} selected={0} />
       <ScrollView>
         <View style={styles.preferenceContainer}>
           <Text style={styles.preferenceTitle}>System Notifications</Text>
           <View style={styles.notificationsContainer}></View>
-          <NotificationTile name={"Push Notifications"} value={pushNotifications} onValueChange={() => setPushNotifications(!pushNotifications)} />
-          <NotificationTile name={"Email Notifications"} value={emailNotifications} onValueChange={() => setEmailNotifications(!emailNotifications)} />
+          <NotificationTile
+            name={"Push Notifications"}
+            value={pushNotifications}
+            onValueChange={() => setPushNotifications(!pushNotifications)}
+          />
+          <NotificationTile
+            name={"Email Notifications"}
+            value={emailNotifications}
+            onValueChange={() => setEmailNotifications(!emailNotifications)}
+          />
         </View>
         <View style={styles.preferenceContainer}>
           <Text style={styles.preferenceTitle}>Group Notifications</Text>
           <View style={styles.notificationsContainer}></View>
-          <NotificationTile name={"SMS Notifications"} value={smsNotifications} onValueChange={() => setSmsNotifications(!smsNotifications)} />
-          <NotificationTile name={"Sed elit ipsum"} value={loremIpsum} onValueChange={() => setLoremIpsum(!loremIpsum)} />
+          <NotificationTile
+            name={"SMS Notifications"}
+            value={smsNotifications}
+            onValueChange={() => setSmsNotifications(!smsNotifications)}
+          />
+          <NotificationTile
+            name={"Sed elit ipsum"}
+            value={loremIpsum}
+            onValueChange={() => setLoremIpsum(!loremIpsum)}
+          />
         </View>
         <View style={styles.preferenceContainer}>
           <Text style={styles.preferenceTitle}>Group Notifications</Text>
           <View style={styles.notificationsContainer}></View>
-          <NotificationTile name={"Sed elit ipsum"} value={loremIpsum} onValueChange={() => setLoremIpsum(!loremIpsum)} />
-          <NotificationTile name={"Sed elit ipsum"} value={loremIpsum} onValueChange={() => setLoremIpsum(!loremIpsum)} />
+          <NotificationTile
+            name={"Sed elit ipsum"}
+            value={loremIpsum}
+            onValueChange={() => setLoremIpsum(!loremIpsum)}
+          />
+          <NotificationTile
+            name={"Sed elit ipsum"}
+            value={loremIpsum}
+            onValueChange={() => setLoremIpsum(!loremIpsum)}
+          />
         </View>
         <View style={styles.preferenceContainer}>
           <Text style={styles.preferenceTitle}>Group Notifications</Text>
           <View style={styles.notificationsContainer}></View>
-          <NotificationTile name={"Sed elit ipsum"} value={loremIpsum} onValueChange={() => setLoremIpsum(!loremIpsum)} />
-          <NotificationTile name={"Sed elit ipsum"} value={loremIpsum} onValueChange={() => setLoremIpsum(!loremIpsum)} />
+          <NotificationTile
+            name={"Sed elit ipsum"}
+            value={loremIpsum}
+            onValueChange={() => setLoremIpsum(!loremIpsum)}
+          />
+          <NotificationTile
+            name={"Sed elit ipsum"}
+            value={loremIpsum}
+            onValueChange={() => setLoremIpsum(!loremIpsum)}
+          />
         </View>
       </ScrollView>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -58,15 +92,22 @@ const styles = StyleSheet.create({
 });
 export default NotificationPreferenceScreen;
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -101,15 +142,13 @@ const tabViewStyles = StyleSheet.create({
   }
 });
 
-const NotificationTile = ({
-  name,
-  value,
-  onValueChange
-}) => {
-  return <View style={notificationTileStyles.container}>
+const NotificationTile = ({ name, value, onValueChange }) => {
+  return (
+    <View style={notificationTileStyles.container}>
       <Text style={notificationTileStyles.text}>{name}</Text>
       <Switch value={value} onValueChange={() => onValueChange()} />
-    </View>;
+    </View>
+  );
 };
 
 const notificationTileStyles = StyleSheet.create({
