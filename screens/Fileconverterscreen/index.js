@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableHighlight,
   Image,
-  ScrollView,
+  ScrollView
 } from "react-native";
 
 const FileConverterScreen = params => {
@@ -52,7 +52,7 @@ const FileConverterScreen = params => {
         </View>
         <View style={styles.bar}></View>
         <View style={styles.btn}>
-          <Button>Convert</Button>
+          <Button>Done</Button>
         </View>
       </View>
     </ScrollView>
@@ -62,27 +62,27 @@ const FileConverterScreen = params => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   },
   main: {
-    padding: 20,
+    padding: 20
   },
   searchBar: {
     borderWidth: 1,
     borderRadius: 10,
     borderColor: "#C4C4C4",
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center"
   },
   searchText: {
     marginLeft: 10,
-    marginBottom: 10,
+    marginBottom: 10
   },
   wp90: {
-    width: "90%",
+    width: "90%"
   },
   text: {
-    marginVertical: 20,
+    marginVertical: 20
   },
   tabView: {
     width: "100%",
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     paddingVertical: 6,
-    marginVertical: 20,
+    marginVertical: 20
   },
   csv: {
     borderRadius: 10,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     width: "15%",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   xlsx: {
     width: "15%",
@@ -109,19 +109,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F1F1F1",
-    borderRadius: 10,
+    borderRadius: 10
   },
   btn: {
     paddingHorizontal: "15%",
-    marginBottom: 20,
+    marginBottom: 20
   },
   bar: {
     marginHorizontal: "15%",
     marginVertical: 20,
     height: 8,
     backgroundColor: "#12D790",
-    borderRadius: 10,
-  },
+    borderRadius: 10
+  }
 });
 export default FileConverterScreen;
 
@@ -146,12 +146,12 @@ const fileStyles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     shadowColor: "rgba(0, 0, 0, 0.2)",
-    elevation: 5,
+    elevation: 5
   },
   innerContainer: {
     borderRadius: 10,
     flexDirection: "row",
-    padding: 10,
+    padding: 10
   },
   img: {
     justifyContent: "center",
@@ -159,12 +159,12 @@ const fileStyles = StyleSheet.create({
     backgroundColor: "#FCF1D6",
     height: 80,
     width: 80,
-    borderRadius: 10,
+    borderRadius: 10
   },
   textContainer: {
     paddingVertical: 10,
-    paddingHorizontal: 20,
-  },
+    paddingHorizontal: 20
+  }
 });
 
 const Button = props => {
@@ -179,15 +179,15 @@ const Button = props => {
               : "#000000",
             height: props.height ? props.height : 49,
             borderWidth: props.borderWidth ? props.borderWidth : 0,
-            borderColor: props.borderColor ? props.borderColor : "#000000",
-          },
+            borderColor: props.borderColor ? props.borderColor : "#000000"
+          }
         ]}>
         <Text
           style={[
             btnStyles.text,
             {
-              color: props.color ? props.color : "#ffffff",
-            },
+              color: props.color ? props.color : "#ffffff"
+            }
           ]}>
           {props.children}
         </Text>
@@ -201,12 +201,12 @@ const btnStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 10
   },
   text: {
     fontWeight: "bold",
-    fontSize: 15,
-  },
+    fontSize: 15
+  }
 });
 
 const Input = props => {
@@ -234,11 +234,11 @@ const textStyles = StyleSheet.create({
     color: "#000",
     borderRadius: 10,
     fontSize: 14,
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   error: {
     fontSize: 13,
     color: "#FA060D",
-    paddingTop: 8,
-  },
+    paddingTop: 8
+  }
 });

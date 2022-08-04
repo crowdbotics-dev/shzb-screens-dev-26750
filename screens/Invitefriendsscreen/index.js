@@ -5,7 +5,7 @@ import {
   View,
   TextInput,
   Image,
-  ScrollView,
+  ScrollView
 } from "react-native";
 
 const InviteFriendsScreen = params => {
@@ -21,11 +21,11 @@ const InviteFriendsScreen = params => {
               borderRadius: 10,
               borderColor: "#C4C4C4",
               flexDirection: "row",
-              alignItems: "center",
+              alignItems: "center"
             }}>
             <View
               style={{
-                width: "90%",
+                width: "90%"
               }}>
               <TextInput
                 style={textStyles.input}
@@ -63,30 +63,30 @@ const InviteFriendsScreen = params => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   },
   searchBar: {
-    padding: 20,
+    padding: 20
   },
   searchText: {
     marginLeft: 10,
-    marginBottom: 10,
+    marginBottom: 10
   },
   text: {
     marginLeft: 30,
-    marginBottom: 10,
+    marginBottom: 10
   },
   frequently: {
     height: 50,
     width: "100%",
     backgroundColor: "#DADADA",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   frequentlyText: {
     marginLeft: 30,
-    color: "#8F8D86",
-  },
+    color: "#8F8D86"
+  }
 });
 export default InviteFriendsScreen;
 
@@ -98,8 +98,8 @@ const Follower = props => {
           style={[
             FollowerStyles.image,
             {
-              backgroundColor: props.bgcolor,
-            },
+              backgroundColor: props.bgcolor
+            }
           ]}>
           <Image source={require("./assets/edit.png")} />
         </View>
@@ -118,11 +118,11 @@ const FollowerStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 10,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   main: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center"
   },
   image: {
     height: 60,
@@ -131,8 +131,8 @@ const FollowerStyles = StyleSheet.create({
     marginRight: 15,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-  },
+    alignItems: "center"
+  }
 });
 const textStyles = StyleSheet.create({
   input: {
@@ -141,11 +141,11 @@ const textStyles = StyleSheet.create({
     color: "#000",
     borderRadius: 10,
     fontSize: 14,
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   error: {
     fontSize: 13,
     color: "#FA060D",
-    paddingTop: 8,
-  },
+    paddingTop: 8
+  }
 });

@@ -20,6 +20,10 @@ const LedgerGraphScreen = params => {
           </View>
         </View>
         <View style={styles.balanceImage}>
+          <TabView
+            tabTitles={["Transactions", "Report", "Transfer"]}
+            selected={1}
+          />
           <Image
             resizeMode="contain"
             style={styles.imageHW}
@@ -52,31 +56,80 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-between",
-    marginVertical: 20,
+    marginVertical: 20
   },
   currentBalance: {
     fontSize: 36,
-    marginVertical: 5,
+    marginVertical: 5
   },
   withdrawImage: {
     width: 52,
-    height: 73,
+    height: 73
   },
   balanceImage: {
     backgroundColor: "#FFF",
-    height: 610,
+    height: 500
   },
   monthlySpendingImage: {
     backgroundColor: "#FFF",
-    height: 200,
+    height: 200
   },
   totalSpendingImage: {
     backgroundColor: "#FFF",
-    height: 600,
+    height: 600
   },
   imageHW: {
     width: "100%",
-    height: "100%",
-  },
+    height: "100%"
+  }
 });
 export default LedgerGraphScreen;
+
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
+          <Text>{title}</Text>
+        </View>
+      ))}
+    </View>
+  );
+};
+
+const tabViewStyles = StyleSheet.create({
+  paletteContainer: {
+    height: 48,
+    backgroundColor: "#F1F1F1",
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 10,
+    padding: 6,
+    marginVertical: 10,
+    marginHorizontal: 20
+  },
+  selected: {
+    borderRadius: 10,
+    flex: 1,
+    backgroundColor: "#fff",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "gray",
+    elevation: 10
+  },
+  unSelected: {
+    flex: 1,
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F1F1F1",
+    borderRadius: 10
+  }
+});

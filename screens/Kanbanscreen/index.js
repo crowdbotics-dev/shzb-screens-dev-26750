@@ -31,16 +31,16 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     backgroundColor: "#FFF",
-    height: "100%",
+    height: "100%"
   },
   headerImage: {
     width: "100%",
-    height: 200,
+    height: 200
   },
   text: {
     color: "#1E2022",
     fontSize: 14,
-    fontWeight: "900",
+    fontWeight: "900"
   },
   tabView: {
     width: "60%",
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     padding: 6,
-    marginVertical: 20,
+    marginVertical: 20
   },
   selectedTab: {
     borderRadius: 10,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "gray",
-    elevation: 10,
+    elevation: 10
   },
   tabItem: {
     width: "50%",
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F1F1F1",
-    borderRadius: 10,
-  },
+    borderRadius: 10
+  }
 });
 export default KanbanScreen;
 
@@ -101,12 +101,12 @@ const fileStyles = StyleSheet.create({
     backgroundColor: "#FFF",
     shadowColor: "gray",
     elevation: 8,
-    marginVertical: 5,
+    marginVertical: 5
   },
   innerContainer: {
     borderRadius: 10,
     flexDirection: "row",
-    padding: 10,
+    padding: 10
   },
   img: {
     justifyContent: "center",
@@ -114,21 +114,21 @@ const fileStyles = StyleSheet.create({
     backgroundColor: "#FCF1D6",
     height: 80,
     width: 80,
-    borderRadius: 10,
+    borderRadius: 10
   },
   actionContainer: {
     flex: 1,
     alignSelf: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   action: {
     justifyContent: "center",
     alignItems: "center",
     height: 40,
-    width: 40,
+    width: 40
   },
   textContainer: {
     paddingVertical: 10,
-    paddingHorizontal: 20,
-  },
+    paddingHorizontal: 20
+  }
 });

@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 
 const MapLiveTrackingScreen = params => {
-  const [order, setOrder] = useState({
-    orderName: "Order Name",
-    customerName: "Customer Name",
-    shopLocation: "S Main St, Los Angeles",
-    deliveryLocation: "Maple Ave , Los Angeles",
-    orderPrice: "$18",
-    shipping: "Free Shipping",
-  });
+  const [order, setOrder] = useState({});
+  useEffect(() => {
+    setOrder({
+      orderName: "Order Name",
+      customerName: "Customer Name",
+      shopLocation: "S Main St, Los Angeles",
+      deliveryLocation: "Maple Ave , Los Angeles",
+      orderPrice: "$18",
+      shipping: "Free Shipping"
+    });
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.orderContainer}>
@@ -62,43 +65,39 @@ const MapLiveTrackingScreen = params => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // backgroundColor: '#fff',
+    flex: 1
   },
   orderContainer: {
     flex: 1,
     backgroundColor: "#fff",
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
-    // shadowColor: '#000',
-    // elevation: 5,
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   shippingDetails: {
     flexDirection: "row",
     paddingVertical: 10,
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   bold: {
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   grey: {
-    color: "#8e8e8e",
+    color: "#8e8e8e"
   },
   black: {
-    color: "#000",
+    color: "#000"
   },
   fnt16: {
-    fontSize: 16,
+    fontSize: 16
   },
   mapImage: {
-    // borderWidth: 1,
-    // borderColor: '#000',
     flex: 1,
     width: "90%",
     height: "90%",
     resizeMode: "contain",
-    alignSelf: "center",
+    alignSelf: "center"
   },
   detailPallete: {
     flexDirection: "row",
@@ -106,39 +105,39 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: "#e6e6e6",
+    borderBottomColor: "#e6e6e6"
   },
   orderDetails: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    paddingRight: 10,
+    paddingRight: 10
   },
   pricing: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "flex-end",
-    alignItems: "flex-end",
+    alignItems: "flex-end"
   },
   mainText: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   subText: {
     fontSize: 14,
     color: "#8e8e8e",
-    marginTop: 5,
+    marginTop: 5
   },
   locationContainer: {
     flexDirection: "row",
-    paddingTop: 20,
+    paddingTop: 20
   },
   locationDetails: {
     flex: 1,
     flexDirection: "column",
     marginLeft: 10,
     justifyContent: "space-between",
-    alignItems: "flex-start",
-  },
+    alignItems: "flex-start"
+  }
 });
 export default MapLiveTrackingScreen;
