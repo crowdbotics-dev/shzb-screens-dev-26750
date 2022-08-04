@@ -4,60 +4,51 @@ import { Text, StyleSheet, View, Image, ScrollView } from "react-native";
 const NotificationsListingScreen = params => {
   const [notifications, setNotifications] = useState([]);
   useEffect(() => {
-    setNotifications([
-      {
-        id: 1,
-        type: "Post Liked",
-        details: "You have post liked by Kreamy Corner",
-        time: "5 min ago",
-        read: false
-      },
-      {
-        id: 2,
-        type: "Post flagged",
-        details: "Post flagged by Kreamy Corner",
-        time: "5 min ago",
-        read: false
-      },
-      {
-        id: 3,
-        type: "New Group Created",
-        details: "You have created a new group",
-        time: "5 min ago",
-        read: true
-      },
-      {
-        id: 4,
-        type: "New Group Created",
-        details: "You have created a new group",
-        time: "5 min ago",
-        read: true
-      },
-      {
-        id: 5,
-        type: "New Group Created",
-        details: "You have created a new group",
-        time: "5 min ago",
-        read: true
-      },
-      {
-        id: 6,
-        type: "New Group Created",
-        details: "You have created a new group",
-        time: "5 min ago",
-        read: true
-      },
-      {
-        id: 7,
-        type: "New Group Created",
-        details: "You have created a new group",
-        time: "5 min ago",
-        read: true
-      }
-    ]);
+    setNotifications([{
+      id: 1,
+      type: "Post Liked",
+      details: "You have post liked by Kreamy Corner",
+      time: "5 min ago",
+      read: false
+    }, {
+      id: 2,
+      type: "Post flagged",
+      details: "Post flagged by Kreamy Corner",
+      time: "5 min ago",
+      read: false
+    }, {
+      id: 3,
+      type: "New Group Created",
+      details: "You have created a new group",
+      time: "5 min ago",
+      read: true
+    }, {
+      id: 4,
+      type: "New Group Created",
+      details: "You have created a new group",
+      time: "5 min ago",
+      read: true
+    }, {
+      id: 5,
+      type: "New Group Created",
+      details: "You have created a new group",
+      time: "5 min ago",
+      read: true
+    }, {
+      id: 6,
+      type: "New Group Created",
+      details: "You have created a new group",
+      time: "5 min ago",
+      read: true
+    }, {
+      id: 7,
+      type: "New Group Created",
+      details: "You have created a new group",
+      time: "5 min ago",
+      read: true
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.header}>
         <TabView tabTitles={["Preferences", "Extended"]} selected={1} />
         <View style={styles.headerTextContainer}>
@@ -67,21 +58,19 @@ const NotificationsListingScreen = params => {
       </View>
       <View style={styles.notificationsContainer}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {notifications.map((notification, index) => (
-            <NotificationTile notification={notification} key={index} />
-          ))}
+          {notifications.map((notification, index) => <NotificationTile notification={notification} key={index} />)}
         </ScrollView>
       </View>
-    </View>
-  );
+    </View>;
 };
 
-const NotificationTile = ({ notification }) => {
+const NotificationTile = ({
+  notification
+}) => {
   const textColor = {
     color: notification.read ? "#8E8E8E" : "#000"
   };
-  return (
-    <View style={notificationTileStyles.container}>
+  return <View style={notificationTileStyles.container}>
       <View style={notificationTileStyles.notificationTextContainer}>
         <Text style={[notificationTileStyles.mainText, textColor]}>
           {notification.type}
@@ -91,13 +80,10 @@ const NotificationTile = ({ notification }) => {
       <View style={notificationTileStyles.timeContainer}>
         <Text style={textColor}>{notification.time}</Text>
         <View>
-          {!notification.read ? (
-            <Image source={require("./assets/readIcon.png")} />
-          ) : null}
+          {!notification.read ? <Image source={require("./assets/readIcon.png")} /> : null}
         </View>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const notificationTileStyles = StyleSheet.create({
@@ -112,8 +98,8 @@ const notificationTileStyles = StyleSheet.create({
   notificationTextContainer: {
     flexDirection: "column",
     height: "80%",
-    justifyContent: "space-around"
-    // alignItems: "center"
+    justifyContent: "space-around" // alignItems: "center"
+
   },
   mainText: {
     fontSize: 18,
@@ -125,7 +111,6 @@ const notificationTileStyles = StyleSheet.create({
     alignItems: "center"
   }
 });
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -155,22 +140,15 @@ const styles = StyleSheet.create({
 });
 export default NotificationsListingScreen;
 
-const TabView = ({ tabTitles, selected }) => {
-  return (
-    <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => (
-        <View
-          style={
-            index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
-          }
-          key={index}>
+const TabView = ({
+  tabTitles,
+  selected
+}) => {
+  return <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
           <Text>{title}</Text>
-        </View>
-      ))}
-    </View>
-  );
+        </View>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({
