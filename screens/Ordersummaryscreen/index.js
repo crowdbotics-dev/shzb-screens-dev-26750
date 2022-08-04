@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  TextInput,
-  Pressable,
-  ScrollView
-} from "react-native";
+import { Text, StyleSheet, View, Image, TextInput, Pressable, ScrollView } from "react-native";
 
 const OrderSummaryScreen = params => {
   const [shippingAddress, setShippingAddress] = useState("");
   const [deliveryOptions, setDeliveryOptions] = useState("");
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.paletteContainer}>
@@ -21,25 +12,14 @@ const OrderSummaryScreen = params => {
             <View style={styles.unSelected}></View>
             <View style={styles.unSelected}></View>
           </View>
-          <Image
-            source={require("./assets/3Dots.png")}
-            style={styles.threeDots}
-          />
+          <Image source={require("./assets/3Dots.png")} style={styles.threeDots} />
         </View>
         <View style={styles.content}>
           <Text style={styles.companyNameText}>Company name</Text>
           <Image source={require("./assets/companyImage.png")} />
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Shipping Address</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setShippingAddress(text)}
-              value={shippingAddress}
-              placeholder="First Street 1, New York"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setShippingAddress(text)} value={shippingAddress} placeholder="First Street 1, New York" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.detailsCard}>
             <View style={styles.details}>
@@ -57,25 +37,13 @@ const OrderSummaryScreen = params => {
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Delivery Options</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setDeliveryOptions(text)}
-              value={deliveryOptions}
-              placeholder="Click to see"
-              placeholderTextColor="black"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Image
-              source={require("./assets/dropdownIcon.png")}
-              style={styles.searchIcon}
-            />
+            <TextInput style={styles.input} onChangeText={text => setDeliveryOptions(text)} value={deliveryOptions} placeholder="Click to see" placeholderTextColor="black" autoCapitalize="none" autoCorrect={false} />
+            <Image source={require("./assets/dropdownIcon.png")} style={styles.searchIcon} />
           </View>
           <Button buttonText={"Pay secure"} />
         </View>
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -178,14 +146,15 @@ const styles = StyleSheet.create({
 });
 export default OrderSummaryScreen;
 
-const Button = ({ onPress, buttonText }) => {
-  return (
-    <View style={buttonStyles.btnContainer}>
+const Button = ({
+  onPress,
+  buttonText
+}) => {
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={buttonStyles.btn} onPress={onPress}>
         <Text style={buttonStyles.btnText}>{buttonText}</Text>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
