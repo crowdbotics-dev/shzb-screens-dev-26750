@@ -1,60 +1,44 @@
 import React, { useState, useEffect } from "react";
-import {
-  Image,
-  Text,
-  StyleSheet,
-  View,
-  ScrollView,
-  FlatList
-} from "react-native";
+import { Image, Text, StyleSheet, View, ScrollView, FlatList } from "react-native";
 
 const LedgerListingScreen = params => {
   const [todayHistory, setTodayHistory] = useState([]);
   const [aprilHistory, setAprilHistory] = useState([]);
   useEffect(() => {
-    setTodayHistory([
-      {
-        id: 1,
-        title: "Sports Center",
-        price: "$125.90",
-        type: "debit"
-      },
-      {
-        id: 2,
-        title: "Shopping",
-        price: "$552.68",
-        type: "credit"
-      },
-      {
-        id: 3,
-        title: "Income",
-        price: "$345.00",
-        type: "credit"
-      }
-    ]);
-    setAprilHistory([
-      {
-        id: 1,
-        title: "Sports Center",
-        price: "$125.90",
-        type: "debit"
-      },
-      {
-        id: 2,
-        title: "Shopping",
-        price: "$552.68",
-        type: "credit"
-      },
-      {
-        id: 3,
-        title: "Income",
-        price: "$345.00",
-        type: "credit"
-      }
-    ]);
+    setTodayHistory([{
+      id: 1,
+      title: "Sports Center",
+      price: "$125.90",
+      type: "debit"
+    }, {
+      id: 2,
+      title: "Shopping",
+      price: "$552.68",
+      type: "credit"
+    }, {
+      id: 3,
+      title: "Income",
+      price: "$345.00",
+      type: "credit"
+    }]);
+    setAprilHistory([{
+      id: 1,
+      title: "Sports Center",
+      price: "$125.90",
+      type: "debit"
+    }, {
+      id: 2,
+      title: "Shopping",
+      price: "$552.68",
+      type: "credit"
+    }, {
+      id: 3,
+      title: "Income",
+      price: "$345.00",
+      type: "credit"
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.header}>
         <View>
           <Text>Current Balance</Text>
@@ -62,39 +46,25 @@ const LedgerListingScreen = params => {
           <Text>Bank Account: 0954 4543 2112 3116</Text>
         </View>
         <View>
-          <Image
-            resizeMode="contain"
-            style={styles.withdrawImage}
-            source={require("./assets/withdraw.png")}
-          />
+          <Image resizeMode="contain" style={styles.withdrawImage} source={require("./assets/withdraw.png")} />
         </View>
       </View>
-      <TabView
-        tabTitles={["Transactions", "Report", "Transfer"]}
-        selected={0}
-      />
+      <TabView tabTitles={["Transactions", "Report", "Transfer"]} selected={0} />
       <ScrollView>
         <View style={styles.historyList}>
           <Text style={styles.historyDate}>TODAY&apos;</Text>
-          <FlatList
-            data={todayHistory}
-            renderItem={({ item }) => <HistoryItem transaction={item} />}
-            keyExtractor={item => item.id}
-            scrollEnabled={false}
-          />
+          <FlatList data={todayHistory} renderItem={({
+          item
+        }) => <HistoryItem transaction={item} />} keyExtractor={item => item.id} scrollEnabled={false} />
         </View>
         <View style={styles.historyList}>
           <Text style={styles.historyDate}>April 01</Text>
-          <FlatList
-            scrollEnabled={false}
-            data={aprilHistory}
-            renderItem={({ item }) => <HistoryItem transaction={item} />}
-            keyExtractor={item => item.id}
-          />
+          <FlatList scrollEnabled={false} data={aprilHistory} renderItem={({
+          item
+        }) => <HistoryItem transaction={item} />} keyExtractor={item => item.id} />
         </View>
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -168,22 +138,15 @@ const styles = StyleSheet.create({
 });
 export default LedgerListingScreen;
 
-const TabView = ({ tabTitles, selected }) => {
-  return (
-    <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => (
-        <View
-          style={
-            index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
-          }
-          key={index}>
+const TabView = ({
+  tabTitles,
+  selected
+}) => {
+  return <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
           <Text>{title}</Text>
-        </View>
-      ))}
-    </View>
-  );
+        </View>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -217,41 +180,33 @@ const tabViewStyles = StyleSheet.create({
   }
 });
 
-const HistoryItem = ({ transaction }) => {
+const HistoryItem = ({
+  transaction
+}) => {
   const pricingTextColor = {
     color: transaction.type === "debit" ? "#EA4335" : "#05B417"
   };
-  return (
-    <View style={historyItemStyles.historyItem}>
+  return <View style={historyItemStyles.historyItem}>
       <View style={historyItemStyles.description}>
         <Text style={historyItemStyles.titleText}>{transaction.title}</Text>
-        <Text
-          style={{
-            color: "grey"
-          }}>
+        <Text style={{
+        color: "grey"
+      }}>
           Invoice
         </Text>
       </View>
       <View style={historyItemStyles.pricing}>
-        {transaction.type === "debit" ? (
-          <Text style={[historyItemStyles.pricingText, pricingTextColor]}>
+        {transaction.type === "debit" ? <Text style={[historyItemStyles.pricingText, pricingTextColor]}>
             -{" "}
-          </Text>
-        ) : (
-          <Text style={[historyItemStyles.pricingText, pricingTextColor]}>
+          </Text> : <Text style={[historyItemStyles.pricingText, pricingTextColor]}>
             +{" "}
-          </Text>
-        )}
+          </Text>}
         <Text style={[historyItemStyles.pricingText, pricingTextColor]}>
           {transaction.price}
         </Text>
-        <Image
-          source={require("./assets/arrow.png")}
-          style={historyItemStyles.arrowIcon}
-        />
+        <Image source={require("./assets/arrow.png")} style={historyItemStyles.arrowIcon} />
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const historyItemStyles = StyleSheet.create({

@@ -1,74 +1,48 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  TextInput,
-  FlatList
-} from "react-native";
+import { Text, StyleSheet, View, Image, TextInput, FlatList } from "react-native";
 
 const LeaderboardScreen = params => {
   const [username, setUsername] = useState("");
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    setUsers([
-      {
-        id: 1,
-        name: "Albert Flores",
-        profileImage: require("./assets/profile.png"),
-        score: "15999"
-      },
-      {
-        id: 2,
-        name: "Annette Black",
-        profileImage: require("./assets/profile.png"),
-        score: "14565"
-      },
-      {
-        id: 3,
-        name: "Theresa Webb",
-        profileImage: require("./assets/profile.png"),
-        score: "13569"
-      },
-      {
-        id: 4,
-        name: "Courteny Henry",
-        profileImage: require("./assets/profile.png"),
-        score: "12565"
-      },
-      {
-        id: 5,
-        name: "Cody Fisher",
-        profileImage: require("./assets/profile.png"),
-        score: "11599"
-      },
-      {
-        id: 6,
-        name: "Dianne Russell",
-        profileImage: require("./assets/profile.png"),
-        score: "11599"
-      }
-    ]);
+    setUsers([{
+      id: 1,
+      name: "Albert Flores",
+      profileImage: require("./assets/profile.png"),
+      score: "15999"
+    }, {
+      id: 2,
+      name: "Annette Black",
+      profileImage: require("./assets/profile.png"),
+      score: "14565"
+    }, {
+      id: 3,
+      name: "Theresa Webb",
+      profileImage: require("./assets/profile.png"),
+      score: "13569"
+    }, {
+      id: 4,
+      name: "Courteny Henry",
+      profileImage: require("./assets/profile.png"),
+      score: "12565"
+    }, {
+      id: 5,
+      name: "Cody Fisher",
+      profileImage: require("./assets/profile.png"),
+      score: "11599"
+    }, {
+      id: 6,
+      name: "Dianne Russell",
+      profileImage: require("./assets/profile.png"),
+      score: "11599"
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.inputContainer}>
           <Text style={styles.inputText}>Search</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={text => setUsername(text)}
-            value={username}
-            placeholder="Search Username"
-            placeholderTextColor="#9B9B9B"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Image
-            source={require("./assets/searchIcon.png")}
-            style={styles.searchIcon}
-          />
+          <TextInput style={styles.input} onChangeText={text => setUsername(text)} value={username} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+          <Image source={require("./assets/searchIcon.png")} style={styles.searchIcon} />
         </View>
       </View>
       <TabView tabTitles={["All", "Weekly", "Monthly"]} selected={0} />
@@ -76,25 +50,22 @@ const LeaderboardScreen = params => {
         <Text style={[styles.fnt16, styles.grey]}>Player</Text>
         <Text style={[styles.fnt16, styles.grey]}>Score</Text>
       </View>
-      <FlatList
-        data={users}
-        keyExtractor={(item, index) => item.id.toString()}
-        renderItem={({ item }) => <User user={item} />}
-      />
-    </View>
-  );
+      <FlatList data={users} keyExtractor={(item, index) => item.id.toString()} renderItem={({
+      item
+    }) => <User user={item} />} />
+    </View>;
 };
 
-const User = ({ user }) => {
-  return (
-    <View style={styles.userContainer}>
+const User = ({
+  user
+}) => {
+  return <View style={styles.userContainer}>
       <View style={styles.userInfo}>
         <Image source={user.profileImage} style={styles.profileImage} />
         <Text style={styles.username}>{user.name}</Text>
       </View>
       <Text style={styles.scoreText}>{user.score}</Text>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -186,22 +157,15 @@ const styles = StyleSheet.create({
 });
 export default LeaderboardScreen;
 
-const TabView = ({ tabTitles, selected }) => {
-  return (
-    <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => (
-        <View
-          style={
-            index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
-          }
-          key={index}>
+const TabView = ({
+  tabTitles,
+  selected
+}) => {
+  return <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
           <Text>{title}</Text>
-        </View>
-      ))}
-    </View>
-  );
+        </View>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({

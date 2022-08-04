@@ -4,80 +4,59 @@ import { Text, StyleSheet, View, ScrollView, Image } from "react-native";
 const PostsFeedScreen = params => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    setPosts([
-      {
-        id: "1",
-        user: {
-          name: "Username",
-          image: require("./assets/profile1.png")
-        },
-        caption:
-          "Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.",
-        images: [require("./assets/post1.png")],
-        likes: 56,
-        comments: 6
+    setPosts([{
+      id: "1",
+      user: {
+        name: "Username",
+        image: require("./assets/profile1.png")
       },
-      {
-        id: "2",
-        user: {
-          name: "Username",
-          image: require("./assets/profile2.png")
-        },
-        caption:
-          "Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.",
-        images: [require("./assets/post2.png")],
-        likes: 56,
-        comments: 6
-      }
-    ]);
+      caption: "Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.",
+      images: [require("./assets/post1.png")],
+      likes: 56,
+      comments: 6
+    }, {
+      id: "2",
+      user: {
+        name: "Username",
+        image: require("./assets/profile2.png")
+      },
+      caption: "Mauris ultrices ut mauris ut elementum nunc. Quisque eu vulputate nunc. Sed odio lectus.",
+      images: [require("./assets/post2.png")],
+      likes: 56,
+      comments: 6
+    }]);
   }, []);
-  return (
-    <ScrollView style={styles.container}>
-      {posts.map((post, index) => (
-        <PostView post={post} key={index} />
-      ))}
-    </ScrollView>
-  );
+  return <ScrollView style={styles.container}>
+      {posts.map((post, index) => <PostView post={post} key={index} />)}
+    </ScrollView>;
 };
 
-const PostView = ({ post }) => {
-  return (
-    <View style={styles.postContainer}>
+const PostView = ({
+  post
+}) => {
+  return <View style={styles.postContainer}>
       <View style={styles.postHeader}>
         <Image source={post.user.image} style={styles.profileImage} />
         <Text style={styles.username}>{post.user.name}</Text>
-        <Image
-          source={require("./assets/menuIcon.png")}
-          style={styles.menuIcon}
-        />
+        <Image source={require("./assets/menuIcon.png")} style={styles.menuIcon} />
       </View>
       <Image source={post.images[0]} style={styles.postImage} />
       <View style={styles.postFooter}>
         <View style={styles.footerSmallblock1}>
-          <Image
-            source={require("./assets/likeIcon.png")}
-            style={styles.likeIcon}
-          />
+          <Image source={require("./assets/likeIcon.png")} style={styles.likeIcon} />
           <Text style={styles.footerText}>{post.likes}</Text>
-          <Image
-            source={require("./assets/commentIcon.png")}
-            style={styles.commentIcon}
-          />
+          <Image source={require("./assets/commentIcon.png")} style={styles.commentIcon} />
           <Text style={styles.footerText}>{post.comments}</Text>
         </View>
         <View style={styles.threeDots}>
           <Image source={require("./assets/3DotsIcon.png")} />
         </View>
         <View style={styles.footerSmallblock2}>
-          <Image
-            source={require("./assets/chatIcon.png")}
-            style={styles.chatIcon}
-          />
+          <Image source={require("./assets/chatIcon.png")} style={styles.chatIcon} />
         </View>
       </View>
       <Text style={styles.captionText}>{post.caption}</Text>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -93,6 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10 // justifyContent: 'space-between',
+
   },
   profileImage: {
     width: 40,

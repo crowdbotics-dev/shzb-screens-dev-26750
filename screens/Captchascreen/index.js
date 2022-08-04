@@ -1,58 +1,39 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  SafeAreaView,
-  FlatList,
-  Image,
-  Pressable
-} from "react-native";
+import { Text, StyleSheet, View, SafeAreaView, FlatList, Image, Pressable } from "react-native";
 
 const CaptchaScreen = params => {
   const [captchaImages, setCaptchaImages] = useState([]);
   useEffect(() => {
-    setCaptchaImages([
-      {
-        id: 1,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 2,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 3,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 4,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 5,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 6,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 7,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 8,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      },
-      {
-        id: 9,
-        imageSrc: require("./assets/crowdboticsImage.png")
-      }
-    ]);
+    setCaptchaImages([{
+      id: 1,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 2,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 3,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 4,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 5,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 6,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 7,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 8,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }, {
+      id: 9,
+      imageSrc: require("./assets/crowdboticsImage.png")
+    }]);
   }, []);
-  return (
-    <SafeAreaView style={styles.container}>
+  return <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={[styles.fnt14, styles.black]}>
           Select all same pictures!
@@ -62,31 +43,25 @@ const CaptchaScreen = params => {
           <Image source={require("./assets/audioIcon.png")} />
         </View>
       </View>
-      <FlatList
-        style={styles.list}
-        data={captchaImages}
-        numColumns={3}
-        renderItem={({ item }) => <Post post={item} />}
-        keyExtractor={item => item.id.toString()}
-        columnWrapperStyle={{
-          justifyContent: "space-between"
-        }}
-      />
+      <FlatList style={styles.list} data={captchaImages} numColumns={3} renderItem={({
+      item
+    }) => <Post post={item} />} keyExtractor={item => item.id.toString()} columnWrapperStyle={{
+      justifyContent: "space-between"
+    }} />
       <View style={styles.btnContainer}>
         <Pressable style={styles.btn}>
           <Text style={styles.btnText}>Submit</Text>
         </Pressable>
       </View>
-    </SafeAreaView>
-  );
+    </SafeAreaView>;
 };
 
-const Post = ({ post }) => {
-  return (
-    <View style={styles.postContianer}>
+const Post = ({
+  post
+}) => {
+  return <View style={styles.postContianer}>
       <Image source={post.imageSrc} style={styles.image} />
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -106,6 +81,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center" // borderColor: '#000',
     // borderWidth: 1,
+
   },
   list: {
     marginTop: 10,

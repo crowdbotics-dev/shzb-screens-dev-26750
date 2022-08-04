@@ -1,39 +1,23 @@
 import React, { useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  Image,
-  ScrollView
-} from "react-native";
+import { Text, StyleSheet, View, TextInput, Image, ScrollView } from "react-native";
 
 const InviteFriendsScreen = params => {
   const [value, setValue] = useState("");
-  return (
-    <ScrollView>
+  return <ScrollView>
       <View style={styles.container}>
         <View style={styles.searchBar}>
           <Text style={styles.searchText}>Search</Text>
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              borderColor: "#C4C4C4",
-              flexDirection: "row",
-              alignItems: "center"
-            }}>
-            <View
-              style={{
-                width: "90%"
-              }}>
-              <TextInput
-                style={textStyles.input}
-                placeholder="Enter"
-                value={value}
-                onChangeText={text => setValue(text)}
-                placeholderTextColor="#ddd"
-              />
+          <View style={{
+          borderWidth: 1,
+          borderRadius: 10,
+          borderColor: "#C4C4C4",
+          flexDirection: "row",
+          alignItems: "center"
+        }}>
+            <View style={{
+            width: "90%"
+          }}>
+              <TextInput style={textStyles.input} placeholder="Enter" value={value} onChangeText={text => setValue(text)} placeholderTextColor="#ddd" />
             </View>
             <Image source={require("./assets/search.png")} />
           </View>
@@ -56,8 +40,7 @@ const InviteFriendsScreen = params => {
           <Follower name="Ander" bgcolor="#FCF1D6" />
         </View>
       </View>
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -91,23 +74,17 @@ const styles = StyleSheet.create({
 export default InviteFriendsScreen;
 
 const Follower = props => {
-  return (
-    <View style={FollowerStyles.follower}>
+  return <View style={FollowerStyles.follower}>
       <View style={FollowerStyles.main}>
-        <View
-          style={[
-            FollowerStyles.image,
-            {
-              backgroundColor: props.bgcolor
-            }
-          ]}>
+        <View style={[FollowerStyles.image, {
+        backgroundColor: props.bgcolor
+      }]}>
           <Image source={require("./assets/edit.png")} />
         </View>
         <Text>{props.name}</Text>
       </View>
       {props.invite && <Text>Invite</Text>}
-    </View>
-  );
+    </View>;
 };
 
 const FollowerStyles = StyleSheet.create({

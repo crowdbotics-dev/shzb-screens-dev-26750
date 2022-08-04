@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableHighlight,
-  Image,
-  ScrollView
-} from "react-native";
+import { Text, StyleSheet, View, TextInput, TouchableHighlight, Image, ScrollView } from "react-native";
 
 const FileConverterScreen = params => {
-  return (
-    <ScrollView>
+  return <ScrollView>
       <View style={styles.container}>
         <View style={styles.main}>
           <View>
@@ -55,8 +46,7 @@ const FileConverterScreen = params => {
           <Button>Done</Button>
         </View>
       </View>
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -126,8 +116,7 @@ const styles = StyleSheet.create({
 export default FileConverterScreen;
 
 const FileCard = () => {
-  return (
-    <View style={fileStyles.container}>
+  return <View style={fileStyles.container}>
       <View style={fileStyles.innerContainer}>
         <View style={fileStyles.img}>
           <Image source={require("./assets/edit.png")} />
@@ -137,8 +126,7 @@ const FileCard = () => {
           <Text>18 June 2022</Text>
         </View>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const fileStyles = StyleSheet.create({
@@ -168,32 +156,20 @@ const fileStyles = StyleSheet.create({
 });
 
 const Button = props => {
-  return (
-    <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View
-        style={[
-          btnStyles.button,
-          {
-            backgroundColor: props.backgroundColor
-              ? props.backgroundColor
-              : "#000000",
-            height: props.height ? props.height : 49,
-            borderWidth: props.borderWidth ? props.borderWidth : 0,
-            borderColor: props.borderColor ? props.borderColor : "#000000"
-          }
-        ]}>
-        <Text
-          style={[
-            btnStyles.text,
-            {
-              color: props.color ? props.color : "#ffffff"
-            }
-          ]}>
+  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
+      <View style={[btnStyles.button, {
+      backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
+      height: props.height ? props.height : 49,
+      borderWidth: props.borderWidth ? props.borderWidth : 0,
+      borderColor: props.borderColor ? props.borderColor : "#000000"
+    }]}>
+        <Text style={[btnStyles.text, {
+        color: props.color ? props.color : "#ffffff"
+      }]}>
           {props.children}
         </Text>
       </View>
-    </TouchableHighlight>
-  );
+    </TouchableHighlight>;
 };
 
 const btnStyles = StyleSheet.create({
@@ -210,21 +186,10 @@ const btnStyles = StyleSheet.create({
 });
 
 const Input = props => {
-  return (
-    <View>
-      <TextInput
-        style={textStyles.input}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChangeText={num => props.setValue(num)}
-        placeholderTextColor="#ddd"
-        editable={props.editable !== false}
-      />
-      {props.errorText ? (
-        <Text style={textStyles.error}>{props.errorText}</Text>
-      ) : null}
-    </View>
-  );
+  return <View>
+      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor="#ddd" editable={props.editable !== false} />
+      {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
+    </View>;
 };
 
 const textStyles = StyleSheet.create({

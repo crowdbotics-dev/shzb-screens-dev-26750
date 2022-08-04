@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  Image,
-  FlatList,
-  ScrollView,
-  Pressable
-} from "react-native";
+import { Text, StyleSheet, View, TextInput, Image, FlatList, ScrollView, Pressable } from "react-native";
 
 const CreateAppointmentScreen = params => {
   const [title, setTitle] = useState("");
@@ -17,71 +8,57 @@ const CreateAppointmentScreen = params => {
   const [reminder, setReminder] = useState("");
   const [timeSlots, setTimeSlots] = useState([]);
   useEffect(() => {
-    setTimeSlots([
-      {
-        id: 1,
-        slot: "10:00",
-        selected: false
-      },
-      {
-        id: 2,
-        slot: "11:00",
-        selected: false
-      },
-      {
-        id: 3,
-        slot: "12:00",
-        selected: true
-      },
-      {
-        id: 4,
-        slot: "13:00",
-        selected: false
-      },
-      {
-        id: 5,
-        slot: "14:00",
-        selected: false
-      },
-      {
-        id: 6,
-        slot: "15:00",
-        selected: false
-      },
-      {
-        id: 7,
-        slot: "16:00",
-        selected: false
-      },
-      {
-        id: 8,
-        slot: "17:00",
-        selected: false
-      },
-      {
-        id: 9,
-        slot: "18:00",
-        selected: false
-      },
-      {
-        id: 10,
-        slot: "19:00",
-        selected: false
-      },
-      {
-        id: 11,
-        slot: "20:00",
-        selected: false
-      },
-      {
-        id: 12,
-        slot: "21:00",
-        selected: false
-      }
-    ]);
+    setTimeSlots([{
+      id: 1,
+      slot: "10:00",
+      selected: false
+    }, {
+      id: 2,
+      slot: "11:00",
+      selected: false
+    }, {
+      id: 3,
+      slot: "12:00",
+      selected: true
+    }, {
+      id: 4,
+      slot: "13:00",
+      selected: false
+    }, {
+      id: 5,
+      slot: "14:00",
+      selected: false
+    }, {
+      id: 6,
+      slot: "15:00",
+      selected: false
+    }, {
+      id: 7,
+      slot: "16:00",
+      selected: false
+    }, {
+      id: 8,
+      slot: "17:00",
+      selected: false
+    }, {
+      id: 9,
+      slot: "18:00",
+      selected: false
+    }, {
+      id: 10,
+      slot: "19:00",
+      selected: false
+    }, {
+      id: 11,
+      slot: "20:00",
+      selected: false
+    }, {
+      id: 12,
+      slot: "21:00",
+      selected: false
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerBlock}>
           <Text style={styles.headerMainText}>16/01/2022</Text>
@@ -100,87 +77,45 @@ const CreateAppointmentScreen = params => {
         <View style={styles.body}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Title</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setTitle(text)}
-              value={title}
-              placeholder="Enter the title "
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setTitle(text)} value={title} placeholder="Enter the title " placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Location</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setLocation(text)}
-              value={location}
-              placeholder="Search Username"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Image
-              source={require("./assets/locationIcon.png")}
-              style={styles.searchIcon}
-            />
+            <TextInput style={styles.input} onChangeText={text => setLocation(text)} value={location} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <Image source={require("./assets/locationIcon.png")} style={styles.searchIcon} />
           </View>
           <View style={[styles.inputContainer, styles.textAreaContainer]}>
             <Text style={[styles.inputText]}>Description</Text>
-            <TextInput
-              style={[styles.input, styles.textArea]}
-              onChangeText={text => setDescription(text)}
-              value={description}
-              placeholder="Enter the description "
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={[styles.input, styles.textArea]} onChangeText={text => setDescription(text)} value={description} placeholder="Enter the description " placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Select Reminder</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setReminder(text)}
-              value={reminder}
-              placeholder="Select a reminder "
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setReminder(text)} value={reminder} placeholder="Select a reminder " placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
         </View>
         <View style={styles.timeSlots}>
           <Text style={styles.timeSlotsText}>Time slot</Text>
-          <FlatList
-            data={timeSlots}
-            renderItem={({ item }) => (
-              <Slot style={styles.timeSlotText} slot={item} />
-            )}
-            numColumns={4}
-            keyExtractor={item => item.id}
-            columnWrapperStyle={{
-              justifyContent: "space-around"
-            }}
-          />
+          <FlatList data={timeSlots} renderItem={({
+          item
+        }) => <Slot style={styles.timeSlotText} slot={item} />} numColumns={4} keyExtractor={item => item.id} columnWrapperStyle={{
+          justifyContent: "space-around"
+        }} />
         </View>
         <Button buttonText={"Create Appointment"} onPress={() => {}} />
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
-const Slot = ({ slot }) => {
+const Slot = ({
+  slot
+}) => {
   const borderColor = {
     borderColor: slot.selected ? "#12D790" : "#e6e6e6"
   };
-  return (
-    <View style={[styles.slotPill, borderColor]}>
+  return <View style={[styles.slotPill, borderColor]}>
       <Text>{slot.slot}</Text>
       <Image source={require("./assets/arrowIcon.png")} style={styles.arrow} />
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -274,14 +209,15 @@ const styles = StyleSheet.create({
 });
 export default CreateAppointmentScreen;
 
-const Button = ({ onPress, buttonText }) => {
-  return (
-    <View style={buttonStyles.btnContainer}>
+const Button = ({
+  onPress,
+  buttonText
+}) => {
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={buttonStyles.btn} onPress={onPress}>
         <Text style={buttonStyles.btnText}>{buttonText}</Text>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({

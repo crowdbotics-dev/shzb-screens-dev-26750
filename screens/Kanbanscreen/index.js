@@ -2,13 +2,8 @@ import React from "react";
 import { Image, Text, StyleSheet, View } from "react-native";
 
 const KanbanScreen = params => {
-  return (
-    <View style={styles.container}>
-      <Image
-        resizeMode="contain"
-        style={styles.headerImage}
-        source={require("./assets/Header.png")}
-      />
+  return <View style={styles.container}>
+      <Image resizeMode="contain" style={styles.headerImage} source={require("./assets/Header.png")} />
       <Text style={styles.text}>Projects</Text>
       <View style={styles.tabView}>
         <View style={styles.selectedTab}>
@@ -23,8 +18,7 @@ const KanbanScreen = params => {
         <FileCard />
         <FileCard />
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -74,8 +68,7 @@ const styles = StyleSheet.create({
 export default KanbanScreen;
 
 const FileCard = () => {
-  return (
-    <View style={fileStyles.container}>
+  return <View style={fileStyles.container}>
       <View style={fileStyles.innerContainer}>
         <View style={fileStyles.img}>
           <Image source={require("./assets/Edit.png")} />
@@ -85,14 +78,10 @@ const FileCard = () => {
           <Text>18 June 2022, 10:30 AM</Text>
         </View>
         <View style={fileStyles.actionContainer}>
-          <Image
-            style={fileStyles.action}
-            source={require("./assets/Checkbox.png")}
-          />
+          <Image style={fileStyles.action} source={require("./assets/Checkbox.png")} />
         </View>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const fileStyles = StyleSheet.create({
