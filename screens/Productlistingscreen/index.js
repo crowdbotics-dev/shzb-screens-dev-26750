@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  FlatList,
-  Image,
-  Pressable
-} from "react-native";
+import { Text, StyleSheet, View, FlatList, Image } from "react-native";
 
 const ProductListingScreen = params => {
   const [products, setProducts] = useState([]);
@@ -24,7 +17,7 @@ const ProductListingScreen = params => {
         name: "Product name",
         status: false,
         isFavorite: true,
-        image: require("./assets/productImage.png")
+        image: require("./assets/productImage2.png")
       },
       {
         id: 3,
@@ -38,7 +31,7 @@ const ProductListingScreen = params => {
         name: "Product name",
         status: false,
         isFavorite: true,
-        image: require("./assets/productImage.png")
+        image: require("./assets/productImage2.png")
       },
       {
         id: 5,
@@ -52,7 +45,7 @@ const ProductListingScreen = params => {
         name: "Product name",
         status: false,
         isFavorite: true,
-        image: require("./assets/productImage.png")
+        image: require("./assets/productImage2.png")
       }
     ]);
   }, []);
