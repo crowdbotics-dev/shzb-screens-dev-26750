@@ -1,11 +1,11 @@
-import mods from './*/index.js';
+import mods from "./*/index.js";
 
 export const screens = mods.map(mod => {
   return Object.assign(mod, {
     value: {
       navigator: mod.value,
-      title: mod.name,
-    },
+      title: mod.name
+    }
   });
 });
 

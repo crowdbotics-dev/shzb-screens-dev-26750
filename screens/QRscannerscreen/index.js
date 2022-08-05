@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 
 const QRScannerScreen = params => {
   return (
@@ -7,7 +7,7 @@ const QRScannerScreen = params => {
       <Image
         resizeMode="contain"
         style={styles.image}
-        source={require("./assets/qrcode.png")}
+        source={require("./assets/qrCode.png")}
       />
     </View>
   );
@@ -15,7 +15,8 @@ const QRScannerScreen = params => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10
+    padding: 10,
+    justifyContent: "center"
   },
   image: {
     width: "100%",
