@@ -1,64 +1,46 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  FlatList,
-  Image,
-  Pressable
-} from "react-native";
+import { Text, StyleSheet, View, FlatList, Image, Pressable } from "react-native";
 
 const ProductFavoritesScreen = params => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    setProducts([
-      {
-        id: 1,
-        name: "Product name",
-        status: true,
-        isFavorite: false,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 2,
-        name: "Product name",
-        status: true,
-        isFavorite: true,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 3,
-        name: "Product name",
-        status: true,
-        isFavorite: false,
-        image: require("./assets/productImage.png")
-      },
-      {
-        id: 4,
-        name: "Product name",
-        status: true,
-        isFavorite: true,
-        image: require("./assets/productImage.png")
-      }
-    ]);
+    setProducts([{
+      id: 1,
+      name: "Product name",
+      status: true,
+      isFavorite: false,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 2,
+      name: "Product name",
+      status: true,
+      isFavorite: true,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 3,
+      name: "Product name",
+      status: true,
+      isFavorite: false,
+      image: require("./assets/productImage.png")
+    }, {
+      id: 4,
+      name: "Product name",
+      status: true,
+      isFavorite: true,
+      image: require("./assets/productImage.png")
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <TabView tabTitles={["Products", "Wishlists"]} selected={0} />
       <View style={styles.productsContainer}>
-        <FlatList
-          data={products}
-          numColumns={2}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <Product product={item} />}
-          columnWrapperStyle={{
-            justifyContent: "space-around"
-          }}
-        />
+        <FlatList data={products} numColumns={2} keyExtractor={item => item.id.toString()} renderItem={({
+        item
+      }) => <Product product={item} />} columnWrapperStyle={{
+        justifyContent: "space-around"
+      }} />
       </View>
       <Button buttonText={"Checkout"} />
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -71,22 +53,16 @@ const styles = StyleSheet.create({
   }
 });
 export default ProductFavoritesScreen;
-const TabView = ({ tabTitles, selected }) => {
-  return (
-    <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => (
-        <View
-          style={
-            index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
-          }
-          key={index}>
+
+const TabView = ({
+  tabTitles,
+  selected
+}) => {
+  return <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
           <Text>{title}</Text>
-        </View>
-      ))}
-    </View>
-  );
+        </View>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -121,14 +97,15 @@ const tabViewStyles = StyleSheet.create({
   }
 });
 
-const Product = ({ product }) => {
+const Product = ({
+  product
+}) => {
   const availability = {
     color: product.status ? "#12D790" : "#FF0000",
     fontSize: 12,
     fontWeight: "bold"
   };
-  return (
-    <View style={productStyles.container}>
+  return <View style={productStyles.container}>
       <View style={productStyles.imageContainer}>
         <Image source={product.image} style={productStyles.productImage} />
         <View style={productStyles.descriptionContainer}>
@@ -140,23 +117,15 @@ const Product = ({ product }) => {
             </Text>
           </View>
         </View>
-        <Image
-          source={
-            product.isFavorite
-              ? require("./assets/isFavouriteIcon.png")
-              : require("./assets/favIcon.png")
-          }
-          style={productStyles.favIcon}
-        />
+        <Image source={product.isFavorite ? require("./assets/isFavouriteIcon.png") : require("./assets/favIcon.png")} style={productStyles.favIcon} />
       </View>
       <View style={productStyles.purchaseContainer}>
         <View style={productStyles.quantityContainer}>
           <View style={productStyles.quantity}>
             <Text>-</Text>
-            <Text
-              style={{
-                fontWeight: "bold"
-              }}>
+            <Text style={{
+            fontWeight: "bold"
+          }}>
               1
             </Text>
             <Text>+</Text>
@@ -168,8 +137,7 @@ const Product = ({ product }) => {
           <Text style={[productStyles.grey, productStyles.fnt12]}>Cart</Text>
         </View>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const productStyles = StyleSheet.create({
@@ -250,14 +218,15 @@ const productStyles = StyleSheet.create({
   }
 });
 
-const Button = ({ onPress, buttonText }) => {
-  return (
-    <View style={buttonStyles.btnContainer}>
+const Button = ({
+  onPress,
+  buttonText
+}) => {
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={buttonStyles.btn} onPress={onPress}>
         <Text style={buttonStyles.btnText}>{buttonText}</Text>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
