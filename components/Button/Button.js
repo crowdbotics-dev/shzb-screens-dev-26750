@@ -1,16 +1,17 @@
-const Button = ({ onPress, buttonText, outline }) => {
+const Button = params => {
   const btnStyle = {
-    backgroundColor: outline ? "#fff" : "#000",
-    borderColor: outline ? "#000" : "#fff",
+    backgroundColor: params.outline ? "#fff" : "#000",
+    borderColor: params.outline ? "#000" : "#fff",
     borderWidth: 1
   };
   const btnText = {
-    color: outline ? "#000" : "#fff"
+    color: params.outline ? "#000" : "#fff"
   };
   return (
     <View style={buttonStyles.btnContainer}>
-      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={onPress}>
-        <Text style={[buttonStyles.btnText, btnText]}>{buttonText}</Text>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
+        <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
     </View>
   );
@@ -33,11 +34,16 @@ const buttonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "rgba(0, 0, 0, 0.2)",
-    elevation: 10
+    elevation: 10,
+    flexDirection: "row"
   },
   btnText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold"
+  },
+  childrenContainer: {
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
