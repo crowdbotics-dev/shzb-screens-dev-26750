@@ -136,9 +136,7 @@ const appointmentStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: "#e6e6e6"
+    padding: 10
   },
   imgContainer: {
     justifyContent: "center",
