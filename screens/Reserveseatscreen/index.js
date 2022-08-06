@@ -6,117 +6,159 @@ const ReserveSeatScreen = params => {
   const [seats, setSeats] = useState([]);
   let count = 1;
   useEffect(() => {
-    setSeats([[{
-      position: 1,
-      status: "booked"
-    }, {
-      position: 2,
-      status: "available"
-    }, {
-      position: 3,
-      status: "available"
-    }, {
-      position: 4,
-      status: "booked"
-    }, {
-      position: 5,
-      status: "available"
-    }, {
-      position: 6,
-      status: "available"
-    }, {
-      position: 7,
-      status: "available"
-    }, {
-      position: 8,
-      status: "available"
-    }, {
-      position: 9,
-      status: "available"
-    }, {
-      position: 10,
-      status: "reserved"
-    }, {
-      position: 11,
-      status: "reserved"
-    }, {
-      position: 12,
-      status: "reserved"
-    }, {
-      position: 13,
-      status: "available"
-    }, {
-      position: 14,
-      status: "available"
-    }, {
-      position: 15,
-      status: "available"
-    }, {
-      position: 16,
-      status: "booked"
-    }, {
-      position: 17,
-      status: "booked"
-    }, {
-      position: 18,
-      status: "booked"
-    }], [{
-      position: 1,
-      status: "available"
-    }, {
-      position: 2,
-      status: "available"
-    }, {
-      position: 3,
-      status: "available"
-    }, {
-      position: 4,
-      status: "booked"
-    }, {
-      position: 5,
-      status: "available"
-    }, {
-      position: 6,
-      status: "available"
-    }, {
-      position: 7,
-      status: "available"
-    }, {
-      position: 8,
-      status: "booked"
-    }, {
-      position: 9,
-      status: "available"
-    }, {
-      position: 10,
-      status: "available"
-    }, {
-      position: 11,
-      status: "available"
-    }, {
-      position: 12,
-      status: "available"
-    }, {
-      position: 13,
-      status: "booked"
-    }, {
-      position: 14,
-      status: "booked"
-    }, {
-      position: 15,
-      status: "booked"
-    }, {
-      position: 16,
-      status: "available"
-    }, {
-      position: 17,
-      status: "available"
-    }, {
-      position: 18,
-      status: "available"
-    }]]);
+    setSeats([
+      [
+        {
+          position: 1,
+          status: "booked"
+        },
+        {
+          position: 2,
+          status: "available"
+        },
+        {
+          position: 3,
+          status: "available"
+        },
+        {
+          position: 4,
+          status: "booked"
+        },
+        {
+          position: 5,
+          status: "available"
+        },
+        {
+          position: 6,
+          status: "available"
+        },
+        {
+          position: 7,
+          status: "available"
+        },
+        {
+          position: 8,
+          status: "available"
+        },
+        {
+          position: 9,
+          status: "available"
+        },
+        {
+          position: 10,
+          status: "reserved"
+        },
+        {
+          position: 11,
+          status: "reserved"
+        },
+        {
+          position: 12,
+          status: "reserved"
+        },
+        {
+          position: 13,
+          status: "available"
+        },
+        {
+          position: 14,
+          status: "available"
+        },
+        {
+          position: 15,
+          status: "available"
+        },
+        {
+          position: 16,
+          status: "booked"
+        },
+        {
+          position: 17,
+          status: "booked"
+        },
+        {
+          position: 18,
+          status: "booked"
+        }
+      ],
+      [
+        {
+          position: 1,
+          status: "available"
+        },
+        {
+          position: 2,
+          status: "available"
+        },
+        {
+          position: 3,
+          status: "available"
+        },
+        {
+          position: 4,
+          status: "booked"
+        },
+        {
+          position: 5,
+          status: "available"
+        },
+        {
+          position: 6,
+          status: "available"
+        },
+        {
+          position: 7,
+          status: "available"
+        },
+        {
+          position: 8,
+          status: "booked"
+        },
+        {
+          position: 9,
+          status: "available"
+        },
+        {
+          position: 10,
+          status: "available"
+        },
+        {
+          position: 11,
+          status: "available"
+        },
+        {
+          position: 12,
+          status: "available"
+        },
+        {
+          position: 13,
+          status: "booked"
+        },
+        {
+          position: 14,
+          status: "booked"
+        },
+        {
+          position: 15,
+          status: "booked"
+        },
+        {
+          position: 16,
+          status: "available"
+        },
+        {
+          position: 17,
+          status: "available"
+        },
+        {
+          position: 18,
+          status: "available"
+        }
+      ]
+    ]);
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <TabView tabTitles={["New", "Booked"]} selected={0} />
       <View style={styles.subPallete}>
         <View style={styles.planDes}>
@@ -139,12 +181,18 @@ const ReserveSeatScreen = params => {
         <Text style={styles.keyText}>Reserved</Text>
       </View>
       <View style={styles.seats}>
-        {seats.map((side, index1) => <View key={index1} style={styles.side}>
-            {side.map((seat, index2) => <View key={index2}>
-                {index2 < 3 && <Text style={styles.columnNumber}>{count++}</Text>}
+        {seats.map((side, index1) => (
+          <View key={index1} style={styles.side}>
+            {side.map((seat, index2) => (
+              <View key={index2}>
+                {index2 < 3 && (
+                  <Text style={styles.columnNumber}>{count++}</Text>
+                )}
                 <Seat status={seat.status} />
-              </View>)}
-          </View>)}
+              </View>
+            ))}
+          </View>
+        ))}
       </View>
       <View style={styles.priceContainer}>
         <View style={styles.description}>
@@ -156,7 +204,8 @@ const ReserveSeatScreen = params => {
         </View>
       </View>
       <Button buttonText={"Book now"} />
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -257,9 +306,7 @@ const styles = StyleSheet.create({
 });
 export default ReserveSeatScreen;
 
-const Seat = ({
-  status
-}) => {
+const Seat = ({ status }) => {
   let color = "#fff";
 
   if (status === "booked") {
@@ -287,15 +334,22 @@ const seatStyles = StyleSheet.create({
   }
 });
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -330,11 +384,7 @@ const tabViewStyles = StyleSheet.create({
   }
 });
 
-const Button = ({
-  onPress,
-  buttonText,
-  outline
-}) => {
+const Button = ({ onPress, buttonText, outline }) => {
   const btnStyle = {
     backgroundColor: outline ? "#fff" : "#000",
     borderColor: outline ? "#000" : "#fff",
@@ -343,11 +393,13 @@ const Button = ({
   const btnText = {
     color: outline ? "#000" : "#fff"
   };
-  return <View style={buttonStyles.btnContainer}>
+  return (
+    <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{buttonText}</Text>
       </Pressable>
-    </View>;
+    </View>
+  );
 };
 
 const buttonStyles = StyleSheet.create({
