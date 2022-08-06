@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f1f1f1"
   },
   listContainer: {
-    margin: 0 // backgroundColor: '#f1f1f1',
+    margin: 0
   }
 });
 export default AppointmentListScreen;
