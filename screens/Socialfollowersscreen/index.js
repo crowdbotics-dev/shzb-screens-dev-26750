@@ -49,7 +49,7 @@ const SocialFollowersScreen = params => {
         image: require("./assets/profile.png")
       }
     ]);
-    setNumFollowers(3);
+    setNumFollowers(4513);
   }, []);
   return (
     <ScrollView>
@@ -79,7 +79,7 @@ const SocialFollowersScreen = params => {
             <Image source={require("./assets/search.png")} />
           </View>
         </View>
-        <View></View>
+        <Text style={styles.numFollowers}>{numFollowers} Followers</Text>
         <View style={styles.separator}>
           <Text style={styles.separatorText}>Frequently</Text>
         </View>
@@ -121,6 +121,11 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 30,
     marginBottom: 10
+  },
+  numFollowers: {
+    marginLeft: 30,
+    marginBottom: 10,
+    fontSize: 14
   },
   separator: {
     height: 50,
