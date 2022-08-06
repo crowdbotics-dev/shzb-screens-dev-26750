@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  TextInput,
-  ScrollView,
-  Pressable
-} from "react-native";
+import { Text, StyleSheet, View, Image, TextInput, ScrollView, Pressable } from "react-native";
 
 const ShippingAddressScreen = params => {
   const [address, setAddress] = useState("");
@@ -16,8 +8,7 @@ const ShippingAddressScreen = params => {
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [confirmation, setConfirmation] = useState(false);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.paletteContainer}>
@@ -25,39 +16,17 @@ const ShippingAddressScreen = params => {
             <View style={styles.unSelected}></View>
             <View style={styles.unSelected}></View>
           </View>
-          <Image
-            source={require("./assets/3Dots.png")}
-            style={styles.threeDots}
-          />
+          <Image source={require("./assets/3Dots.png")} style={styles.threeDots} />
         </View>
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Search</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setAddress(text)}
-              value={address}
-              placeholder="Search Username"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setAddress(text)} value={address} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Payment options</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setPaymentOptions(text)}
-              value={paymentOptions}
-              placeholder="Search Username"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Image
-              source={require("./assets/dropdownIcon.png")}
-              style={styles.dropdownIcon}
-            />
+            <TextInput style={styles.input} onChangeText={text => setPaymentOptions(text)} value={paymentOptions} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <Image source={require("./assets/dropdownIcon.png")} style={styles.dropdownIcon} />
           </View>
         </View>
         <DetailsCard />
@@ -71,46 +40,24 @@ const ShippingAddressScreen = params => {
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>City</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setCity(text)}
-              value={city}
-              placeholder="Enter"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setCity(text)} value={city} placeholder="Enter" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Country</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setCountry(text)}
-              value={country}
-              placeholder="Search Username"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setCountry(text)} value={country} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
         </View>
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>State</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setState(text)}
-              value={state}
-              placeholder="Search Username"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setState(text)} value={state} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Confirmation</Text>
             <View style={[styles.input, styles.confirmationBox]}>
-              <Text style={{ color: "#9B9B9B" }}>Confitmation</Text>
+              <Text style={{
+              color: "#9B9B9B"
+            }}>Confitmation</Text>
               <Image source={require("./assets/checkbox.png")} />
             </View>
           </View>
@@ -118,15 +65,11 @@ const ShippingAddressScreen = params => {
         <View style={styles.btnContainer}>
           <Pressable style={styles.btn}>
             <Text style={styles.btnText}>Continue</Text>
-            <Image
-              source={require("./assets/arrow.png")}
-              style={styles.arrow}
-            />
+            <Image source={require("./assets/arrow.png")} style={styles.arrow} />
           </Pressable>
         </View>
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -200,7 +143,6 @@ const styles = StyleSheet.create({
     right: 30,
     top: 50
   },
-
   mapHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -270,8 +212,7 @@ const styles = StyleSheet.create({
 export default ShippingAddressScreen;
 
 const DetailsCard = () => {
-  return (
-    <View style={detailsCardStyles.detailsCard}>
+  return <View style={detailsCardStyles.detailsCard}>
       <View style={detailsCardStyles.pricing}>
         <Text style={detailsCardStyles.pricingText}>Order</Text>
         <Text style={detailsCardStyles.pricingText}>10.25$</Text>
@@ -284,8 +225,7 @@ const DetailsCard = () => {
         <Text style={detailsCardStyles.summaryText}>Summary</Text>
         <Text style={detailsCardStyles.summaryText}>11.50$</Text>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const detailsCardStyles = StyleSheet.create({

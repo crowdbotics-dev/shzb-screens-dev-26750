@@ -4,70 +4,57 @@ import { Text, StyleSheet, View, Image, ScrollView } from "react-native";
 const ReviewListScreen = params => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    setReviews([
-      {
-        id: 1,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 2,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 3,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 4,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 5,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 6,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 7,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      },
-      {
-        id: 8,
-        user: "Amanda",
-        review: "A lacus mauris cras volutpat amet.",
-        image: require("./assets/profile.png")
-      }
-    ]);
+    setReviews([{
+      id: 1,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 2,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 3,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 4,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 5,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 6,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 7,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }, {
+      id: 8,
+      user: "Amanda",
+      review: "A lacus mauris cras volutpat amet.",
+      image: require("./assets/profile.png")
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <Text style={styles.heading}>All Reviews</Text>
       <View style={styles.separator}>
         <Text>Recent</Text>
       </View>
       <ScrollView>
-        {reviews.map((review, index) => (
-          <Review review={review} key={index} />
-        ))}
+        {reviews.map((review, index) => <Review review={review} key={index} />)}
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -90,22 +77,19 @@ const styles = StyleSheet.create({
 });
 export default ReviewListScreen;
 
-const Review = ({ review }) => {
-  return (
-    <View style={reviewStyles.main}>
+const Review = ({
+  review
+}) => {
+  return <View style={reviewStyles.main}>
       <Image style={reviewStyles.profileCircle} source={review.image} />
       <View style={reviewStyles.details}>
         <Text style={reviewStyles.desText}>{review.review}</Text>
         <View style={reviewStyles.rating}>
           <Text style={reviewStyles.nameText}>{review.user}</Text>
-          <Image
-            style={reviewStyles.star}
-            source={require("./assets/ratings.png")}
-          />
+          <Image style={reviewStyles.star} source={require("./assets/ratings.png")} />
         </View>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const reviewStyles = StyleSheet.create({
