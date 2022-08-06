@@ -4,26 +4,19 @@ import { Text, StyleSheet, View, Image, Pressable } from "react-native";
 const SignatureScreen = params => {
   const [undertaking, setUndertaking] = useState("");
   useEffect(() => {
-    setUndertaking(
-      "I understand that uses my  dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec."
-    );
+    setUndertaking("I understand that uses my  dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>My Signature</Text>
-        <Image
-          source={require("./assets/closeIcon.png")}
-          style={styles.closeIcon}
-        />
+        <Image source={require("./assets/closeIcon.png")} style={styles.closeIcon} />
       </View>
       <View style={styles.signatureContainer}>
         <Image source={require("./assets/signature.png")} />
       </View>
       <Text style={styles.undertakingText}>{undertaking}</Text>
       <Button buttonText={"Upload"}></Button>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -62,6 +55,7 @@ const styles = StyleSheet.create({
   }
 });
 export default SignatureScreen;
+
 const Button = params => {
   const btnStyle = {
     backgroundColor: params.outline ? "#fff" : "#000",
@@ -71,14 +65,12 @@ const Button = params => {
   const btnText = {
     color: params.outline ? "#000" : "#fff"
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({

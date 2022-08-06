@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  Image,
-  ScrollView
-} from "react-native";
+import { Text, StyleSheet, View, TextInput, Image, ScrollView } from "react-native";
 
 const SocialFollowersScreen = params => {
   const [value, setValue] = useState("");
@@ -14,67 +7,49 @@ const SocialFollowersScreen = params => {
   const [followers, setFollowers] = useState([]);
   const [numFollowers, setNumFollowers] = useState(0);
   useEffect(() => {
-    setFrequentlyContacted([
-      {
-        name: "Cody Fisher",
-        image: require("./assets/profile.png"),
-        invite: true
-      },
-      {
-        name: "Johnny watson",
-        image: require("./assets/profile.png"),
-        invite: true
-      },
-      {
-        name: "Jenny Wilson",
-        image: require("./assets/profile.png"),
-        invite: true
-      }
-    ]);
-    setFollowers([
-      {
-        name: "Alpha Edwards",
-        image: require("./assets/profile.png")
-      },
-      {
-        name: "Anthony Hawks",
-        image: require("./assets/profile.png")
-      },
-      {
-        name: "And Henry",
-        image: require("./assets/profile.png")
-      },
-      {
-        name: "Alpha Edwards",
-        image: require("./assets/profile.png")
-      }
-    ]);
+    setFrequentlyContacted([{
+      name: "Cody Fisher",
+      image: require("./assets/profile.png"),
+      invite: true
+    }, {
+      name: "Johnny watson",
+      image: require("./assets/profile.png"),
+      invite: true
+    }, {
+      name: "Jenny Wilson",
+      image: require("./assets/profile.png"),
+      invite: true
+    }]);
+    setFollowers([{
+      name: "Alpha Edwards",
+      image: require("./assets/profile.png")
+    }, {
+      name: "Anthony Hawks",
+      image: require("./assets/profile.png")
+    }, {
+      name: "And Henry",
+      image: require("./assets/profile.png")
+    }, {
+      name: "Alpha Edwards",
+      image: require("./assets/profile.png")
+    }]);
     setNumFollowers(4513);
   }, []);
-  return (
-    <ScrollView>
+  return <ScrollView>
       <View style={styles.container}>
         <View style={styles.searchBar}>
           <Text style={styles.searchText}>Search</Text>
-          <View
-            style={{
-              borderWidth: 1,
-              borderRadius: 10,
-              borderColor: "#C4C4C4",
-              flexDirection: "row",
-              alignItems: "center"
-            }}>
-            <View
-              style={{
-                width: "90%"
-              }}>
-              <TextInput
-                style={textStyles.input}
-                placeholder="Enter"
-                value={value}
-                onChangeText={text => setValue(text)}
-                placeholderTextColor="#ddd"
-              />
+          <View style={{
+          borderWidth: 1,
+          borderRadius: 10,
+          borderColor: "#C4C4C4",
+          flexDirection: "row",
+          alignItems: "center"
+        }}>
+            <View style={{
+            width: "90%"
+          }}>
+              <TextInput style={textStyles.input} placeholder="Enter" value={value} onChangeText={text => setValue(text)} placeholderTextColor="#ddd" />
             </View>
             <Image source={require("./assets/search.png")} />
           </View>
@@ -84,26 +59,16 @@ const SocialFollowersScreen = params => {
           <Text style={styles.separatorText}>Frequently</Text>
         </View>
         <View>
-          {frequentlyContacted.map((follower, index) => (
-            <Follower
-              key={index}
-              name={follower.name}
-              image={follower.image}
-              invite={follower.invite}
-            />
-          ))}
+          {frequentlyContacted.map((follower, index) => <Follower key={index} name={follower.name} image={follower.image} invite={follower.invite} />)}
         </View>
         <View style={styles.separator}>
           <Text style={styles.separatorText}>A</Text>
         </View>
         <View>
-          {followers.map((follower, index) => (
-            <Follower key={index} name={follower.name} image={follower.image} />
-          ))}
+          {followers.map((follower, index) => <Follower key={index} name={follower.name} image={follower.image} />)}
         </View>
       </View>
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -140,21 +105,17 @@ const styles = StyleSheet.create({
   }
 });
 export default SocialFollowersScreen;
+
 const Follower = props => {
-  return (
-    <View style={FollowerStyles.follower}>
+  return <View style={FollowerStyles.follower}>
       <View style={FollowerStyles.main}>
         <View style={FollowerStyles.image}>
-          <Image
-            style={FollowerStyles.image}
-            source={require("./assets/profile.png")}
-          />
+          <Image style={FollowerStyles.image} source={require("./assets/profile.png")} />
         </View>
         <Text>{props.name}</Text>
       </View>
       {props.follow && <Text>Follow</Text>}
-    </View>
-  );
+    </View>;
 };
 
 const FollowerStyles = StyleSheet.create({
