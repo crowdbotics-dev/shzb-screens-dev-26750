@@ -1,12 +1,21 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, TextInput, Image, Pressable, ScrollView } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TextInput,
+  Image,
+  Pressable,
+  ScrollView
+} from "react-native";
 
 const PaymentSubscriptionScreen = params => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
   const [cvv, setCvv] = useState("");
   const [name, setName] = useState("");
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <ScrollView>
         <TabView tabTitles={["Beginer", "Intermediate", "VIP"]} selected={0} />
         <View style={styles.subPallete}>
@@ -33,33 +42,62 @@ const PaymentSubscriptionScreen = params => {
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Card Number</Text>
-            <TextInput style={styles.input} onChangeText={text => setCardNumber(text)} value={cardNumber} placeholder="Enter your Card Number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCardNumber(text)}
+              value={cardNumber}
+              placeholder="Enter your Card Number"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.halfInputs}>
             <View style={styles.inputContainer}>
               <Text style={styles.inputText}>Expiration Date</Text>
-              <TextInput style={[styles.input, styles.input1]} onChangeText={text => setCardExpiry(text)} value={cardExpiry} placeholder="Enter your last name" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+              <TextInput
+                style={[styles.input, styles.input1]}
+                onChangeText={text => setCardExpiry(text)}
+                value={cardExpiry}
+                placeholder="Enter your last name"
+                placeholderTextColor="#9B9B9B"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
             </View>
             <View style={styles.inputContainer}>
               <Text style={styles.inputText}>CVV</Text>
-              <TextInput style={[styles.input, styles.input2]} onChangeText={text => setCvv(text)} value={cvv} placeholder="CVV" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+              <TextInput
+                style={[styles.input, styles.input2]}
+                onChangeText={text => setCvv(text)}
+                value={cvv}
+                placeholder="CVV"
+                placeholderTextColor="#9B9B9B"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
             </View>
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Card Holder Name</Text>
-            <TextInput style={styles.input} onChangeText={text => setName(text)} value={name} placeholder="Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setName(text)}
+              value={name}
+              placeholder="Username"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.buttonsContainer}>
-          <Pressable style={styles.button1}>
-            <Text style={styles.btnText1}>Confirm</Text>
-          </Pressable>
-          <Pressable style={styles.button2}>
-            <Text style={styles.btnText2}>Cancel</Text>
-          </Pressable>
+          <Button buttonText={"Confirm"} />
+          <Button buttonText={"Cancel"} outline={true} />
         </View>
       </ScrollView>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -164,50 +202,27 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    paddingHorizontal: 40
-  },
-  button1: {
-    backgroundColor: "black",
-    borderRadius: 10,
-    height: 50,
-    width: 145,
-    marginHorizontal: 10,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  button2: {
-    backgroundColor: "white",
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 10,
-    height: 50,
-    width: 145,
-    marginHorizontal: 10,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  btnText1: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold"
-  },
-  btnText2: {
-    color: "black",
-    fontSize: 16,
-    fontWeight: "bold"
+    paddingHorizontal: 20
   }
 });
 export default PaymentSubscriptionScreen;
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -239,5 +254,55 @@ const tabViewStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F1F1F1",
     borderRadius: 10
+  }
+});
+
+const Button = params => {
+  const btnStyle = {
+    backgroundColor: params.outline ? "#fff" : "#000",
+    borderColor: params.outline ? "#000" : "#fff",
+    borderWidth: 1
+  };
+  const btnText = {
+    color: params.outline ? "#000" : "#fff"
+  };
+  return (
+    <View style={buttonStyles.btnContainer}>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
+        <View style={styles.childrenContainer}>{params.children}</View>
+      </Pressable>
+    </View>
+  );
+};
+
+const buttonStyles = StyleSheet.create({
+  btnContainer: {
+    paddingHorizontal: 5,
+    justifyContent: "center",
+    marginBottom: 20,
+    flex: 1
+  },
+  btn: {
+    backgroundColor: "black",
+    height: 50,
+    width: "100%",
+    padding: 10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "rgba(0, 0, 0, 0.2)",
+    elevation: 10,
+    flexDirection: "row"
+  },
+  btnText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold"
+  },
+  childrenContainer: {
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
