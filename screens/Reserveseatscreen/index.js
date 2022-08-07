@@ -1,122 +1,238 @@
 import React, { useState, useEffect } from "react";
-import { Image, Pressable } from "react-native";
+import { Image, Pressable, ScrollView } from "react-native";
 import { Text, StyleSheet, View } from "react-native";
 
 const ReserveSeatScreen = params => {
   const [seats, setSeats] = useState([]);
   let count = 1;
   useEffect(() => {
-    setSeats([[{
-      position: 1,
-      status: "booked"
-    }, {
-      position: 2,
-      status: "available"
-    }, {
-      position: 3,
-      status: "available"
-    }, {
-      position: 4,
-      status: "booked"
-    }, {
-      position: 5,
-      status: "available"
-    }, {
-      position: 6,
-      status: "available"
-    }, {
-      position: 7,
-      status: "available"
-    }, {
-      position: 8,
-      status: "available"
-    }, {
-      position: 9,
-      status: "available"
-    }, {
-      position: 10,
-      status: "reserved"
-    }, {
-      position: 11,
-      status: "reserved"
-    }, {
-      position: 12,
-      status: "reserved"
-    }, {
-      position: 13,
-      status: "available"
-    }, {
-      position: 14,
-      status: "available"
-    }, {
-      position: 15,
-      status: "available"
-    }, {
-      position: 16,
-      status: "booked"
-    }, {
-      position: 17,
-      status: "booked"
-    }, {
-      position: 18,
-      status: "booked"
-    }], [{
-      position: 1,
-      status: "available"
-    }, {
-      position: 2,
-      status: "available"
-    }, {
-      position: 3,
-      status: "available"
-    }, {
-      position: 4,
-      status: "booked"
-    }, {
-      position: 5,
-      status: "available"
-    }, {
-      position: 6,
-      status: "available"
-    }, {
-      position: 7,
-      status: "available"
-    }, {
-      position: 8,
-      status: "booked"
-    }, {
-      position: 9,
-      status: "available"
-    }, {
-      position: 10,
-      status: "available"
-    }, {
-      position: 11,
-      status: "available"
-    }, {
-      position: 12,
-      status: "available"
-    }, {
-      position: 13,
-      status: "booked"
-    }, {
-      position: 14,
-      status: "booked"
-    }, {
-      position: 15,
-      status: "booked"
-    }, {
-      position: 16,
-      status: "available"
-    }, {
-      position: 17,
-      status: "available"
-    }, {
-      position: 18,
-      status: "available"
-    }]]);
+    setSeats([
+      [
+        {
+          position: 1,
+          status: "booked"
+        },
+        {
+          position: 2,
+          status: "available"
+        },
+        {
+          position: 3,
+          status: "available"
+        },
+        {
+          position: 4,
+          status: "booked"
+        },
+        {
+          position: 5,
+          status: "available"
+        },
+        {
+          position: 6,
+          status: "available"
+        },
+        {
+          position: 7,
+          status: "available"
+        },
+        {
+          position: 8,
+          status: "available"
+        },
+        {
+          position: 9,
+          status: "available"
+        },
+        {
+          position: 10,
+          status: "reserved"
+        },
+        {
+          position: 11,
+          status: "reserved"
+        },
+        {
+          position: 12,
+          status: "reserved"
+        },
+        {
+          position: 13,
+          status: "available"
+        },
+        {
+          position: 14,
+          status: "available"
+        },
+        {
+          position: 15,
+          status: "available"
+        },
+        {
+          position: 16,
+          status: "booked"
+        },
+        {
+          position: 17,
+          status: "booked"
+        },
+        {
+          position: 18,
+          status: "booked"
+        }
+      ],
+      [
+        {
+          position: 1,
+          status: "available"
+        },
+        {
+          position: 2,
+          status: "available"
+        },
+        {
+          position: 3,
+          status: "available"
+        },
+        {
+          position: 4,
+          status: "booked"
+        },
+        {
+          position: 5,
+          status: "available"
+        },
+        {
+          position: 6,
+          status: "available"
+        },
+        {
+          position: 7,
+          status: "available"
+        },
+        {
+          position: 8,
+          status: "booked"
+        },
+        {
+          position: 9,
+          status: "available"
+        },
+        {
+          position: 10,
+          status: "available"
+        },
+        {
+          position: 11,
+          status: "available"
+        },
+        {
+          position: 12,
+          status: "available"
+        },
+        {
+          position: 13,
+          status: "booked"
+        },
+        {
+          position: 14,
+          status: "booked"
+        },
+        {
+          position: 15,
+          status: "booked"
+        },
+        {
+          position: 16,
+          status: "available"
+        },
+        {
+          position: 17,
+          status: "available"
+        },
+        {
+          position: 18,
+          status: "available"
+        }
+      ],
+      [
+        {
+          position: 1,
+          status: "available"
+        },
+        {
+          position: 2,
+          status: "available"
+        },
+        {
+          position: 3,
+          status: "available"
+        },
+        {
+          position: 4,
+          status: "booked"
+        },
+        {
+          position: 5,
+          status: "available"
+        },
+        {
+          position: 6,
+          status: "available"
+        },
+        {
+          position: 7,
+          status: "available"
+        },
+        {
+          position: 8,
+          status: "booked"
+        },
+        {
+          position: 9,
+          status: "available"
+        },
+        {
+          position: 10,
+          status: "available"
+        },
+        {
+          position: 11,
+          status: "available"
+        },
+        {
+          position: 12,
+          status: "available"
+        },
+        {
+          position: 13,
+          status: "booked"
+        },
+        {
+          position: 14,
+          status: "booked"
+        },
+        {
+          position: 15,
+          status: "booked"
+        },
+        {
+          position: 16,
+          status: "available"
+        },
+        {
+          position: 17,
+          status: "available"
+        },
+        {
+          position: 18,
+          status: "available"
+        }
+      ]
+    ]);
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <TabView tabTitles={["New", "Booked"]} selected={0} />
       <View style={styles.subPallete}>
         <View style={styles.planDes}>
@@ -138,14 +254,23 @@ const ReserveSeatScreen = params => {
         </View>
         <Text style={styles.keyText}>Reserved</Text>
       </View>
-      <View style={styles.seats}>
-        {seats.map((side, index1) => <View key={index1} style={styles.side}>
-            {side.map((seat, index2) => <View key={index2}>
-                {index2 < 3 && <Text style={styles.columnNumber}>{count++}</Text>}
-                <Seat status={seat.status} />
-              </View>)}
-          </View>)}
-      </View>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={styles.seats}>
+          {seats.map((side, index1) => (
+            <View key={index1} style={styles.side}>
+              {side.map((seat, index2) => (
+                <View key={index2}>
+                  {index2 < 3 && (
+                    <Text style={styles.columnNumber}>{count++}</Text>
+                  )}
+                  <Seat status={seat.status} />
+                </View>
+              ))}
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+
       <View style={styles.priceContainer}>
         <View style={styles.description}>
           <Text style={styles.fnt16}>Total</Text>
@@ -156,7 +281,8 @@ const ReserveSeatScreen = params => {
         </View>
       </View>
       <Button buttonText={"Book now"} />
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -257,9 +383,7 @@ const styles = StyleSheet.create({
 });
 export default ReserveSeatScreen;
 
-const Seat = ({
-  status
-}) => {
+const Seat = ({ status }) => {
   let color = "#fff";
 
   if (status === "booked") {
@@ -287,15 +411,22 @@ const seatStyles = StyleSheet.create({
   }
 });
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -330,31 +461,30 @@ const tabViewStyles = StyleSheet.create({
   }
 });
 
-const Button = ({
-  onPress,
-  buttonText,
-  outline
-}) => {
+const Button = params => {
   const btnStyle = {
-    backgroundColor: outline ? "#fff" : "#000",
-    borderColor: outline ? "#000" : "#fff",
+    backgroundColor: params.outline ? "#fff" : "#000",
+    borderColor: params.outline ? "#000" : "#fff",
     borderWidth: 1
   };
   const btnText = {
-    color: outline ? "#000" : "#fff"
+    color: params.outline ? "#000" : "#fff"
   };
-  return <View style={buttonStyles.btnContainer}>
-      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={onPress}>
-        <Text style={[buttonStyles.btnText, btnText]}>{buttonText}</Text>
+  return (
+    <View style={buttonStyles.btnContainer}>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
+        <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>;
+    </View>
+  );
 };
 
 const buttonStyles = StyleSheet.create({
   btnContainer: {
     paddingHorizontal: 40,
     justifyContent: "center",
-    marginTop: 10
+    marginVertical: 20
   },
   btn: {
     backgroundColor: "black",
@@ -366,11 +496,16 @@ const buttonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "rgba(0, 0, 0, 0.2)",
-    elevation: 10
+    elevation: 10,
+    flexDirection: "row"
   },
   btnText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold"
+  },
+  childrenContainer: {
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
