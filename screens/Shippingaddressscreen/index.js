@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, Image, TextInput, ScrollView, Pressable } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  TextInput,
+  ScrollView,
+  Pressable
+} from "react-native";
 
 const ShippingAddressScreen = params => {
   const [address, setAddress] = useState("");
@@ -8,7 +16,8 @@ const ShippingAddressScreen = params => {
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [confirmation, setConfirmation] = useState(false);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.paletteContainer}>
@@ -16,17 +25,39 @@ const ShippingAddressScreen = params => {
             <View style={styles.unSelected}></View>
             <View style={styles.unSelected}></View>
           </View>
-          <Image source={require("./assets/3Dots.png")} style={styles.threeDots} />
+          <Image
+            source={require("./assets/3Dots.png")}
+            style={styles.threeDots}
+          />
         </View>
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Search</Text>
-            <TextInput style={styles.input} onChangeText={text => setAddress(text)} value={address} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setAddress(text)}
+              value={address}
+              placeholder="Search Username"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Payment options</Text>
-            <TextInput style={styles.input} onChangeText={text => setPaymentOptions(text)} value={paymentOptions} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
-            <Image source={require("./assets/dropdownIcon.png")} style={styles.dropdownIcon} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setPaymentOptions(text)}
+              value={paymentOptions}
+              placeholder="Search Username"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Image
+              source={require("./assets/dropdownIcon.png")}
+              style={styles.dropdownIcon}
+            />
           </View>
         </View>
         <DetailsCard />
@@ -40,36 +71,61 @@ const ShippingAddressScreen = params => {
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>City</Text>
-            <TextInput style={styles.input} onChangeText={text => setCity(text)} value={city} placeholder="Enter" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCity(text)}
+              value={city}
+              placeholder="Enter"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Country</Text>
-            <TextInput style={styles.input} onChangeText={text => setCountry(text)} value={country} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCountry(text)}
+              value={country}
+              placeholder="Search Username"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>State</Text>
-            <TextInput style={styles.input} onChangeText={text => setState(text)} value={state} placeholder="Search Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setState(text)}
+              value={state}
+              placeholder="Search Username"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Confirmation</Text>
             <View style={[styles.input, styles.confirmationBox]}>
-              <Text style={{
-              color: "#9B9B9B"
-            }}>Confitmation</Text>
+              <Text
+                style={{
+                  color: "#9B9B9B"
+                }}>
+                Confitmation
+              </Text>
               <Image source={require("./assets/checkbox.png")} />
             </View>
           </View>
         </View>
-        <View style={styles.btnContainer}>
-          <Pressable style={styles.btn}>
-            <Text style={styles.btnText}>Continue</Text>
-            <Image source={require("./assets/arrow.png")} style={styles.arrow} />
-          </Pressable>
-        </View>
+        <Button buttonText={"Continue"}>
+          <Image source={require("./assets/arrow.png")} style={styles.arrow} />
+        </Button>
       </ScrollView>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -181,38 +237,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row"
   },
-  btnContainer: {
-    padding: 30,
-    paddingTop: 10,
-    paddingHorizontal: 40,
-    justifyContent: "center",
-    marginTop: 20
-  },
-  btn: {
-    backgroundColor: "black",
-    height: 50,
-    width: "100%",
-    padding: 10,
-    paddingHorizontal: 25,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row"
-  },
   arrow: {
     marginLeft: 10,
     marginTop: 2
-  },
-  btnText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold"
   }
 });
 export default ShippingAddressScreen;
 
 const DetailsCard = () => {
-  return <View style={detailsCardStyles.detailsCard}>
+  return (
+    <View style={detailsCardStyles.detailsCard}>
       <View style={detailsCardStyles.pricing}>
         <Text style={detailsCardStyles.pricingText}>Order</Text>
         <Text style={detailsCardStyles.pricingText}>10.25$</Text>
@@ -225,7 +259,8 @@ const DetailsCard = () => {
         <Text style={detailsCardStyles.summaryText}>Summary</Text>
         <Text style={detailsCardStyles.summaryText}>11.50$</Text>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const detailsCardStyles = StyleSheet.create({
@@ -260,5 +295,54 @@ const detailsCardStyles = StyleSheet.create({
     fontWeight: "bold",
     color: "#3E3E3E",
     lineHeight: 20
+  }
+});
+const Button = params => {
+  const btnStyle = {
+    backgroundColor: params.outline ? "#fff" : "#000",
+    borderColor: params.outline ? "#000" : "#fff",
+    borderWidth: 1
+  };
+  const btnText = {
+    color: params.outline ? "#000" : "#fff"
+  };
+  return (
+    <View style={buttonStyles.btnContainer}>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
+        <View style={styles.childrenContainer}>{params.children}</View>
+      </Pressable>
+    </View>
+  );
+};
+
+const buttonStyles = StyleSheet.create({
+  btnContainer: {
+    paddingHorizontal: 40,
+    justifyContent: "center",
+    marginBottom: 40,
+    marginTop: 20
+  },
+  btn: {
+    backgroundColor: "black",
+    height: 50,
+    width: "100%",
+    padding: 10,
+    paddingHorizontal: 25,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "rgba(0, 0, 0, 0.2)",
+    elevation: 10,
+    flexDirection: "row"
+  },
+  btnText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold"
+  },
+  childrenContainer: {
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
