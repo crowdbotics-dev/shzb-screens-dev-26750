@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Image, Pressable, ScrollView } from "react-native";
-import { Text, StyleSheet, View } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  Pressable,
+  ScrollView
+} from "react-native";
 
 const ReserveSeatScreen = params => {
   const [seats, setSeats] = useState([]);
