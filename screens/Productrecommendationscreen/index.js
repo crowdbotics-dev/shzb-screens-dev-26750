@@ -140,11 +140,6 @@ const tabViewStyles = StyleSheet.create({
 });
 
 const Product = ({ product }) => {
-  const availability = {
-    color: product.status ? "#12D790" : "#EA4335",
-    fontSize: 12,
-    fontWeight: "bold"
-  };
   return (
     <View style={productStyles.container}>
       <View style={productStyles.imageContainer}>
