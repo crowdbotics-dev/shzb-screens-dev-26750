@@ -1,45 +1,87 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, SafeAreaView, ScrollView, Image, TextInput, Pressable } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  TextInput,
+  Pressable
+} from "react-native";
 
 const BillingPreferencesScreen = params => {
   const [billingAddress, setBillingAddress] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
   const [todayHistory, setTodayHistory] = useState([]);
   useEffect(() => {
-    setTodayHistory([{
-      id: 1,
-      title: "Sports Center",
-      price: "$125.90"
-    }, {
-      id: 2,
-      title: "Shopping",
-      price: "$552.68"
-    }, {
-      id: 3,
-      title: "Income",
-      price: "$345.00"
-    }]);
+    setTodayHistory([
+      {
+        id: 1,
+        title: "Sports Center",
+        price: "$125.90"
+      },
+      {
+        id: 2,
+        title: "Shopping",
+        price: "$552.68"
+      },
+      {
+        id: 3,
+        title: "Income",
+        price: "$345.00"
+      }
+    ]);
   }, []);
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <TabView tabTitles={["Linked Cards", "Instant"]} selected={1} />
-          <Image source={require("./assets/card.png")} style={styles.cardIcon} />
+          <Image
+            source={require("./assets/card.png")}
+            style={styles.cardIcon}
+          />
         </View>
         <View style={styles.cardInfo}>
-          <Image source={require("./assets/Card-large.png")} style={styles.card} />
-          <Image source={require("./assets/3Dots.png")} style={styles.threeDots} />
+          <Image
+            source={require("./assets/Card-large.png")}
+            style={styles.card}
+          />
+          <Image
+            source={require("./assets/3Dots.png")}
+            style={styles.threeDots}
+          />
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Billing Address</Text>
-            <TextInput style={styles.input} onChangeText={text => setBillingAddress(text)} value={billingAddress} placeholder="Enter your Billing Address" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setBillingAddress(text)}
+              value={billingAddress}
+              placeholder="Enter your Billing Address"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Shipping Address</Text>
-            <TextInput style={styles.input} onChangeText={text => setShippingAddress(text)} value={shippingAddress} placeholder="Enter your Shipping Address" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setShippingAddress(text)}
+              value={shippingAddress}
+              placeholder="Enter your Shipping Address"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.history}>
-          <TabView tabTitles={["Purchase History", "Order status"]} selected={1} />
+          <TabView
+            tabTitles={["Purchase History", "Order status"]}
+            selected={1}
+          />
           <View style={styles.detailsCard}>
             <Text style={styles.detailsHeading}>DETAILS</Text>
             <View style={styles.pricing}>
@@ -59,13 +101,18 @@ const BillingPreferencesScreen = params => {
         <View style={styles.chartContainer}>
           <View style={styles.cardContent}>
             <Text style={styles.chartText}>Chart</Text>
-            <Image resizeMode="contain" style={styles.cartImage} source={require("./assets/cart.png")} />
+            <Image
+              resizeMode="contain"
+              style={styles.cartImage}
+              source={require("./assets/cart.png")}
+            />
           </View>
           <OrderCard />
         </View>
         <Button buttonText={"Order"} onPress={() => {}} />
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -181,21 +228,27 @@ const styles = StyleSheet.create({
 });
 export default BillingPreferencesScreen;
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({
   paletteContainer: {
     flex: 1,
-    // width: "80%",
     height: 48,
     backgroundColor: "#F1F1F1",
     flexDirection: "row",
@@ -225,7 +278,8 @@ const tabViewStyles = StyleSheet.create({
 });
 
 const OrderCard = () => {
-  return <View style={orderStyles.container}>
+  return (
+    <View style={orderStyles.container}>
       <View style={orderStyles.order}>
         <View style={orderStyles.image}>
           <Image source={require("./assets/edit.png")} />
@@ -235,21 +289,26 @@ const OrderCard = () => {
           <View style={orderStyles.bottomComponent}>
             <View style={orderStyles.quantity}>
               <Text>-</Text>
-              <Text style={{
-              fontWeight: "bold"
-            }}>
+              <Text
+                style={{
+                  fontWeight: "bold"
+                }}>
                 3
               </Text>
               <Text>+</Text>
             </View>
-            <Image source={require("./assets/delete.png")} style={orderStyles.img} />
+            <Image
+              source={require("./assets/delete.png")}
+              style={orderStyles.img}
+            />
           </View>
         </View>
       </View>
       <View>
         <Text style={orderStyles.orderPrice}>$10.25</Text>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const orderStyles = StyleSheet.create({
@@ -308,24 +367,30 @@ const orderStyles = StyleSheet.create({
   }
 });
 
-const Button = ({
-  onPress,
-  buttonText
-}) => {
-  return <View style={buttonStyles.btnContainer}>
-      <Pressable style={buttonStyles.btn} onPress={onPress}>
-        <Text style={buttonStyles.btnText}>{buttonText}</Text>
+const Button = params => {
+  const btnStyle = {
+    backgroundColor: params.outline ? "#fff" : "#000",
+    borderColor: params.outline ? "#000" : "#fff",
+    borderWidth: 1
+  };
+  const btnText = {
+    color: params.outline ? "#000" : "#fff"
+  };
+  return (
+    <View style={buttonStyles.btnContainer}>
+      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
+        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
+        <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>;
+    </View>
+  );
 };
 
 const buttonStyles = StyleSheet.create({
   btnContainer: {
-    padding: 30,
-    paddingTop: 10,
     paddingHorizontal: 40,
     justifyContent: "center",
-    marginTop: 20
+    marginVertical: 20
   },
   btn: {
     backgroundColor: "black",
@@ -337,11 +402,16 @@ const buttonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "rgba(0, 0, 0, 0.2)",
-    elevation: 10
+    elevation: 10,
+    flexDirection: "row"
   },
   btnText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold"
+  },
+  childrenContainer: {
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
