@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -13,26 +13,6 @@ import {
 const BillingPreferencesScreen = params => {
   const [billingAddress, setBillingAddress] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
-  const [todayHistory, setTodayHistory] = useState([]);
-  useEffect(() => {
-    setTodayHistory([
-      {
-        id: 1,
-        title: "Sports Center",
-        price: "$125.90"
-      },
-      {
-        id: 2,
-        title: "Shopping",
-        price: "$552.68"
-      },
-      {
-        id: 3,
-        title: "Income",
-        price: "$345.00"
-      }
-    ]);
-  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
