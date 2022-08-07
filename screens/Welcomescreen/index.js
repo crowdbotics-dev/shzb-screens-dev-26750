@@ -2,8 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View, Image, Pressable } from "react-native";
 
 const WelcomeScreen = params => {
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <Image source={require("./assets/companyLogo.png")} style={styles.logo} />
       <Text style={styles.mainText}>Welcome back!</Text>
       <Text style={styles.subText}>
@@ -12,8 +11,7 @@ const WelcomeScreen = params => {
       </Text>
       <Button buttonText={"Sign Up"} />
       <Button buttonText={"Log In"} outline={true} />
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -21,8 +19,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     justifyContent: "flex-end",
-    paddingBottom: 50
-    // alignItems: "center"
+    paddingBottom: 50 // alignItems: "center"
+
   },
   logo: {
     width: 100,
@@ -56,14 +54,12 @@ const Button = params => {
   const btnText = {
     color: params.outline ? "#000" : "#fff"
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({

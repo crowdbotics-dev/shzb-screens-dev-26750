@@ -4,60 +4,46 @@ import { Text, StyleSheet, View, Image, FlatList } from "react-native";
 const VideoListingScreen = params => {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
-    setVideos([
-      {
-        id: 1,
-        title: "Brasil - Rio de Janeiro",
-        description: "481 Video - Brasil - 2022",
-        thumbnail: require("./assets/image1.png")
-      },
-      {
-        id: 2,
-        title: "Spain - Barcelona",
-        description: "481 Video - Spain - 2022",
-        thumbnail: require("./assets/image2.png")
-      },
-      {
-        id: 3,
-        title: "Italy - Rome",
-        description: "481 Video - Italy - 2022",
-        thumbnail: require("./assets/image3.png")
-      },
-      {
-        id: 4,
-        title: "USA - New York",
-        description: "481 Video - USA - 2022",
-        thumbnail: require("./assets/image4.png")
-      },
-      {
-        id: 5,
-        title: "Peru - Lima",
-        description: "481 Video - Peru - 2022",
-        thumbnail: require("./assets/image1.png")
-      },
-      {
-        id: 6,
-        title: "India - New Delhi",
-        description: "481 Video - India - 2022",
-        thumbnail: require("./assets/image2.png")
-      }
-    ]);
+    setVideos([{
+      id: 1,
+      title: "Brasil - Rio de Janeiro",
+      description: "481 Video - Brasil - 2022",
+      thumbnail: require("./assets/image1.png")
+    }, {
+      id: 2,
+      title: "Spain - Barcelona",
+      description: "481 Video - Spain - 2022",
+      thumbnail: require("./assets/image2.png")
+    }, {
+      id: 3,
+      title: "Italy - Rome",
+      description: "481 Video - Italy - 2022",
+      thumbnail: require("./assets/image3.png")
+    }, {
+      id: 4,
+      title: "USA - New York",
+      description: "481 Video - USA - 2022",
+      thumbnail: require("./assets/image4.png")
+    }, {
+      id: 5,
+      title: "Peru - Lima",
+      description: "481 Video - Peru - 2022",
+      thumbnail: require("./assets/image1.png")
+    }, {
+      id: 6,
+      title: "India - New Delhi",
+      description: "481 Video - India - 2022",
+      thumbnail: require("./assets/image2.png")
+    }]);
   }, []);
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <TabView tabTitles={["List View", "Grid View"]} selected={1} />
-      <FlatList
-        style={styles.list}
-        data={videos}
-        numColumns={2}
-        renderItem={({ item }) => <Video video={item} />}
-        keyExtractor={item => item.id.toString()}
-        columnWrapperStyle={{
-          justifyContent: "space-around"
-        }}
-      />
-    </View>
-  );
+      <FlatList style={styles.list} data={videos} numColumns={2} renderItem={({
+      item
+    }) => <Video video={item} />} keyExtractor={item => item.id.toString()} columnWrapperStyle={{
+      justifyContent: "space-around"
+    }} />
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -76,22 +62,16 @@ const styles = StyleSheet.create({
   }
 });
 export default VideoListingScreen;
-const TabView = ({ tabTitles, selected }) => {
-  return (
-    <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => (
-        <View
-          style={
-            index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
-          }
-          key={index}>
+
+const TabView = ({
+  tabTitles,
+  selected
+}) => {
+  return <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
           <Text>{title}</Text>
-        </View>
-      ))}
-    </View>
-  );
+        </View>)}
+    </View>;
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -125,17 +105,19 @@ const tabViewStyles = StyleSheet.create({
     borderRadius: 10
   }
 });
-const Video = ({ video }) => {
-  return (
-    <View style={videoStyles.container}>
+
+const Video = ({
+  video
+}) => {
+  return <View style={videoStyles.container}>
       <Image source={video.thumbnail} style={videoStyles.thumbnail} />
       <View style={videoStyles.descriptionContainer}>
         <Text style={videoStyles.titleText}>{video.title}</Text>
         <Text style={videoStyles.descriptionText}>{video.description}</Text>
       </View>
-    </View>
-  );
+    </View>;
 };
+
 const videoStyles = StyleSheet.create({
   container: {
     marginHorizontal: 10,

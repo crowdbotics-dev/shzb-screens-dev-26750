@@ -2,8 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View, Image, Pressable } from "react-native";
 
 const UserSubscribedScreen = params => {
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Info</Text>
       </View>
@@ -20,16 +19,12 @@ const UserSubscribedScreen = params => {
             <Text style={styles.mainText}>Beginner</Text>
             <Text style={styles.subText}>Subscription tier</Text>
           </View>
-          <Image
-            source={require("./assets/activeCheckbox.png")}
-            style={styles.checkboxIcon}
-          />
+          <Image source={require("./assets/activeCheckbox.png")} style={styles.checkboxIcon} />
         </View>
       </View>
 
       <Button buttonText={"Continue"} />
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -82,8 +77,8 @@ const styles = StyleSheet.create({
     marginRight: 10
   }
 });
-
 export default UserSubscribedScreen;
+
 const Button = params => {
   const btnStyle = {
     backgroundColor: params.outline ? "#fff" : "#000",
@@ -93,14 +88,12 @@ const Button = params => {
   const btnText = {
     color: params.outline ? "#000" : "#fff"
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({

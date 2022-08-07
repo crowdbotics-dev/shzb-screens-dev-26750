@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  Image,
-  Pressable,
-  TextInput,
-  ScrollView
-} from "react-native";
+import { Text, StyleSheet, View, Image, Pressable, TextInput, ScrollView } from "react-native";
 
 const UserAddressScreen = params => {
   const [order, setOrder] = useState({});
@@ -23,38 +15,18 @@ const UserAddressScreen = params => {
   }, []);
   const [address, setAddress] = useState("");
   const [confirmAddress, setConfirmAddress] = useState("");
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <ScrollView>
         <View style={styles.inputs}>
           <Text style={styles.inputsHeading}>Delivery details</Text>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Address</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setAddress(text)}
-              value={address}
-              placeholder="Maple Ave , Los Angeles"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
+            <TextInput style={styles.input} onChangeText={text => setAddress(text)} value={address} placeholder="Maple Ave , Los Angeles" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Verify Address</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={text => setConfirmAddress(text)}
-              value={confirmAddress}
-              placeholder="Enter"
-              placeholderTextColor="#9B9B9B"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Image
-              source={require("./assets/checkbox.png")}
-              style={styles.checkboxIcon}
-            />
+            <TextInput style={styles.input} onChangeText={text => setConfirmAddress(text)} value={confirmAddress} placeholder="Enter" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <Image source={require("./assets/checkbox.png")} style={styles.checkboxIcon} />
           </View>
         </View>
         <View style={styles.orderContainer}>
@@ -80,10 +52,7 @@ const UserAddressScreen = params => {
             </View>
           </View>
           <View style={styles.locationContainer}>
-            <Image
-              source={require("./assets/Progress.png")}
-              style={styles.progressImage}
-            />
+            <Image source={require("./assets/Progress.png")} style={styles.progressImage} />
             <View style={styles.locationDetails}>
               <View style={styles.shopLocation}>
                 <Text style={[styles.black, styles.fnt16]}>
@@ -102,8 +71,7 @@ const UserAddressScreen = params => {
         </View>
         <Button buttonText={"Purchase"} />
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -216,6 +184,7 @@ const styles = StyleSheet.create({
   }
 });
 export default UserAddressScreen;
+
 const Button = params => {
   const btnStyle = {
     backgroundColor: params.outline ? "#fff" : "#000",
@@ -225,14 +194,12 @@ const Button = params => {
   const btnText = {
     color: params.outline ? "#000" : "#fff"
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
