@@ -19,10 +19,9 @@ const Button = params => {
 
 const buttonStyles = StyleSheet.create({
   btnContainer: {
-    paddingTop: 10,
     paddingHorizontal: 40,
     justifyContent: "center",
-    marginTop: 20
+    marginVertical: 20
   },
   btn: {
     backgroundColor: "black",
