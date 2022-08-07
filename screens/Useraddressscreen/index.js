@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   detailPallete: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingBottom: 10,
+    paddingVertical: 10,
     alignItems: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#e6e6e6"
