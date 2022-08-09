@@ -15,7 +15,6 @@ const ShippingAddressScreen = params => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
-  const [confirmation, setConfirmation] = useState(false);
   return (
     <View style={styles.container}>
       <ScrollView>
