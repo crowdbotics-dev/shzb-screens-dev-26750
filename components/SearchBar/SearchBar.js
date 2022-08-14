@@ -1,31 +1,41 @@
-import React from "react";
-import { Text, StyleSheet, View, TextInput, Image } from "react-native";
-
-const SearchBar = params => {
+const Input = props => {
   return (
-    <View style={styles.inputContainer}>
-      <Text style={styles.inputText}>Search</Text>
+    <View style={inputStyles.inputContainer}>
+      {props.text ? (
+        <Text style={inputStyles.inputText}>{props.text}</Text>
+      ) : null}
+
       <TextInput
-        style={styles.input}
-        onChangeText={text => setUsername(text)}
-        value={username}
-        placeholder="Search Username"
-        placeholderTextColor="#9B9B9B"
+        style={inputStyles.input}
+        placeholder={props.placeholder ? props.placeholder : "Enter"}
+        value={props.value}
+        onChangeText={text => props.onChange(text)}
+        placeholderTextColor={
+          props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
+        }
+        editable={props.editable !== false}
         autoCapitalize="none"
         autoCorrect={false}
       />
-      <Image
-        source={require("./assets/searchIcon.png")}
-        style={styles.searchIcon}
-      />
+      {props.errorText ? (
+        <Text style={inputStyles.error}>{props.errorText}</Text>
+      ) : null}
+      {props.icon ? (
+        <Image
+          source={props.icon}
+          style={
+            props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText
+          }
+        />
+      ) : null}
+      <View style={styles.children}>{props.children}</View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const inputStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
-    flex: 1,
     justifyContent: "center",
     marginHorizontal: 5
   },
@@ -44,11 +54,15 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 50
   },
-  searchIcon: {
+  iconWithText: {
     position: "absolute",
     right: 30,
-    top: 35
-  }
+    top: 50
+  },
+  iconWithoutText: {
+    position: "absolute",
+    right: 30,
+    top: 28
+  },
+  children: {}
 });
-
-export default SearchBar;
