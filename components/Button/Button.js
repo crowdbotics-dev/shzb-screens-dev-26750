@@ -1,18 +1,26 @@
 const Button = params => {
+  const backgroundColor = params.color ? params.color : "#000";
+  const textColor = params.textColor ? params.textColor : "#fff";
   const btnStyle = {
-    backgroundColor: params.outline ? "#fff" : "#000",
-    borderColor: params.outline ? "#000" : "#fff",
-    borderWidth: 1
+    backgroundColor: params.outline ? "#fff" : backgroundColor,
+    borderColor: params.outline ? backgroundColor : null,
+    borderWidth: params.outline ? 1 : 0
   };
   const btnText = {
-    color: params.outline ? "#000" : "#fff"
+    color: params.outline ? "#000" : textColor
   };
   return (
     <View style={buttonStyles.btnContainer}>
-      <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
-        <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
-        <View style={styles.childrenContainer}>{params.children}</View>
-      </Pressable>
+      <View style={buttonStyles.shadowContainer}>
+        <Pressable
+          style={[buttonStyles.btn, btnStyle]}
+          onPress={params.onPress}>
+          <Text style={[buttonStyles.btnText, btnText]}>
+            {params.buttonText}
+          </Text>
+          <View style={styles.childrenContainer}>{params.children}</View>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -23,8 +31,13 @@ const buttonStyles = StyleSheet.create({
     justifyContent: "center",
     marginVertical: 20
   },
+  shadowContainer: {
+    shadowColor: "rgba(0, 0, 0, 0.5)",
+    elevation: 10,
+    backgroundColor: "#fff",
+    borderRadius: 10
+  },
   btn: {
-    backgroundColor: "black",
     height: 50,
     width: "100%",
     padding: 10,
@@ -32,8 +45,7 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "rgba(0, 0, 0, 0.2)",
-    elevation: 10,
+
     flexDirection: "row"
   },
   btnText: {
