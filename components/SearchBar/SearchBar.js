@@ -1,6 +1,6 @@
 const Input = props => {
   return (
-    <View style={[inputStyles.inputContainer]}>
+    <View style={[inputStyles.inputContainer, props.containerStyle]}>
       {props.text ? (
         <Text style={inputStyles.inputText}>{props.text}</Text>
       ) : null}
@@ -45,7 +45,7 @@ const inputStyles = StyleSheet.create({
     flex: 1
   },
   inputText: {
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 20,
     color: "#111112"
   },
