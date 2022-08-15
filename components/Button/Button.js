@@ -11,9 +11,9 @@ const Button = params => {
   };
   return (
     <View style={buttonStyles.btnContainer}>
-      <View style={buttonStyles.shadowContainer}>
+      <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
         <Pressable
-          style={[buttonStyles.btn, btnStyle]}
+          style={[buttonStyles.btn, btnStyle, params.style]}
           onPress={params.onPress}>
           <Text style={[buttonStyles.btnText, btnText]}>
             {params.buttonText}
