@@ -1,12 +1,16 @@
 const Input = props => {
   return (
-    <View style={inputStyles.inputContainer}>
+    <View style={[inputStyles.inputContainer]}>
       {props.text ? (
         <Text style={inputStyles.inputText}>{props.text}</Text>
       ) : null}
 
       <TextInput
-        style={inputStyles.input}
+        style={[
+          inputStyles.input,
+          props.style,
+          props.textArea ? inputStyles.textArea : null
+        ]}
         placeholder={props.placeholder ? props.placeholder : "Enter"}
         value={props.value}
         onChangeText={text => props.onChange(text)}
@@ -16,6 +20,7 @@ const Input = props => {
         editable={props.editable !== false}
         autoCapitalize="none"
         autoCorrect={false}
+        multiline={props.textArea ? true : false}
       />
       {props.errorText ? (
         <Text style={inputStyles.error}>{props.errorText}</Text>
@@ -37,7 +42,7 @@ const inputStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
     justifyContent: "center",
-    marginHorizontal: 5
+    flex: 1
   },
   inputText: {
     fontSize: 16,
@@ -63,6 +68,9 @@ const inputStyles = StyleSheet.create({
     position: "absolute",
     right: 30,
     top: 28
+  },
+  textArea: {
+    height: 150
   },
   children: {}
 });
