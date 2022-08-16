@@ -1,5 +1,9 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet
+} from "react-native";
 
 const TransactionSuccessful = () => {
   return (
@@ -18,7 +22,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default {
-  title: "TransactionSuccessful",
-  navigator: TransactionSuccessful
-};
+export default TransactionSuccessful;

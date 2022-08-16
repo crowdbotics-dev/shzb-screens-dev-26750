@@ -18,7 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default {
-  title: "DiseaseSymptoms",
-  navigator: DiseaseSymptoms
-};
+export default DiseaseSymptoms;

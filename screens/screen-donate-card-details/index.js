@@ -18,7 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default {
-  title: "DonateCardDetails",
-  navigator: DonateCardDetails
-};
+export default DonateCardDetails;
