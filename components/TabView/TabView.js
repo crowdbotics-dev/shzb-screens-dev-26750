@@ -1,16 +1,29 @@
-const TabView = ({ tabTitles, selected }) => {
+const TabView = ({
+  tabTitles,
+  selected,
+  onPress,
+  tabColor,
+  backgroundColor
+}) => {
+  const tabColorStyle = {
+    backgroundColor: tabColor ? tabColor : "#fff"
+  };
+  const backgroundColorStyle = {
+    backgroundColor: backgroundColor ? backgroundColor : "#F1F1F1"
+  };
   return (
-    <View style={tabViewStyles.paletteContainer}>
+    <View style={[tabViewStyles.paletteContainer, backgroundColorStyle]}>
       {tabTitles.map((title, index) => (
-        <View
+        <Pressable
+          onPress={() => onPress(index)}
           style={
             index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
+              ? [tabViewStyles.selected, tabColorStyle]
+              : [tabViewStyles.unSelected, backgroundColorStyle]
           }
           key={index}>
           <Text>{title}</Text>
-        </View>
+        </Pressable>
       ))}
     </View>
   );
@@ -18,15 +31,14 @@ const TabView = ({ tabTitles, selected }) => {
 
 const tabViewStyles = StyleSheet.create({
   paletteContainer: {
-    width: "70%",
+    width: "80%",
     height: 48,
     backgroundColor: "#E4E4E4",
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 10,
     padding: 6,
-    marginVertical: 10,
-    marginHorizontal: 20
+    marginVertical: 10
   },
   selected: {
     borderRadius: 10,
