@@ -5,8 +5,7 @@ import {
   StyleSheet,
   Image,
   FlatList,
-  ImageBackground,
-  ScrollView
+  ImageBackground
 } from "react-native";
 
 const DiseaseProtection = () => {
@@ -68,38 +67,40 @@ const DiseaseProtection = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View>
-          <Text style={styles.heading}>Prevention</Text>
-          <FlatList
-            data={preventions}
-            keyExtractor={(item, index) => index}
-            renderItem={({ item }) => <Prevention prevention={item} />}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
-        <View>
-          <Text style={styles.heading}>Requirements</Text>
-          <FlatList
-            data={requirements}
-            keyExtractor={(item, index) => index}
-            renderItem={({ item }) => <Requirement requirement={item} />}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
-        <View>
-          <Text style={styles.heading}>Doctor Suggestions</Text>
-          <FlatList
-            data={suggestions}
-            keyExtractor={(item, index) => index}
-            renderItem={({ item }) => <Suggestion suggestion={item} />}
-            showsVerticalScrollIndicator={false}
-            horizontal={false}
-          />
-        </View>
-      </ScrollView>
+      <View>
+        <FlatList
+          ListHeaderComponent={() => (
+            <View>
+              <View>
+                <Text style={styles.heading}>Prevention</Text>
+                <FlatList
+                  data={preventions}
+                  keyExtractor={(item, index) => index}
+                  renderItem={({ item }) => <Prevention prevention={item} />}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                />
+              </View>
+              <View>
+                <Text style={styles.heading}>Requirements</Text>
+                <FlatList
+                  data={requirements}
+                  keyExtractor={(item, index) => index}
+                  renderItem={({ item }) => <Requirement requirement={item} />}
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                />
+              </View>
+              <Text style={styles.heading}>Doctor Suggestions</Text>
+            </View>
+          )}
+          data={suggestions}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }) => <Suggestion suggestion={item} />}
+          showsVerticalScrollIndicator={false}
+          horizontal={false}
+        />
+      </View>
     </View>
   );
 };
@@ -189,6 +190,12 @@ const preventionStyles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
     fontWeight: "bold"
+  },
+  image: {
+    width: 160,
+    height: 140,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10
   }
 });
 

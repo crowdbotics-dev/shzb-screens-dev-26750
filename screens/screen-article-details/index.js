@@ -100,21 +100,17 @@ const ArticleDetails = () => {
             />
           </View>
         </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputText}>Write Comment</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={text => setComment(text)}
-            value={comment}
-            placeholder="Enter your comment"
-            placeholderTextColor="#9B9B9B"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
+        <Input
+          text="Write comment"
+          placeholder="Write a comment"
+          value={comment}
+          onChangeText={setComment}
+          textArea={true}
+          containerStyle={styles.inputContainer}>
           <Pressable style={styles.button}>
             <Text style={styles.btnText}>Submit</Text>
           </Pressable>
-        </View>
+        </Input>
       </ScrollView>
     </View>
   );
@@ -131,8 +127,16 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     elevation: 5,
+    width: 340,
+    height: 170,
     shadowColor: "rgba(0,0,0,0.5)",
     backgroundColor: "#fff",
+    borderRadius: 10,
+    alignSelf: "center"
+  },
+  articleImage: {
+    width: "100%",
+    height: "100%",
     borderRadius: 10
   },
   heading: {
@@ -284,7 +288,8 @@ const commentStyles = StyleSheet.create({
   commentImage: {
     width: 70,
     height: 70,
-    marginRight: 15
+    marginRight: 15,
+    borderRadius: 60
   },
   commentDescription: {
     flex: 1,
@@ -310,4 +315,80 @@ const commentStyles = StyleSheet.create({
     marginHorizontal: 5,
     resizeMode: "contain"
   }
+});
+const Input = props => {
+  return (
+    <View style={[inputStyles.inputContainer, props.containerStyle]}>
+      {props.text ? (
+        <Text style={inputStyles.inputText}>{props.text}</Text>
+      ) : null}
+
+      <TextInput
+        style={[
+          inputStyles.input,
+          props.style,
+          props.textArea ? inputStyles.textArea : null
+        ]}
+        placeholder={props.placeholder ? props.placeholder : "Enter"}
+        value={props.value}
+        onChangeText={text => props.onChange(text)}
+        placeholderTextColor={
+          props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
+        }
+        editable={props.editable !== false}
+        autoCapitalize="none"
+        autoCorrect={false}
+        multiline={props.textArea ? true : false}
+      />
+      {props.errorText ? (
+        <Text style={inputStyles.error}>{props.errorText}</Text>
+      ) : null}
+      {props.icon ? (
+        <Image
+          source={props.icon}
+          style={
+            props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText
+          }
+        />
+      ) : null}
+      <View style={styles.children}>{props.children}</View>
+    </View>
+  );
+};
+
+const inputStyles = StyleSheet.create({
+  inputContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    flex: 1
+  },
+  inputText: {
+    fontSize: 14,
+    marginLeft: 20,
+    color: "#111112"
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#e6e6e6",
+    borderRadius: 10,
+    padding: 10,
+    paddingLeft: 20,
+    marginVertical: 10,
+    width: "100%",
+    height: 50
+  },
+  iconWithText: {
+    position: "absolute",
+    right: 30,
+    top: 50
+  },
+  iconWithoutText: {
+    position: "absolute",
+    right: 30,
+    top: 28
+  },
+  textArea: {
+    height: 150
+  },
+  children: {}
 });

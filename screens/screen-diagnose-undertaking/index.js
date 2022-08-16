@@ -236,5 +236,8 @@ const Checkbox = props => {
 };
 
 const checkboxStyles = StyleSheet.create({
-  checkbox: {}
+  checkbox: {
+    width: 20,
+    height: 20
+  }
 });

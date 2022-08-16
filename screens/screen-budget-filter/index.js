@@ -13,33 +13,31 @@ const BudgetFilter = () => {
   const [options, setOptions] = useState([]);
   const [rangeStart, setRangeStart] = useState("");
   const [rangeEnd, setRangeEnd] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState([]);
   useEffect(() => {
-    setOptions([
-      {
-        name: "Per hour",
-        checked: false
-      },
-      {
-        name: "Per day",
-        checked: false
-      },
-      {
-        name: "Per week",
-        checked: true
-      },
-      {
-        name: "Per month",
-        checked: false
-      }
-    ]);
+    setOptions(["Per Hour", "Per Day", "Per Week", "Per Month"]);
   }, []);
+  const handleSelect = option => {
+    const newSelectedOptions = [...selectedOptions];
+    if (newSelectedOptions.includes(option)) {
+      newSelectedOptions.splice(newSelectedOptions.indexOf(option), 1);
+    } else {
+      newSelectedOptions.push(option);
+    }
+    setSelectedOptions(newSelectedOptions);
+  };
   return (
     <View style={styles.container}>
       <ScrollView>
         <Text style={styles.heading}>Filter/Budget</Text>
         <View style={styles.frequencyList}>
           {options.map((option, index) => (
-            <Tile key={index} option={option} />
+            <Tile
+              key={index}
+              option={option}
+              selected={selectedOptions.includes(option)}
+              onPress={() => handleSelect(option)}
+            />
           ))}
         </View>
         <View style={styles.halfInputs}>
@@ -150,22 +148,29 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 120
+  },
+  checkbox: {
+    width: 25,
+    height: 25
   }
 });
 
 export default BudgetFilter;
 
-const Tile = ({ option }) => {
+const Tile = ({ option, selected, onPress }) => {
   return (
     <View style={styles.tile}>
-      <Text style={styles.optionName}>{option.name}</Text>
-      <Image
-        source={
-          option.checked
-            ? require("./assets/checkboxIconActive.png")
-            : require("./assets/checkboxIcon.png")
-        }
-      />
+      <Text style={styles.optionName}>{option}</Text>
+      <Pressable onPress={onPress}>
+        <Image
+          source={
+            selected
+              ? require("./assets/checkboxIconActive.png")
+              : require("./assets/checkboxIcon.png")
+          }
+          style={styles.checkbox}
+        />
+      </Pressable>
     </View>
   );
 };

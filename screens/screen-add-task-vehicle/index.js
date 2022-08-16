@@ -12,6 +12,7 @@ const AddTaskVehicle = () => {
   const [taskerProfile, setTaskerProfile] = useState({});
   const [task, setTask] = useState({});
   const [vehicles, setVehicles] = useState([]);
+  const [selectedVehicles, setSelectedVehicles] = useState([]);
   useEffect(() => {
     setTaskerProfile({
       name: "Tasker name",
@@ -47,6 +48,15 @@ const AddTaskVehicle = () => {
       }
     ]);
   }, []);
+  const handleVehiclePress = vehicle => {
+    const newSelectedVehicles = [...selectedVehicles];
+    if (newSelectedVehicles.includes(vehicle)) {
+      newSelectedVehicles.splice(newSelectedVehicles.indexOf(vehicle), 1);
+    } else {
+      newSelectedVehicles.push(vehicle);
+    }
+    setSelectedVehicles(newSelectedVehicles);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -75,7 +85,12 @@ const AddTaskVehicle = () => {
       <View style={styles.vehicleList}>
         <ScrollView>
           {vehicles.map((vehicle, index) => (
-            <VehicleTile vehicle={vehicle} key={index} />
+            <VehicleTile
+              vehicle={vehicle}
+              key={index}
+              selected={selectedVehicles.includes(vehicle)}
+              onPress={() => handleVehiclePress(vehicle)}
+            />
           ))}
         </ScrollView>
       </View>
@@ -165,7 +180,11 @@ const VehicleTile = props => {
           {props.vehicle.description}
         </Text>
       </View>
-      <Image source={require("./assets/checkbox.png")} />
+      <Checkbox
+        value={props.selected}
+        setValue={() => props.onPress()}
+        style={vehicleTileStyles.checkbox}
+      />
     </View>
   );
 };
@@ -194,6 +213,10 @@ const vehicleTileStyles = StyleSheet.create({
     height: 30,
     width: 30,
     resizeMode: "contain"
+  },
+  checkbox: {
+    width: 25,
+    height: 25
   }
 });
 
@@ -243,5 +266,30 @@ const buttonStyles = StyleSheet.create({
   childrenContainer: {
     justifyContent: "center",
     alignItems: "center"
+  }
+});
+
+const Checkbox = props => {
+  return (
+    <Pressable
+      onPress={() => {
+        props.setValue(!props.value);
+      }}>
+      <Image
+        source={
+          props.value
+            ? require("./assets/checkboxIconActive.png")
+            : require("./assets/checkboxIcon.png")
+        }
+        style={[checkboxStyles.checkbox, props.style]}
+      />
+    </Pressable>
+  );
+};
+
+const checkboxStyles = StyleSheet.create({
+  checkbox: {
+    height: 20,
+    width: 20
   }
 });

@@ -8,7 +8,6 @@ const BusinessReviewsList = () => {
   const [task, setTask] = useState({});
   useEffect(() => {
     setRatings([5, 4, 3, 2, 1]);
-
     setTaskerProfile({
       name: "Tasker name",
       rate: "$40/hr",

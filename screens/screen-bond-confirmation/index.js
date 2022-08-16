@@ -20,7 +20,7 @@ const BondConfirmation = () => {
         <Image source={require("./assets/cryptoIcon.png")} />
       </View>
       <View style={styles.imageContainer}>
-        <Image source={require("./assets/image.png")} />
+        <Image source={require("./assets/image.png")} style={styles.image} />
       </View>
       <Text style={styles.heading}>Staking requirements</Text>
       <Text style={styles.requirementsText}>{requirements}</Text>
@@ -64,11 +64,19 @@ const styles = StyleSheet.create({
   imageContainer: {
     marginVertical: 10,
     backgroundColor: "#fff",
+    shadowColor: "rgba(0, 0, 0, 0.5)",
     elevation: 5,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    width: 340,
+    height: 170,
+    overflow: "hidden"
+  },
+  image: {
+    width: "100%",
+    height: "100%"
   },
   heading: {
     fontSize: 16,

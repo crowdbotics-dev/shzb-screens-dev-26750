@@ -10,20 +10,28 @@ import {
 
 const ConnectWallet = () => {
   const [wallets, setWallets] = useState([]);
+  const [selectedWallets, setSelectedWallets] = useState([]);
   useEffect(() => {
     setWallets([
       {
         name: "Metamask",
-        icon: require("./assets/metamaskIcon.png"),
-        selected: true
+        icon: require("./assets/metamaskIcon.png")
       },
       {
         name: "Trust Wallet",
-        icon: require("./assets/trustWalletIcon.png"),
-        selected: false
+        icon: require("./assets/trustWalletIcon.png")
       }
     ]);
   }, []);
+  const handleWalletPress = wallet => {
+    const newSelectedWallets = [...selectedWallets];
+    if (newSelectedWallets.includes(wallet)) {
+      newSelectedWallets.splice(newSelectedWallets.indexOf(wallet), 1);
+    } else {
+      newSelectedWallets.push(wallet);
+    }
+    setSelectedWallets(newSelectedWallets);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -33,7 +41,12 @@ const ConnectWallet = () => {
       <View style={styles.wallets}>
         <ScrollView>
           {wallets.map((wallet, index) => (
-            <Wallet wallet={wallet} key={index} selected={wallet.selected} />
+            <Wallet
+              wallet={wallet}
+              key={index}
+              selected={selectedWallets.includes(wallet)}
+              onPress={() => handleWalletPress(wallet)}
+            />
           ))}
         </ScrollView>
         <View style={styles.button}>
@@ -125,19 +138,21 @@ const buttonStyles = StyleSheet.create({
   }
 });
 
-const Wallet = ({ wallet, selected }) => {
+const Wallet = ({ wallet, selected, onPress }) => {
   return (
     <View style={walletStyles.container}>
       <View style={walletStyles.cardBackground}>
         <Text style={walletStyles.name}>{wallet.name}</Text>
-        <Image
-          source={
-            selected
-              ? require("./assets/checkboxIconActive.png")
-              : require("./assets/checkboxIcon.png")
-          }
-          style={walletStyles.checkbox}
-        />
+        <Pressable onPress={() => onPress(wallet)}>
+          <Image
+            source={
+              selected
+                ? require("./assets/checkboxIconActive.png")
+                : require("./assets/checkboxIcon.png")
+            }
+            style={walletStyles.checkbox}
+          />
+        </Pressable>
       </View>
       <View style={walletStyles.walletIcon}>
         <Image source={wallet.icon} />
@@ -167,7 +182,6 @@ const walletStyles = StyleSheet.create({
     top: 10,
     right: "37%",
     backgroundColor: "#f1f1f1",
-    // backgroundColor: "red",
     height: 100,
     width: 100,
     borderRadius: 100,

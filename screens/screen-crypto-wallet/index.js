@@ -10,6 +10,8 @@ import {
 
 const CryptoWallet = () => {
   const [nftList, setNftList] = useState([]);
+  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedNFTs, setSelectedNFTs] = useState([]);
   useEffect(() => {
     setNftList([
       {
@@ -32,6 +34,15 @@ const CryptoWallet = () => {
       }
     ]);
   }, []);
+  const handleNFTSelect = day => {
+    const newSelectedNFTs = [...selectedNFTs];
+    if (newSelectedNFTs.includes(day)) {
+      newSelectedNFTs.splice(newSelectedNFTs.indexOf(day), 1);
+    } else {
+      newSelectedNFTs.push(day);
+    }
+    setSelectedNFTs(newSelectedNFTs);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -41,7 +52,11 @@ const CryptoWallet = () => {
         </View>
         <Image source={require("./assets/cryptoIcon.png")} />
       </View>
-      <TabView tabTitles={["Stake", "Sell", "Buy"]} selected={0} />
+      <TabView
+        tabTitles={["Stake", "Sell", "Buy"]}
+        selected={selectedTab}
+        onPress={x => setSelectedTab(x)}
+      />
       <View style={styles.separator}>
         <Text>NFT List</Text>
         <Text>Select</Text>
@@ -49,7 +64,13 @@ const CryptoWallet = () => {
       <FlatList
         data={nftList}
         keyExtractor={item => item.id.toString()}
-        renderItem={({ item }) => <NFT item={item} />}
+        renderItem={({ item }) => (
+          <NFT
+            item={item}
+            selected={selectedNFTs.includes(item)}
+            onPress={x => handleNFTSelect(x)}
+          />
+        )}
         ListFooterComponent={() => <Button buttonText={"Bond NFT"} />}
         showsVerticalScrollIndicator={false}
       />
@@ -84,19 +105,32 @@ const styles = StyleSheet.create({
 
 export default CryptoWallet;
 
-const TabView = ({ tabTitles, selected }) => {
+const TabView = ({
+  tabTitles,
+  selected,
+  onPress,
+  tabColor,
+  backgroundColor
+}) => {
+  const tabColorStyle = {
+    backgroundColor: tabColor ? tabColor : "#fff"
+  };
+  const backgroundColorStyle = {
+    backgroundColor: backgroundColor ? backgroundColor : "#F1F1F1"
+  };
   return (
-    <View style={tabViewStyles.paletteContainer}>
+    <View style={[tabViewStyles.paletteContainer, backgroundColorStyle]}>
       {tabTitles.map((title, index) => (
-        <View
+        <Pressable
+          onPress={() => onPress(index)}
           style={
             index === selected
-              ? tabViewStyles.selected
-              : tabViewStyles.unSelected
+              ? [tabViewStyles.selected, tabColorStyle]
+              : [tabViewStyles.unSelected, backgroundColorStyle]
           }
           key={index}>
           <Text>{title}</Text>
-        </View>
+        </Pressable>
       ))}
     </View>
   );
@@ -181,17 +215,14 @@ const buttonStyles = StyleSheet.create({
     alignItems: "center"
   }
 });
-const NFT = ({ item }) => {
+const NFT = ({ item, selected, onPress }) => {
   return (
     <View style={nftStyles.container}>
       <View style={nftStyles.imageContainer}>
         <Image source={item.image} />
-        <Image
-          source={
-            item.selected
-              ? require("./assets/checkboxIcon.png")
-              : require("./assets/checkboxIconActive.png")
-          }
+        <Checkbox
+          value={selected}
+          setValue={() => onPress(item)}
           style={nftStyles.checkbox}
         />
         <Text style={nftStyles.timePill}>{item.time}</Text>
@@ -236,7 +267,9 @@ const nftStyles = StyleSheet.create({
   checkbox: {
     position: "absolute",
     top: 10,
-    left: 10
+    left: 10,
+    width: 20,
+    height: 20
   },
   timePill: {
     color: "#000",
@@ -309,5 +342,35 @@ const nftStyles = StyleSheet.create({
   mainText: {
     fontSize: 18,
     color: "#26292A"
+  }
+});
+
+const Checkbox = props => {
+  return (
+    <Pressable
+      onPress={() => {
+        props.setValue(!props.value);
+      }}
+      style={[checkboxStyles.container, props.style]}>
+      <Image
+        source={
+          props.value
+            ? require("./assets/checkboxIconActive.png")
+            : require("./assets/checkboxIcon.png")
+        }
+        style={[checkboxStyles.checkbox]}
+      />
+    </Pressable>
+  );
+};
+
+const checkboxStyles = StyleSheet.create({
+  container: {
+    height: 20,
+    width: 20
+  },
+  checkbox: {
+    height: "100%",
+    width: "100%"
   }
 });

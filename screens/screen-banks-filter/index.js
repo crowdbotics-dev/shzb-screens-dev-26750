@@ -12,63 +12,63 @@ import {
 const BanksFilter = () => {
   const [bankName, setBankName] = useState("");
   const [banks, setBanks] = useState([]);
+  const [selectedBanks, setSelectedBanks] = useState([]);
   useEffect(() => {
     setBanks([
       {
         name: "Bank name",
-        image: require("./assets/bank1.png"),
-        checked: true
+        image: require("./assets/bank1.png")
       },
       {
         name: "Bank name",
-        image: require("./assets/bank2.png"),
-        checked: false
+        image: require("./assets/bank2.png")
       },
       {
         name: "Bank name",
-        image: require("./assets/bank3.png"),
-        checked: false
+        image: require("./assets/bank3.png")
       },
       {
         name: "Bank name",
-        image: require("./assets/bank1.png"),
-        checked: false
+        image: require("./assets/bank1.png")
       },
       {
         name: "Bank name",
-        image: require("./assets/bank2.png"),
-        checked: false
+        image: require("./assets/bank2.png")
       },
       {
         name: "Bank name",
-        image: require("./assets/bank3.png"),
-        checked: false
+        image: require("./assets/bank3.png")
       }
     ]);
   }, []);
+  const handleBankPress = bank => {
+    const newSelectedBanks = [...selectedBanks];
+    if (newSelectedBanks.includes(bank)) {
+      newSelectedBanks.splice(newSelectedBanks.indexOf(bank), 1);
+    } else {
+      newSelectedBanks.push(bank);
+    }
+    setSelectedBanks(newSelectedBanks);
+  };
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputText}>Search</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={text => setBankName(text)}
-            value={bankName}
-            placeholder="Search Bank Name"
-            placeholderTextColor="#9B9B9B"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <Image
-            source={require("./assets/searchIcon.png")}
-            style={styles.searchIcon}
-          />
-        </View>
+        <Input
+          text="Search"
+          value={bankName}
+          onChange={setBankName}
+          icon={require("./assets/searchIcon.png")}
+          containerStyle={styles.inputContainer}
+        />
         <TabView tabTitles={["Choose Bank"]} selected={0} />
         <View style={styles.banksList}>
           {banks.map((bank, index) => (
-            <Bank key={index} bank={bank} />
+            <Bank
+              key={index}
+              bank={bank}
+              selected={selectedBanks.includes(bank)}
+              onPress={() => handleBankPress(bank)}
+            />
           ))}
         </View>
         <View style={styles.button}>
@@ -79,18 +79,12 @@ const BanksFilter = () => {
   );
 };
 
-const Bank = ({ bank }) => {
+const Bank = ({ bank, selected, onPress }) => {
   return (
     <View style={styles.bank}>
       <Image source={bank.image} />
       <Text style={styles.bankName}>{bank.name}</Text>
-      <Image
-        source={
-          bank.checked
-            ? require("./assets/checkboxIconActive.png")
-            : require("./assets/checkboxIcon.png")
-        }
-      />
+      <Checkbox value={selected} style={styles.checkbox} setValue={onPress} />
     </View>
   );
 };
@@ -104,26 +98,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     marginHorizontal: 20
-  },
-  inputText: {
-    fontSize: 16,
-    marginLeft: 20,
-    color: "#111112"
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "#e6e6e6",
-    borderRadius: 10,
-    padding: 10,
-    paddingLeft: 20,
-    marginVertical: 10,
-    width: "100%",
-    height: 50
-  },
-  searchIcon: {
-    position: "absolute",
-    right: 25,
-    top: 50
   },
   banksList: {
     marginHorizontal: 30
@@ -142,6 +116,10 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 100
+  },
+  checkbox: {
+    width: 25,
+    height: 25
   }
 });
 
@@ -249,4 +227,110 @@ const buttonStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   }
+});
+
+const Checkbox = props => {
+  return (
+    <Pressable
+      onPress={() => {
+        props.setValue(!props.value);
+      }}>
+      <Image
+        source={
+          props.value
+            ? require("./assets/checkboxIconActive.png")
+            : require("./assets/checkboxIcon.png")
+        }
+        style={[checkboxStyles.checkbox, props.style]}
+      />
+    </Pressable>
+  );
+};
+
+const checkboxStyles = StyleSheet.create({
+  checkbox: {
+    height: 20,
+    width: 20
+  }
+});
+
+const Input = props => {
+  return (
+    <View style={[inputStyles.inputContainer, props.containerStyle]}>
+      {props.text ? (
+        <Text style={inputStyles.inputText}>{props.text}</Text>
+      ) : null}
+
+      <TextInput
+        style={[
+          inputStyles.input,
+          props.style,
+          props.textArea ? inputStyles.textArea : null
+        ]}
+        placeholder={props.placeholder ? props.placeholder : "Enter"}
+        value={props.value}
+        onChangeText={text => props.onChange(text)}
+        placeholderTextColor={
+          props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
+        }
+        editable={props.editable !== false}
+        autoCapitalize="none"
+        autoCorrect={false}
+        multiline={props.textArea ? true : false}
+      />
+      {props.errorText ? (
+        <Text style={inputStyles.error}>{props.errorText}</Text>
+      ) : null}
+      {props.icon ? (
+        <Image
+          source={props.icon}
+          style={
+            props.text ? inputStyles.iconWithText : inputStyles.iconWithoutText
+          }
+        />
+      ) : null}
+      <View style={styles.children}>{props.children}</View>
+    </View>
+  );
+};
+
+const inputStyles = StyleSheet.create({
+  inputContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    flex: 1
+  },
+  inputText: {
+    fontSize: 14,
+    marginLeft: 20,
+    color: "#111112"
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#e6e6e6",
+    borderRadius: 10,
+    padding: 10,
+    paddingLeft: 20,
+    marginVertical: 10,
+    width: "100%",
+    height: 50
+  },
+  iconWithText: {
+    position: "absolute",
+    right: 30,
+    top: 48,
+    height: 15,
+    width: 15
+  },
+  iconWithoutText: {
+    position: "absolute",
+    right: 30,
+    top: 28,
+    height: 15,
+    width: 15
+  },
+  textArea: {
+    height: 150
+  },
+  children: {}
 });

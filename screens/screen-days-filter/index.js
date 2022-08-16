@@ -46,6 +46,7 @@ const DaysFilter = () => {
                     ? require("./assets/checkboxIconActive.png")
                     : require("./assets/checkboxIcon.png")
                 }
+                style={styles.checkbox}
               />
             </Pressable>
           </View>
@@ -79,6 +80,10 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16
+  },
+  checkbox: {
+    width: 25,
+    height: 25
   }
 });
 
