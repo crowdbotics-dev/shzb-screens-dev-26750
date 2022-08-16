@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, ScrollView, SafeAreaView, TextInput, Pressable } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  TextInput,
+  Pressable
+} from "react-native";
 
 const AddCardDetailsScreen = params => {
   const [firstName, setFirstName] = useState("");
@@ -12,7 +20,8 @@ const AddCardDetailsScreen = params => {
   const [country, setCountry] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
   const [cvv, setCvv] = useState("");
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.paletteContainer}>
@@ -27,49 +36,129 @@ const AddCardDetailsScreen = params => {
         <View style={styles.fullInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>First Name</Text>
-            <TextInput style={styles.input} onChangeText={text => setFirstName(text)} value={firstName} placeholder="Enter your first name" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setFirstName(text)}
+              value={firstName}
+              placeholder="Enter your first name"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Last Name</Text>
-            <TextInput style={styles.input} onChangeText={text => setLastName(text)} value={lastName} placeholder="Enter your last name" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setLastName(text)}
+              value={lastName}
+              placeholder="Enter your last name"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Address 1</Text>
-            <TextInput style={styles.input} onChangeText={text => setAddress1(text)} value={address1} placeholder="Enter your Adress" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setAddress1(text)}
+              value={address1}
+              placeholder="Enter your Adress"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Address 2</Text>
-            <TextInput style={styles.input} onChangeText={text => setAddress2(text)} value={address2} placeholder="Enter your Address" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setAddress2(text)}
+              value={address2}
+              placeholder="Enter your Address"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>City</Text>
-            <TextInput style={styles.input} onChangeText={text => setCity(text)} value={city} placeholder="Enter your City" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCity(text)}
+              value={city}
+              placeholder="Enter your City"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>State</Text>
-            <TextInput style={styles.input} onChangeText={text => setState(text)} value={state} placeholder="Enter your State" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setState(text)}
+              value={state}
+              placeholder="Enter your State"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Zip</Text>
-            <TextInput style={styles.input} onChangeText={text => setZip(text)} value={zip} placeholder="Enter your Zip Code" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setZip(text)}
+              value={zip}
+              placeholder="Enter your Zip Code"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Country</Text>
-            <TextInput style={styles.input} onChangeText={text => setCountry(text)} value={country} placeholder="Enter your Country" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCountry(text)}
+              value={country}
+              placeholder="Enter your Country"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.halfInputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Card Expiration</Text>
-            <TextInput style={styles.input} onChangeText={text => setCardExpiry(text)} value={cardExpiry} placeholder="Enter Card Expiration" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCardExpiry(text)}
+              value={cardExpiry}
+              placeholder="Enter Card Expiration"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>CVV</Text>
-            <TextInput style={styles.input} onChangeText={text => setCvv(text)} value={cvv} placeholder="Enter your CVV" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCvv(text)}
+              value={cvv}
+              placeholder="Enter your CVV"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
         </View>
         <View style={styles.btnContainer}>
@@ -78,7 +167,8 @@ const AddCardDetailsScreen = params => {
           </Pressable>
         </View>
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -139,7 +229,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flexDirection: "row" // borderColor: '#9B9B9B',
     // borderWidth: 1,
-
   },
   btnContainer: {
     padding: 30,

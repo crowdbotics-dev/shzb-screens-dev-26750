@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, TextInput, Pressable, Image } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TextInput,
+  Pressable,
+  Image
+} from "react-native";
 
 const CreatePostScreen2 = params => {
   const [caption, setCaption] = useState("");
@@ -12,20 +19,44 @@ const CreatePostScreen2 = params => {
     setUsername("Username");
     setDate("18 June 2022");
     setTime("13:00 PM");
-    setImages([require("./assets/crowdboticsImage.png"), require("./assets/crowdboticsImage.png"), require("./assets/crowdboticsImage.png"), require("./assets/crowdboticsImage.png")]);
+    setImages([
+      require("./assets/crowdboticsImage.png"),
+      require("./assets/crowdboticsImage.png"),
+      require("./assets/crowdboticsImage.png"),
+      require("./assets/crowdboticsImage.png")
+    ]);
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Caption</Text>
-        <TextInput style={styles.input} onChangeText={text => setCaption(text)} value={caption} placeholder="Enter your caption" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setCaption(text)}
+          value={caption}
+          placeholder="Enter your caption"
+          placeholderTextColor="#9B9B9B"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
       </View>
       <Text style={styles.inputText}>Add Image</Text>
       <View style={styles.addImages}>
-        {images.map((image, index) => <Image source={image} style={styles.image} key={index} />)}
+        {images.map((image, index) => (
+          <Image source={image} style={styles.image} key={index} />
+        ))}
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Add Tags</Text>
-        <TextInput style={styles.input} onChangeText={text => setTags(text)} value={tags} placeholder="Enter your caption" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setTags(text)}
+          value={tags}
+          placeholder="Enter your caption"
+          placeholderTextColor="#9B9B9B"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
       </View>
       <View style={styles.userInfo}>
         <Text>{username}</Text>
@@ -40,7 +71,8 @@ const CreatePostScreen2 = params => {
           <Text style={styles.btnText}>Submit</Text>
         </Pressable>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -52,7 +84,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
     justifyContent: "center" // marginHorizontal: 5,
-
   },
   inputText: {
     fontSize: 16,

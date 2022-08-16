@@ -404,7 +404,7 @@ const Seat = ({ status }) => {
     backgroundColor: color,
     elevation: status === "reserved" ? 5 : 0
   };
-  return <Pressable style={[seatStyles.seatContainer, seatStyle]}></Pressable>;
+  return <Pressable style={[seatStyles.seatContainer, seatStyle]} />;
 };
 
 const seatStyles = StyleSheet.create({

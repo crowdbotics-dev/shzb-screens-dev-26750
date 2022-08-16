@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, ScrollView, SafeAreaView, Image, TextInput, Pressable } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Image,
+  TextInput,
+  Pressable
+} from "react-native";
 
 const AddPaymentMethodScreen = params => {
   const [paymentOption, setPaymentOption] = useState("");
@@ -8,52 +17,103 @@ const AddPaymentMethodScreen = params => {
   const [cvv, setCvv] = useState("");
   const [name, setName] = useState("");
   const [saveCard, setSaveCard] = useState(false);
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.paletteContainer}>
-            <View style={styles.unSelected}></View>
-            <View style={styles.unSelected}></View>
-            <View style={styles.selected}></View>
+            <View style={styles.unSelected} />
+            <View style={styles.unSelected} />
+            <View style={styles.selected} />
           </View>
-          <Image source={require("./assets/3Dots.png")} style={styles.threeDots} />
+          <Image
+            source={require("./assets/3Dots.png")}
+            style={styles.threeDots}
+          />
         </View>
         <View style={styles.inputs}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Payment Options</Text>
-            <TextInput style={styles.input} onChangeText={text => setPaymentOption(text)} value={paymentOption} placeholder="Master Card" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setPaymentOption(text)}
+              value={paymentOption}
+              placeholder="Master Card"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Card Number</Text>
-            <TextInput style={styles.input} onChangeText={text => setCardNumber(text)} value={cardNumber} placeholder="Enter your Card Number" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setCardNumber(text)}
+              value={cardNumber}
+              placeholder="Enter your Card Number"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.halfInputs}>
             <View style={styles.inputContainer}>
               <Text style={styles.inputText}>Expiration Date</Text>
-              <TextInput style={[styles.input, styles.input1]} onChangeText={text => setCardExpiry(text)} value={cardExpiry} placeholder="Enter your last name" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+              <TextInput
+                style={[styles.input, styles.input1]}
+                onChangeText={text => setCardExpiry(text)}
+                value={cardExpiry}
+                placeholder="Enter your last name"
+                placeholderTextColor="#9B9B9B"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
             </View>
             <View style={styles.inputContainer}>
               <Text style={styles.inputText}>CVV</Text>
-              <TextInput style={[styles.input, styles.input2]} onChangeText={text => setCvv(text)} value={cvv} placeholder="CVV" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+              <TextInput
+                style={[styles.input, styles.input2]}
+                onChangeText={text => setCvv(text)}
+                value={cvv}
+                placeholder="CVV"
+                placeholderTextColor="#9B9B9B"
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
             </View>
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputText}>Card Holder Name</Text>
-            <TextInput style={styles.input} onChangeText={text => setName(text)} value={name} placeholder="Username" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+            <TextInput
+              style={styles.input}
+              onChangeText={text => setName(text)}
+              value={name}
+              placeholder="Username"
+              placeholderTextColor="#9B9B9B"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
           </View>
           <View style={styles.checkBoxContainer}>
             <Text style={styles.inputText}>Save this card details</Text>
-            <Image source={require("./assets/checkbox.png")} style={styles.checkBox} />
+            <Image
+              source={require("./assets/checkbox.png")}
+              style={styles.checkBox}
+            />
           </View>
         </View>
         <View style={styles.btnContainer}>
           <Pressable style={styles.btn}>
             <Text style={styles.btnText}>Continue</Text>
-            <Image source={require("./assets/arrow.png")} style={styles.arrow} />
+            <Image
+              source={require("./assets/arrow.png")}
+              style={styles.arrow}
+            />
           </Pressable>
         </View>
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({

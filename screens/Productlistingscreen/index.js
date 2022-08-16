@@ -4,54 +4,68 @@ import { Text, StyleSheet, View, FlatList, Image } from "react-native";
 const ProductListingScreen = params => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    setProducts([{
-      id: 1,
-      name: "Product name",
-      status: true,
-      isFavorite: false,
-      image: require("./assets/productImage.png")
-    }, {
-      id: 2,
-      name: "Product name",
-      status: false,
-      isFavorite: true,
-      image: require("./assets/productImage2.png")
-    }, {
-      id: 3,
-      name: "Product name",
-      status: true,
-      isFavorite: false,
-      image: require("./assets/productImage.png")
-    }, {
-      id: 4,
-      name: "Product name",
-      status: false,
-      isFavorite: true,
-      image: require("./assets/productImage2.png")
-    }, {
-      id: 5,
-      name: "Product name",
-      status: true,
-      isFavorite: false,
-      image: require("./assets/productImage.png")
-    }, {
-      id: 6,
-      name: "Product name",
-      status: false,
-      isFavorite: true,
-      image: require("./assets/productImage2.png")
-    }]);
+    setProducts([
+      {
+        id: 1,
+        name: "Product name",
+        status: true,
+        isFavorite: false,
+        image: require("./assets/productImage.png")
+      },
+      {
+        id: 2,
+        name: "Product name",
+        status: false,
+        isFavorite: true,
+        image: require("./assets/productImage2.png")
+      },
+      {
+        id: 3,
+        name: "Product name",
+        status: true,
+        isFavorite: false,
+        image: require("./assets/productImage.png")
+      },
+      {
+        id: 4,
+        name: "Product name",
+        status: false,
+        isFavorite: true,
+        image: require("./assets/productImage2.png")
+      },
+      {
+        id: 5,
+        name: "Product name",
+        status: true,
+        isFavorite: false,
+        image: require("./assets/productImage.png")
+      },
+      {
+        id: 6,
+        name: "Product name",
+        status: false,
+        isFavorite: true,
+        image: require("./assets/productImage2.png")
+      }
+    ]);
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <TabView tabTitles={["All", "Best Products"]} selected={0} />
       <View style={styles.productsContainer}>
-        <FlatList data={products} numColumns={2} keyExtractor={item => item.id.toString()} renderItem={({
-        item
-      }) => <Product product={item} />} columnWrapperStyle={{
-        justifyContent: "space-around"
-      }} showsVerticalScrollIndicator={false} />
+        <FlatList
+          data={products}
+          numColumns={2}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({ item }) => <Product product={item} />}
+          columnWrapperStyle={{
+            justifyContent: "space-around"
+          }}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -65,15 +79,22 @@ const styles = StyleSheet.create({
 });
 export default ProductListingScreen;
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({
@@ -108,19 +129,25 @@ const tabViewStyles = StyleSheet.create({
   }
 });
 
-const Product = ({
-  product
-}) => {
+const Product = ({ product }) => {
   const availability = {
     color: product.status ? "#12D790" : "#EA4335",
     fontSize: 12,
     fontWeight: "bold"
   };
-  return <View style={productStyles.container}>
+  return (
+    <View style={productStyles.container}>
       <View style={productStyles.imageContainer}>
         <Image source={product.image} style={productStyles.productImage} />
 
-        <Image source={product.isFavorite ? require("./assets/isFavouriteIcon.png") : require("./assets/favIcon.png")} style={productStyles.favIcon} />
+        <Image
+          source={
+            product.isFavorite
+              ? require("./assets/isFavouriteIcon.png")
+              : require("./assets/favIcon.png")
+          }
+          style={productStyles.favIcon}
+        />
       </View>
       <View style={productStyles.descriptionContainer}>
         <Text style={productStyles.bold}>{product.name}</Text>
@@ -131,7 +158,8 @@ const Product = ({
           </Text>
         </View>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const productStyles = StyleSheet.create({

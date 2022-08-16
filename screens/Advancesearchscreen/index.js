@@ -1,48 +1,80 @@
 import React, { useState, useEffect } from "react";
 import { Slider } from "react-native-elements";
-import { Text, StyleSheet, View, ScrollView, SafeAreaView, Modal, Pressable, Alert, Image, FlatList } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Modal,
+  Pressable,
+  Alert,
+  Image,
+  FlatList
+} from "react-native";
 
 const AdvanceSearchScreen = params => {
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState([]);
   const [ratingImages, setRatingImages] = useState([]);
   useEffect(() => {
-    setData([{
-      name: "Resturants",
-      selected: true
-    }, {
-      name: "Entertainment",
-      selected: false
-    }, {
-      name: "Sports",
-      selected: false
-    }, {
-      name: "Events",
-      selected: false
-    }, {
-      name: "Charging Stations",
-      selected: false
-    }, {
-      name: "Pharmacies",
-      selected: true
-    }, {
-      name: "Gas Stations",
-      selected: false
-    }, {
-      name: "Festivals",
-      selected: false
-    }, {
-      name: "Shops",
-      selected: false
-    }]);
-    setRatingImages([require("./assets/1star.png"), require("./assets/2star.png"), require("./assets/3star.png"), require("./assets/4star.png"), require("./assets/5star.png")]);
+    setData([
+      {
+        name: "Resturants",
+        selected: true
+      },
+      {
+        name: "Entertainment",
+        selected: false
+      },
+      {
+        name: "Sports",
+        selected: false
+      },
+      {
+        name: "Events",
+        selected: false
+      },
+      {
+        name: "Charging Stations",
+        selected: false
+      },
+      {
+        name: "Pharmacies",
+        selected: true
+      },
+      {
+        name: "Gas Stations",
+        selected: false
+      },
+      {
+        name: "Festivals",
+        selected: false
+      },
+      {
+        name: "Shops",
+        selected: false
+      }
+    ]);
+    setRatingImages([
+      require("./assets/1star.png"),
+      require("./assets/2star.png"),
+      require("./assets/3star.png"),
+      require("./assets/4star.png"),
+      require("./assets/5star.png")
+    ]);
   }, []);
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Modal animationType="slide" transparent={true} visible={modalVisible} onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-        setModalVisible(!modalVisible);
-      }}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
+          }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <View style={styles.header}>
@@ -51,17 +83,26 @@ const AdvanceSearchScreen = params => {
                 </Pressable>
                 <Text style={styles.headerText}>Filters</Text>
                 <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                  <Image source={require("./assets/cross.png")} style={styles.cross} />
+                  <Image
+                    source={require("./assets/cross.png")}
+                    style={styles.cross}
+                  />
                 </Pressable>
               </View>
               <View style={styles.multiSelect}>
                 <Text style={styles.filterText}>Establishment Type</Text>
-                <FlatList data={data} renderItem={({
-                item
-              }) => <Filter name={item.name} selected={item.selected}></Filter>} contentContainerStyle={styles.filterList} numColumns={3} keyExtractor={(item, index) => index.toString()} columnWrapperStyle={{
-                justifyContent: "space-around"
-              }} // display 3 in a row
-              />
+                <FlatList
+                  data={data}
+                  renderItem={({ item }) => (
+                    <Filter name={item.name} selected={item.selected} />
+                  )}
+                  contentContainerStyle={styles.filterList}
+                  numColumns={3}
+                  keyExtractor={(item, index) => index.toString()}
+                  columnWrapperStyle={{
+                    justifyContent: "space-around"
+                  }} // display 3 in a row
+                />
               </View>
               <View style={styles.pricing}>
                 <View style={styles.pricingHeader}>
@@ -69,10 +110,18 @@ const AdvanceSearchScreen = params => {
                   <Text>$10 - $100</Text>
                 </View>
                 <View style={styles.sliderContainer}>
-                  <Slider thumbStyle={{
-                  height: 20,
-                  width: 20
-                }} thumbTintColor="#0000FF" maximumValue={1} minimumValue={0} style={styles.slider} animateTransitions={true} animationType="timing"></Slider>
+                  <Slider
+                    thumbStyle={{
+                      height: 20,
+                      width: 20
+                    }}
+                    thumbTintColor="#0000FF"
+                    maximumValue={1}
+                    minimumValue={0}
+                    style={styles.slider}
+                    animateTransitions={true}
+                    animationType="timing"
+                  />
                 </View>
               </View>
               <View style={styles.ratingContainer}>
@@ -80,10 +129,14 @@ const AdvanceSearchScreen = params => {
                   <Text style={styles.filterText}>Guest Ratings</Text>
                 </View>
                 <View style={styles.ratings}>
-                  {ratingImages.map((image, index) => <Image source={image} key={index} />)}
+                  {ratingImages.map((image, index) => (
+                    <Image source={image} key={index} />
+                  ))}
                 </View>
               </View>
-              <Pressable style={styles.btn} onPress={() => setModalVisible(!modalVisible)}>
+              <Pressable
+                style={styles.btn}
+                onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>Submit</Text>
               </Pressable>
             </View>
@@ -95,7 +148,8 @@ const AdvanceSearchScreen = params => {
           </Pressable>
         </View>
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -199,14 +253,15 @@ const styles = StyleSheet.create({
 });
 export default AdvanceSearchScreen;
 
-const Filter = ({
-  name,
-  selected
-}) => {
-  const filterStyle = selected ? filterStyles.selected : filterStyles.unSelected;
-  return <View style={[filterStyles.filter, filterStyle]}>
+const Filter = ({ name, selected }) => {
+  const filterStyle = selected
+    ? filterStyles.selected
+    : filterStyles.unSelected;
+  return (
+    <View style={[filterStyles.filter, filterStyle]}>
       <Text style={filterStyle}>{name}</Text>
-    </View>;
+    </View>
+  );
 };
 
 const filterStyles = StyleSheet.create({

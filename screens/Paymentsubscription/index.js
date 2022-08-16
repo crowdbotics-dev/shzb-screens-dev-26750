@@ -33,7 +33,7 @@ const PaymentSubscriptionScreen = params => {
             <Text style={styles.tileText}>Pay Subscription</Text>
             <Image source={require("./assets/walletIcon.png")} />
           </View>
-          <View style={styles.separator}></View>
+          <View style={styles.separator} />
           <View style={styles.tile}>
             <Text style={styles.tileText}>Add card</Text>
             <Image source={require("./assets/addCardIcon.png")} />

@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, Image, ScrollView, TextInput } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  ScrollView,
+  TextInput
+} from "react-native";
 
 const DirectMessagesScreen = params => {
   const [message, setMessage] = useState("");
@@ -19,43 +26,57 @@ const DirectMessagesScreen = params => {
     });
   }, []);
   useEffect(() => {
-    setConversation([{
-      id: 1,
-      sender: user1,
-      text: "lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      sentTime: "12:00 PM"
-    }, {
-      id: 2,
-      sender: user2,
-      text: "lorem ipsum dolor sit amet",
-      sentTime: "01:15 PM"
-    }, {
-      id: 3,
-      sender: user2,
-      text: "lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      sentTime: "01:15 PM"
-    }, {
-      id: 4,
-      sender: user1,
-      text: "lorem ipsum dolor sit amet",
-      sentTime: "01:15 PM"
-    }, {
-      id: 5,
-      sender: user2,
-      text: "lorem ipsum dolor sit amet",
-      sentTime: "01:15 PM"
-    }, {
-      id: 6,
-      sender: user1,
-      text: "lorem ipsum dolor sit amet",
-      sentTime: "01:15 PM"
-    }]);
+    setConversation([
+      {
+        id: 1,
+        sender: user1,
+        text: "lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        sentTime: "12:00 PM"
+      },
+      {
+        id: 2,
+        sender: user2,
+        text: "lorem ipsum dolor sit amet",
+        sentTime: "01:15 PM"
+      },
+      {
+        id: 3,
+        sender: user2,
+        text: "lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+        sentTime: "01:15 PM"
+      },
+      {
+        id: 4,
+        sender: user1,
+        text: "lorem ipsum dolor sit amet",
+        sentTime: "01:15 PM"
+      },
+      {
+        id: 5,
+        sender: user2,
+        text: "lorem ipsum dolor sit amet",
+        sentTime: "01:15 PM"
+      },
+      {
+        id: 6,
+        sender: user1,
+        text: "lorem ipsum dolor sit amet",
+        sentTime: "01:15 PM"
+      }
+    ]);
   }, [user1, user2]);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerImage}>
           <Image source={user2.image} style={styles.headerImage} />
-          {user2.isOnline && <Image source={require("./assets/onlineIcon.png")} style={styles.activityIconHeader} /> || null}
+          {(user2.isOnline && (
+            <Image
+              source={require("./assets/onlineIcon.png")}
+              style={styles.activityIconHeader}
+            />
+          )) ||
+            null}
         </View>
         <View style={styles.profileName}>
           <Text style={styles.profileNameText}>{user2.name}</Text>
@@ -66,22 +87,45 @@ const DirectMessagesScreen = params => {
         </View>
       </View>
       <ScrollView style={styles.body}>
-        {conversation.map((message, index) => <ConversationElement message={message} key={index} />)}
+        {conversation.map((message, index) => (
+          <ConversationElement message={message} key={index} />
+        ))}
       </ScrollView>
       <View style={styles.footer}>
         <View style={styles.camera}>
-          <Image source={require("./assets/cameraIcon.png")} style={styles.cameraIcon} />
+          <Image
+            source={require("./assets/cameraIcon.png")}
+            style={styles.cameraIcon}
+          />
         </View>
         <View style={styles.inputContainer}>
-          <TextInput style={styles.input} placeholder="Type a message" onChangeText={text => setMessage(text)} value={message} autoCorrect={false} autoCapitalize="none" autoFocus={false} />
-          <Image source={require("./assets/emojiIcon.png")} style={styles.smileyIcon} />
-          <Image source={require("./assets/voiceIcon.png")} style={styles.voiceIcon} />
+          <TextInput
+            style={styles.input}
+            placeholder="Type a message"
+            onChangeText={text => setMessage(text)}
+            value={message}
+            autoCorrect={false}
+            autoCapitalize="none"
+            autoFocus={false}
+          />
+          <Image
+            source={require("./assets/emojiIcon.png")}
+            style={styles.smileyIcon}
+          />
+          <Image
+            source={require("./assets/voiceIcon.png")}
+            style={styles.voiceIcon}
+          />
         </View>
         <View style={styles.send}>
-          <Image source={require("./assets/sendIcon.png")} style={styles.sendIcon} />
+          <Image
+            source={require("./assets/sendIcon.png")}
+            style={styles.sendIcon}
+          />
         </View>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -162,9 +206,7 @@ const styles = StyleSheet.create({
 });
 export default DirectMessagesScreen;
 
-const ConversationElement = ({
-  message
-}) => {
+const ConversationElement = ({ message }) => {
   const boxAlignment = {
     flexDirection: message.sender.name === "User1" ? "row" : "row-reverse"
   };
@@ -173,12 +215,26 @@ const ConversationElement = ({
     marginRight: message.sender.name === "User1" ? 0 : 20,
     backgroundColor: message.sender.name === "User1" ? "#FCF1D6" : "#F9D8D9"
   };
-  return <View style={[ConversationElementStyles.messageContainer, boxAlignment]}>
+  return (
+    <View style={[ConversationElementStyles.messageContainer, boxAlignment]}>
       <View style={ConversationElementStyles.profileImageContainer}>
-        <Image source={message.sender.image} style={ConversationElementStyles.profileImage} />
-        {message.sender.isOnline && <Image source={require("./assets/onlineIcon.png")} style={ConversationElementStyles.activityIcon} /> || null}
+        <Image
+          source={message.sender.image}
+          style={ConversationElementStyles.profileImage}
+        />
+        {(message.sender.isOnline && (
+          <Image
+            source={require("./assets/onlineIcon.png")}
+            style={ConversationElementStyles.activityIcon}
+          />
+        )) ||
+          null}
       </View>
-      <View style={[ConversationElementStyles.messageTextContainer, messageTextContainer]}>
+      <View
+        style={[
+          ConversationElementStyles.messageTextContainer,
+          messageTextContainer
+        ]}>
         <Text style={ConversationElementStyles.messageText}>
           {message.text}
         </Text>
@@ -186,7 +242,8 @@ const ConversationElement = ({
           {message.sentTime}
         </Text>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const ConversationElementStyles = StyleSheet.create({

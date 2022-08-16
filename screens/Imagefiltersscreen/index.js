@@ -1,36 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, TouchableHighlight, Image, FlatList } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  TouchableHighlight,
+  Image,
+  FlatList
+} from "react-native";
 
 const ImageEditingFiltersScreen = params => {
   const [filters, setFilters] = useState([]);
   useEffect(() => {
-    setFilters([{
-      id: "1",
-      name: "Filter 1",
-      primaryColor: "#FCF1D6",
-      secondaryColor: "rgba(79,255,110,0.4)",
-      textColor: "black"
-    }, {
-      id: "2",
-      name: "Filter 2",
-      primaryColor: "#F9D8D9",
-      secondaryColor: "rgba(87,79,255,0.35)",
-      textColor: "white"
-    }, {
-      id: "3",
-      name: "Filter 3",
-      primaryColor: "#D9DADD",
-      secondaryColor: "rgba(255,79,79,0.5)",
-      textColor: "white"
-    }, {
-      id: "4",
-      name: "Filter 4",
-      primaryColor: "#A0CC7E",
-      secondaryColor: "#4FDFCE",
-      textColor: "white"
-    }]);
+    setFilters([
+      {
+        id: "1",
+        name: "Filter 1",
+        primaryColor: "#FCF1D6",
+        secondaryColor: "rgba(79,255,110,0.4)",
+        textColor: "black"
+      },
+      {
+        id: "2",
+        name: "Filter 2",
+        primaryColor: "#F9D8D9",
+        secondaryColor: "rgba(87,79,255,0.35)",
+        textColor: "white"
+      },
+      {
+        id: "3",
+        name: "Filter 3",
+        primaryColor: "#D9DADD",
+        secondaryColor: "rgba(255,79,79,0.5)",
+        textColor: "white"
+      },
+      {
+        id: "4",
+        name: "Filter 4",
+        primaryColor: "#A0CC7E",
+        secondaryColor: "#4FDFCE",
+        textColor: "white"
+      }
+    ]);
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View>
         <Text>Image editing</Text>
         <View style={styles.imageContainer}>
@@ -50,14 +63,19 @@ const ImageEditingFiltersScreen = params => {
             <Text>Shadows</Text>
           </View>
         </View>
-        <FlatList style={styles.filtersList} data={filters} renderItem={({
-        item
-      }) => <FilterView filter={item} />} keyExtractor={item => item.id} horizontal={true} />
+        <FlatList
+          style={styles.filtersList}
+          data={filters}
+          renderItem={({ item }) => <FilterView filter={item} />}
+          keyExtractor={item => item.id}
+          horizontal={true}
+        />
       </View>
       <View style={styles.btn}>
         <Button>Apply</Button>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -123,20 +141,32 @@ const styles = StyleSheet.create({
 export default ImageEditingFiltersScreen;
 
 const Button = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View style={[btnStyles.button, {
-      backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
-      height: props.height ? props.height : 49,
-      borderWidth: props.borderWidth ? props.borderWidth : 0,
-      borderColor: props.borderColor ? props.borderColor : "#000000"
-    }]}>
-        <Text style={[btnStyles.text, {
-        color: props.color ? props.color : "#ffffff"
-      }]}>
+  return (
+    <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
+      <View
+        style={[
+          btnStyles.button,
+          {
+            backgroundColor: props.backgroundColor
+              ? props.backgroundColor
+              : "#000000",
+            height: props.height ? props.height : 49,
+            borderWidth: props.borderWidth ? props.borderWidth : 0,
+            borderColor: props.borderColor ? props.borderColor : "#000000"
+          }
+        ]}>
+        <Text
+          style={[
+            btnStyles.text,
+            {
+              color: props.color ? props.color : "#ffffff"
+            }
+          ]}>
           {props.children}
         </Text>
       </View>
-    </TouchableHighlight>;
+    </TouchableHighlight>
+  );
 };
 
 const btnStyles = StyleSheet.create({
@@ -152,9 +182,7 @@ const btnStyles = StyleSheet.create({
   }
 });
 
-const FilterView = ({
-  filter
-}) => {
+const FilterView = ({ filter }) => {
   const bgPrimary = {
     backgroundColor: filter.primaryColor
   };
@@ -164,12 +192,14 @@ const FilterView = ({
   const textColor = {
     color: filter.textColor
   };
-  return <View style={filterViewStyles.filterView}>
-      <View style={[filterViewStyles.filterViewPrimary, bgPrimary]}></View>
+  return (
+    <View style={filterViewStyles.filterView}>
+      <View style={[filterViewStyles.filterViewPrimary, bgPrimary]} />
       <View style={[filterViewStyles.filterViewSecondary, bgSecondary]}>
         <Text style={textColor}>{filter.name}</Text>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const filterViewStyles = StyleSheet.create({

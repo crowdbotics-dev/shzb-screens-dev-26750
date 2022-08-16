@@ -268,7 +268,8 @@ const SymptomLevel = ({ level, setLevel }) => {
             symptomLevelStyles.check,
             giveDimentions(),
             level === currentLevel ? symptomLevelStyles.fill : null
-          ]}></Pressable>
+          ]}
+        />
       ))}
     </View>
   );

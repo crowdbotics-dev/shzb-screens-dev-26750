@@ -1,9 +1,21 @@
 import React from "react";
-import { Text, Image, StyleSheet, View, TouchableHighlight, ScrollView } from "react-native";
+import {
+  Text,
+  Image,
+  StyleSheet,
+  View,
+  TouchableHighlight,
+  ScrollView
+} from "react-native";
 
 const MenuScreen = () => {
-  return <View style={styles.container}>
-      <Image style={styles.closeImage} resizeMode="contain" source={require("./assets/close.png")} />
+  return (
+    <View style={styles.container}>
+      <Image
+        style={styles.closeImage}
+        resizeMode="contain"
+        source={require("./assets/close.png")}
+      />
       <View style={styles.profileContainer}>
         <ProfileImage />
         <Text style={styles.profileText}>Hello, {"\n"} Username</Text>
@@ -11,61 +23,98 @@ const MenuScreen = () => {
       <ScrollView>
         <View style={styles.main}>
           <View style={styles.menuItems}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/profile.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/profile.png")}
+            />
             <Text style={styles.menuText}>View my profile</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/editprofile.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/editprofile.png")}
+            />
             <Text style={styles.menuText}>Edit profile</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/info.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/info.png")}
+            />
             <Text style={styles.menuText}>About the app</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/help.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/help.png")}
+            />
             <Text style={styles.menuText}>Help Center</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/settings.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/settings.png")}
+            />
             <Text style={styles.menuText}>Settings</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/feedback.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/feedback.png")}
+            />
             <Text style={styles.menuText}>Send feedback</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/accountsetting.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/accountsetting.png")}
+            />
             <Text style={styles.menuText}>Account Settings</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/invite.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/invite.png")}
+            />
             <Text style={styles.menuText}>Invite Friends</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
 
           <View style={styles.menuItem}>
-            <Image style={styles.Image} resizeMode="contain" source={require("./assets/signout.png")} />
+            <Image
+              style={styles.Image}
+              resizeMode="contain"
+              source={require("./assets/signout.png")}
+            />
             <Text style={styles.menuText}>Sign out</Text>
           </View>
-          <View style={styles.border}></View>
+          <View style={styles.border} />
         </View>
       </ScrollView>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -124,11 +173,17 @@ const styles = StyleSheet.create({
 export default MenuScreen;
 
 const ProfileImage = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
+  return (
+    <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
       <View style={profileStyles.container}>
-        <Image style={profileStyles.image} resizeMode="contain" source={require("./assets/editprofiles.png")} />
+        <Image
+          style={profileStyles.image}
+          resizeMode="contain"
+          source={require("./assets/editprofiles.png")}
+        />
       </View>
-    </TouchableHighlight>;
+    </TouchableHighlight>
+  );
 };
 
 const profileStyles = StyleSheet.create({

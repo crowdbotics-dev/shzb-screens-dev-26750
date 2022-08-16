@@ -13,7 +13,8 @@ const MapLiveTrackingScreen = params => {
       shipping: "Free Shipping"
     });
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View style={styles.orderContainer}>
         <Text style={styles.bold}>Order details</Text>
         <View style={styles.shippingDetails}>
@@ -37,7 +38,10 @@ const MapLiveTrackingScreen = params => {
           </View>
         </View>
         <View style={styles.locationContainer}>
-          <Image source={require("./assets/Progress.png")} style={styles.progressImage} />
+          <Image
+            source={require("./assets/Progress.png")}
+            style={styles.progressImage}
+          />
           <View style={styles.locationDetails}>
             <View style={styles.shopLocation}>
               <Text style={[styles.black, styles.fnt16]}>
@@ -55,7 +59,8 @@ const MapLiveTrackingScreen = params => {
         </View>
       </View>
       <Image source={require("./assets/map.png")} style={styles.mapImage} />
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

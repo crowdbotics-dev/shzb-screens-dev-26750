@@ -1,66 +1,93 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, Image, ScrollView, TextInput } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Image,
+  ScrollView,
+  TextInput
+} from "react-native";
 
 const SearchListingScreen = params => {
   const [appointments, setAppointments] = useState([]);
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
-    setAppointments([{
-      id: 1,
-      name: "Appointment",
-      date: "17 June 2022",
-      time: "12:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }, {
-      id: 2,
-      name: "Appointment",
-      date: "17 May 2022",
-      time: "02:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }, {
-      id: 3,
-      name: "Appointment",
-      date: "17 April 2022",
-      time: "12:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }, {
-      id: 4,
-      name: "Appointment",
-      date: "17 March 2022",
-      time: "12:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }, {
-      id: 5,
-      name: "Appointment",
-      date: "17 March 2022",
-      time: "12:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }, {
-      id: 6,
-      name: "Appointment",
-      date: "17 March 2022",
-      time: "12:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }, {
-      id: 7,
-      name: "Appointment",
-      date: "17 March 2022",
-      time: "12:00 AM",
-      image: require("./assets/crowdbotics.png")
-    }]);
+    setAppointments([
+      {
+        id: 1,
+        name: "Appointment",
+        date: "17 June 2022",
+        time: "12:00 AM",
+        image: require("./assets/crowdbotics.png")
+      },
+      {
+        id: 2,
+        name: "Appointment",
+        date: "17 May 2022",
+        time: "02:00 AM",
+        image: require("./assets/crowdbotics.png")
+      },
+      {
+        id: 3,
+        name: "Appointment",
+        date: "17 April 2022",
+        time: "12:00 AM",
+        image: require("./assets/crowdbotics.png")
+      },
+      {
+        id: 4,
+        name: "Appointment",
+        date: "17 March 2022",
+        time: "12:00 AM",
+        image: require("./assets/crowdbotics.png")
+      },
+      {
+        id: 5,
+        name: "Appointment",
+        date: "17 March 2022",
+        time: "12:00 AM",
+        image: require("./assets/crowdbotics.png")
+      },
+      {
+        id: 6,
+        name: "Appointment",
+        date: "17 March 2022",
+        time: "12:00 AM",
+        image: require("./assets/crowdbotics.png")
+      },
+      {
+        id: 7,
+        name: "Appointment",
+        date: "17 March 2022",
+        time: "12:00 AM",
+        image: require("./assets/crowdbotics.png")
+      }
+    ]);
   }, []);
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.inputContainer}>
           <Text style={styles.inputText}>Search</Text>
-          <TextInput style={styles.input} onChangeText={text => setSearchText(text)} value={searchText} placeholder="Enter" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+          <TextInput
+            style={styles.input}
+            onChangeText={text => setSearchText(text)}
+            value={searchText}
+            placeholder="Enter"
+            placeholderTextColor="#9B9B9B"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
         </View>
       </View>
       <Text style={styles.headerText}>Search results</Text>
       <ScrollView style={styles.list}>
-        {appointments.map((item, index) => <Appointment item={item} key={index} />)}
+        {appointments.map((item, index) => (
+          <Appointment item={item} key={index} />
+        ))}
       </ScrollView>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -112,10 +139,9 @@ const styles = StyleSheet.create({
 });
 export default SearchListingScreen;
 
-const Appointment = ({
-  item
-}) => {
-  return <View style={appointmentStyles.appointmentContainer}>
+const Appointment = ({ item }) => {
+  return (
+    <View style={appointmentStyles.appointmentContainer}>
       <View style={appointmentStyles.imgContainer}>
         <Image source={item.image} style={appointmentStyles.img} />
       </View>
@@ -127,7 +153,8 @@ const Appointment = ({
           <Text style={appointmentStyles.timingText}>{item.time}</Text>
         </View>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const appointmentStyles = StyleSheet.create({

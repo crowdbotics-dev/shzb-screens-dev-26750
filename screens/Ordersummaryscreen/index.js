@@ -17,9 +17,9 @@ const OrderSummaryScreen = params => {
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.paletteContainer}>
-            <View style={styles.unSelected}></View>
-            <View style={styles.unSelected}></View>
-            <View style={styles.unSelected}></View>
+            <View style={styles.unSelected} />
+            <View style={styles.unSelected} />
+            <View style={styles.unSelected} />
           </View>
           <Image
             source={require("./assets/3Dots.png")}

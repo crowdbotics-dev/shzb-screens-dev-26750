@@ -1,16 +1,36 @@
 import React, { useState } from "react";
-import { Text, StyleSheet, View, ScrollView, SafeAreaView, Pressable, Image, TextInput } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Pressable,
+  Image,
+  TextInput
+} from "react-native";
 
 const AddReviewScreen = params => {
   const [review, setReview] = useState("");
-  return <SafeAreaView style={styles.container}>
+  return (
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.rating}>
           <Image source={require("./assets/Stars.png")} style={styles.star} />
         </View>
         <View style={styles.review}>
           <Text>Give you review:</Text>
-          <TextInput style={styles.input} onChangeText={text => setReview(text)} value={review} placeholder="Enter your review" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} multiline={true} numberOfLines={10} />
+          <TextInput
+            style={styles.input}
+            onChangeText={text => setReview(text)}
+            value={review}
+            placeholder="Enter your review"
+            placeholderTextColor="#9B9B9B"
+            autoCapitalize="none"
+            autoCorrect={false}
+            multiline={true}
+            numberOfLines={10}
+          />
         </View>
         <View style={styles.btnContainer}>
           <Pressable style={styles.btn}>
@@ -18,7 +38,8 @@ const AddReviewScreen = params => {
           </Pressable>
         </View>
       </ScrollView>
-    </SafeAreaView>;
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({

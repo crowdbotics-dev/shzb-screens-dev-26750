@@ -6,8 +6,9 @@ const OrderWaitingListScreen = params => {
   useEffect(() => {
     setUsername("User");
   }, []);
-  return <View style={styles.container}>
-      <View style={styles.grayArea}></View>
+  return (
+    <View style={styles.container}>
+      <View style={styles.grayArea} />
       <View style={styles.content}>
         <View style={styles.header}>
           <Text style={styles.heading}>Hi {username},</Text>
@@ -16,7 +17,10 @@ const OrderWaitingListScreen = params => {
             Below you will see your position in the queue:
           </Text>
         </View>
-        <Image source={require("./assets/waitingIcon.png")} style={styles.image} />
+        <Image
+          source={require("./assets/waitingIcon.png")}
+          style={styles.image}
+        />
         <Image source={require("./assets/3Dots.png")} style={styles.image} />
         <View style={styles.footer}>
           <Text style={styles.subHeading}>
@@ -25,7 +29,8 @@ const OrderWaitingListScreen = params => {
           </Text>
         </View>
       </View>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({

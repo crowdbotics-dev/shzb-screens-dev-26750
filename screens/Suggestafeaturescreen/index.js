@@ -3,13 +3,23 @@ import { Text, StyleSheet, View, TextInput, Pressable } from "react-native";
 
 const SuggestFeatureScreen = params => {
   const [description, setDescription] = useState("");
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>Describe your suggestion here</Text>
-        <TextInput style={styles.input} onChangeText={text => setDescription(text)} value={description} placeholder="Enter" placeholderTextColor="#9B9B9B" autoCapitalize="none" autoCorrect={false} />
+        <TextInput
+          style={styles.input}
+          onChangeText={text => setDescription(text)}
+          value={description}
+          placeholder="Enter"
+          placeholderTextColor="#9B9B9B"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
       </View>
       <Button buttonText={"Submit"} />
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -50,12 +60,14 @@ const Button = params => {
   const btnText = {
     color: params.outline ? "#000" : "#fff"
   };
-  return <View style={buttonStyles.btnContainer}>
+  return (
+    <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>;
+    </View>
+  );
 };
 
 const buttonStyles = StyleSheet.create({

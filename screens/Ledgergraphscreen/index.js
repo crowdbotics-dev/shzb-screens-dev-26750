@@ -2,7 +2,8 @@ import React from "react";
 import { Image, Text, StyleSheet, View, ScrollView } from "react-native";
 
 const LedgerGraphScreen = params => {
-  return <ScrollView>
+  return (
+    <ScrollView>
       <View>
         <View style={styles.container}>
           <View>
@@ -11,21 +12,41 @@ const LedgerGraphScreen = params => {
             <Text>Bank Account: 0954 4543 2112 3116</Text>
           </View>
           <View>
-            <Image resizeMode="contain" style={styles.withdrawImage} source={require("./assets/withdraw.png")} />
+            <Image
+              resizeMode="contain"
+              style={styles.withdrawImage}
+              source={require("./assets/withdraw.png")}
+            />
           </View>
         </View>
         <View style={styles.balanceImage}>
-          <TabView tabTitles={["Transactions", "Report", "Transfer"]} selected={1} />
-          <Image resizeMode="contain" style={styles.imageHW} source={require("./assets/balance.png")} />
+          <TabView
+            tabTitles={["Transactions", "Report", "Transfer"]}
+            selected={1}
+          />
+          <Image
+            resizeMode="contain"
+            style={styles.imageHW}
+            source={require("./assets/balance.png")}
+          />
         </View>
         <View style={styles.monthlySpendingImage}>
-          <Image resizeMode="contain" style={styles.imageHW} source={require("./assets/monthly-spending.png")} />
+          <Image
+            resizeMode="contain"
+            style={styles.imageHW}
+            source={require("./assets/monthly-spending.png")}
+          />
         </View>
         <View style={styles.totalSpendingImage}>
-          <Image resizeMode="contain" style={styles.imageHW} source={require("./assets/total-spending.png")} />
+          <Image
+            resizeMode="contain"
+            style={styles.imageHW}
+            source={require("./assets/total-spending.png")}
+          />
         </View>
       </View>
-    </ScrollView>;
+    </ScrollView>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -64,15 +85,22 @@ const styles = StyleSheet.create({
 });
 export default LedgerGraphScreen;
 
-const TabView = ({
-  tabTitles,
-  selected
-}) => {
-  return <View style={tabViewStyles.paletteContainer}>
-      {tabTitles.map((title, index) => <View style={index === selected ? tabViewStyles.selected : tabViewStyles.unSelected} key={index}>
+const TabView = ({ tabTitles, selected }) => {
+  return (
+    <View style={tabViewStyles.paletteContainer}>
+      {tabTitles.map((title, index) => (
+        <View
+          style={
+            index === selected
+              ? tabViewStyles.selected
+              : tabViewStyles.unSelected
+          }
+          key={index}>
           <Text>{title}</Text>
-        </View>)}
-    </View>;
+        </View>
+      ))}
+    </View>
+  );
 };
 
 const tabViewStyles = StyleSheet.create({

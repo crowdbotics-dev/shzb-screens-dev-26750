@@ -2,9 +2,11 @@ import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
 const PhotoLibraryScreen = params => {
-  return <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <Text style={styles.headingTxt}>Photo Library Screen</Text>
-    </View>;
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
