@@ -8,10 +8,6 @@ const ClientTaskerProfile = () => {
   const [ratings, setRatings] = useState([5, 4, 3, 2, 1]);
   useEffect(() => {
     setRatings([5, 4, 3, 2, 1]);
-    setReviews({
-      count: ratings.reduce((a, b) => a + b, 0),
-      rating: 4.9
-    });
     setTaskerProfile({
       name: "Tasker name",
       rate: "$40/hr",
@@ -26,6 +22,12 @@ const ClientTaskerProfile = () => {
         "Fast and has great attention to details, that describes my work! "
     });
   }, []);
+  useEffect(() => {
+    setReviews({
+      count: ratings.reduce((a, b) => a + b, 0),
+      rating: 4.9
+    });
+  }, [ratings]);
   return (
     <View style={styles.container}>
       <View style={styles.header}>

@@ -89,8 +89,8 @@ const ArticleDetails = () => {
               />
             </View>
           </View>
-          {comments.map((comment, index) => (
-            <Comment key={index} comment={comment} />
+          {comments.map((item, index) => (
+            <Comment key={index} comment={item} />
           ))}
           <View style={styles.commentsFooter}>
             <Text style={styles.footerText}>See more</Text>

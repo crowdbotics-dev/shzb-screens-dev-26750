@@ -229,9 +229,12 @@ const Checkbox = props => {
             ? require("./assets/checkboxIconActive.png")
             : require("./assets/checkboxIcon.png")
         }
+        style={checkboxStyles.checkbox}
       />
     </Pressable>
   );
 };
 
-const checkboxStyles = StyleSheet.create({});
+const checkboxStyles = StyleSheet.create({
+  checkbox: {}
+});

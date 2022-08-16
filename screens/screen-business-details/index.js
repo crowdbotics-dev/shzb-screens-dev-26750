@@ -15,16 +15,18 @@ const BusinessDetails = () => {
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     setRatings([5, 4, 3, 2, 1]);
-    setReviews({
-      count: ratings.reduce((a, b) => a + b, 0),
-      rating: 4.9
-    });
     setBusiness({
       name: "Business Name",
       earnigs: "2,500.00"
     });
     setSkills(["Skills name", "Skills name", "Skills name"]);
   }, []);
+  useEffect(() => {
+    setReviews({
+      count: ratings.reduce((a, b) => a + b, 0),
+      rating: 4.9
+    });
+  }, [ratings]);
   return (
     <View style={styles.container}>
       <ScrollView>

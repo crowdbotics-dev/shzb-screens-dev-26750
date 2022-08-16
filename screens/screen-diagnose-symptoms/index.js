@@ -257,17 +257,17 @@ const SymptomLevel = ({ level, setLevel }) => {
   };
   return (
     <View style={symptomLevelStyles.container}>
-      {[1, 2, 3, 4, 5].map((level, index) => (
+      {[1, 2, 3, 4, 5].map((item, index) => (
         <Pressable
           onPress={() => {
-            setLevel(level);
-            currentLevel = level;
+            setLevel(item);
+            currentLevel = item;
           }}
           key={index}
           style={[
             symptomLevelStyles.check,
             giveDimentions(),
-            level === currentLevel ? symptomLevelStyles.fill : null
+            item === currentLevel ? symptomLevelStyles.fill : null
           ]}
         />
       ))}

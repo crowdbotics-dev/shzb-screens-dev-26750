@@ -8,6 +8,22 @@ const BusinessReviewsList = () => {
   const [task, setTask] = useState({});
   useEffect(() => {
     setRatings([5, 4, 3, 2, 1]);
+
+    setTaskerProfile({
+      name: "Tasker name",
+      rate: "$40/hr",
+      rating: "4.9",
+      reviews: "15",
+      job: "Cleaning Jobs",
+      image: require("./assets/profileImage.png")
+    });
+    setTask({
+      title: "The Task",
+      description:
+        "Fast and has great attention to details, that describes my work! "
+    });
+  }, []);
+  useEffect(() => {
     setReviews({
       count: ratings.reduce((a, b) => a + b, 0),
       rating: 4.9,
@@ -34,20 +50,7 @@ const BusinessReviewsList = () => {
         }
       ]
     });
-    setTaskerProfile({
-      name: "Tasker name",
-      rate: "$40/hr",
-      rating: "4.9",
-      reviews: "15",
-      job: "Cleaning Jobs",
-      image: require("./assets/profileImage.png")
-    });
-    setTask({
-      title: "The Task",
-      description:
-        "Fast and has great attention to details, that describes my work! "
-    });
-  }, []);
+  }, [ratings, taskerProfile, task]);
   return (
     <View style={styles.container}>
       <ScrollView>
