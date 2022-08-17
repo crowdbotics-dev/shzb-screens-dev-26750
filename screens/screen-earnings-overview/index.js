@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, Pressable } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Pressable,
+  ScrollView
+} from "react-native";
 
 const EarningsOverview = () => {
   const [user, setUser] = useState({});
@@ -11,42 +18,44 @@ const EarningsOverview = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.heading}>Earnings</Text>
-        <Text style={styles.subHeading}>Details</Text>
-      </View>
-      <View style={styles.cardContainer}>
-        <Text style={styles.username}>{user.name}</Text>
-        <Text style={styles.barText}>Earnings</Text>
-        <View style={styles.bar}>
-          <Text>Total</Text>
-          <Text style={styles.boldText}>$1244.84</Text>
+      <ScrollView>
+        <View style={styles.header}>
+          <Text style={styles.heading}>Earnings</Text>
+          <Text style={styles.subHeading}>Details</Text>
         </View>
-        <Text style={styles.barText}>Disbursed</Text>
-        <View style={styles.bar}>
-          <Text>Total</Text>
-          <Text style={styles.boldText}>$800.00</Text>
+        <View style={styles.cardContainer}>
+          <Text style={styles.username}>{user.name}</Text>
+          <Text style={styles.barText}>Earnings</Text>
+          <View style={styles.bar}>
+            <Text>Total</Text>
+            <Text style={styles.boldText}>$1244.84</Text>
+          </View>
+          <Text style={styles.barText}>Disbursed</Text>
+          <View style={styles.bar}>
+            <Text>Total</Text>
+            <Text style={styles.boldText}>$800.00</Text>
+          </View>
+          <Text style={styles.barText}>Tasks</Text>
+          <View style={styles.bar}>
+            <Text>Total</Text>
+            <Text style={styles.boldText}>54</Text>
+          </View>
+          <Text style={styles.barText}>Payment Methods</Text>
+          <View style={styles.bar}>
+            <Text>Cash</Text>
+            <Pressable>
+              <Image
+                source={require("./assets/rightArrowIcon.png")}
+                style={styles.icon}
+              />
+            </Pressable>
+          </View>
+          <View style={styles.userImageContainer}>
+            <Image source={user.image} style={styles.userImage} />
+          </View>
         </View>
-        <Text style={styles.barText}>Tasks</Text>
-        <View style={styles.bar}>
-          <Text>Total</Text>
-          <Text style={styles.boldText}>54</Text>
-        </View>
-        <Text style={styles.barText}>Payment Methods</Text>
-        <View style={styles.bar}>
-          <Text>Cash</Text>
-          <Pressable>
-            <Image
-              source={require("./assets/rightArrowIcon.png")}
-              style={styles.icon}
-            />
-          </Pressable>
-        </View>
-        <View style={styles.userImageContainer}>
-          <Image source={user.image} style={styles.userImage} />
-        </View>
-      </View>
-      <Button buttonText="Request withdrawl" />
+        <Button buttonText="Request withdrawl" />
+      </ScrollView>
     </View>
   );
 };
