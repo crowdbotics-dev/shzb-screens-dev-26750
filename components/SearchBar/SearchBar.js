@@ -41,8 +41,8 @@ const Input = props => {
 const inputStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
-    justifyContent: "center",
-    flex: 1
+    justifyContent: "center"
+    // flex: 1
   },
   inputText: {
     fontSize: 14,
@@ -62,12 +62,18 @@ const inputStyles = StyleSheet.create({
   iconWithText: {
     position: "absolute",
     right: 30,
-    top: 50
+    top: 48,
+    width: 15,
+    height: 15,
+    resizeMode: "contain"
   },
   iconWithoutText: {
     position: "absolute",
     right: 30,
-    top: 28
+    top: 28,
+    width: 15,
+    height: 15,
+    resizeMode: "contain"
   },
   textArea: {
     height: 150
