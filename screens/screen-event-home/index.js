@@ -401,7 +401,7 @@ const eventStyles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     elevation: 5,
-    shadowColor: "#000"
+    shadowColor: "rgba(0,0,0,0.5)"
   },
   image: {
     width: 60,
@@ -465,10 +465,10 @@ const UpcomingEvent = ({ event }) => {
 const upcomingEventStyles = StyleSheet.create({
   container: {
     width: 220,
-    height: 220,
-    marginHorizontal: 10,
-    elevation: 10,
-    shadowColor: "#000",
+    height: 230,
+    margin: 10,
+    elevation: 5,
+    shadowColor: "rgba(0,0,0,0.5)",
     backgroundColor: "#fff",
     overflow: "hidden",
     borderRadius: 10

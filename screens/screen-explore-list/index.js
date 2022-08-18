@@ -246,10 +246,11 @@ const ExploreItem = ({ event }) => {
 const exploreItemStyles = StyleSheet.create({
   container: {
     width: 220,
-    height: 220,
+    height: 250,
     marginHorizontal: 10,
-    elevation: 10,
-    shadowColor: "#000",
+    elevation: 5,
+    marginVertical: 10,
+    shadowColor: "rgba(0,0,0,0.5)",
     backgroundColor: "#fff",
     overflow: "hidden",
     borderRadius: 10
