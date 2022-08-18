@@ -3,7 +3,8 @@ const TabView = ({
   selected,
   onPress,
   tabColor,
-  backgroundColor
+  backgroundColor,
+  style
 }) => {
   const tabColorStyle = {
     backgroundColor: tabColor ? tabColor : "#fff"
@@ -11,8 +12,10 @@ const TabView = ({
   const backgroundColorStyle = {
     backgroundColor: backgroundColor ? backgroundColor : "#F1F1F1"
   };
+  const propStyle = style ? style : {};
   return (
-    <View style={[tabViewStyles.paletteContainer, backgroundColorStyle]}>
+    <View
+      style={[tabViewStyles.paletteContainer, backgroundColorStyle, propStyle]}>
       {tabTitles.map((title, index) => (
         <Pressable
           onPress={() => onPress(index)}
