@@ -4,7 +4,8 @@ const TabView = ({
   onPress,
   tabColor,
   backgroundColor,
-  style
+  style,
+  icons
 }) => {
   const tabColorStyle = {
     backgroundColor: tabColor ? tabColor : "#fff"
@@ -21,10 +22,25 @@ const TabView = ({
           onPress={() => (onPress ? onPress(index) : null)}
           style={
             index === selected
-              ? [tabViewStyles.selected, tabColorStyle]
-              : [tabViewStyles.unSelected, backgroundColorStyle]
+              ? [tabViewStyles.selected, tabColorStyle, tabViewStyles.tabItem]
+              : [
+                  tabViewStyles.unSelected,
+                  backgroundColorStyle,
+                  tabViewStyles.tabItem
+                ]
           }
           key={index}>
+          {icons ? (
+            <Image
+              source={icons[index]}
+              style={[
+                tabViewStyles.icon,
+                index === selected
+                  ? tabViewStyles.selectedIcon
+                  : tabViewStyles.unSelectedIcon
+              ]}
+            />
+          ) : null}
           <Text>{title}</Text>
         </Pressable>
       ))}
@@ -34,7 +50,6 @@ const TabView = ({
 
 const tabViewStyles = StyleSheet.create({
   paletteContainer: {
-    width: "80%",
     height: 48,
     backgroundColor: "#E4E4E4",
     flexDirection: "row",
@@ -43,22 +58,31 @@ const tabViewStyles = StyleSheet.create({
     padding: 6,
     marginVertical: 10
   },
-  selected: {
+  tabItem: {
     borderRadius: 10,
     flex: 1,
-    backgroundColor: "#fff",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row"
+  },
+  selected: {
     shadowColor: "gray",
     elevation: 10
   },
   unSelected: {
-    flex: 1,
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#E4E4E4",
-    borderRadius: 10
+    backgroundColor: "#f1f1f1"
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    resizeMode: "contain",
+    marginRight: 5
+  },
+  selectedIcon: {
+    tintColor: "#000"
+  },
+  unSelectedIcon: {
+    tintColor: "#7C7C7C"
   }
 });
