@@ -124,144 +124,6 @@ const EventHome = () => {
   );
 };
 
-const Event = ({ event }) => {
-  return (
-    <View style={eventStyles.container}>
-      <Image source={event.image} style={eventStyles.image} />
-      <View style={eventStyles.content}>
-        <Text style={eventStyles.title}>{event.title}</Text>
-        <Text style={eventStyles.dateTime}>
-          {event.date}, {event.time}
-        </Text>
-        <Text style={eventStyles.location}>{event.location}</Text>
-      </View>
-      <Pressable style={eventStyles.btn}>
-        <Text style={eventStyles.btnText}>Join</Text>
-      </Pressable>
-    </View>
-  );
-};
-
-const eventStyles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 90,
-    marginHorizontal: 20,
-    marginVertical: 10,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    elevation: 5,
-    shadowColor: "#000"
-  },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 10,
-    marginRight: 10
-  },
-  content: {
-    flex: 1
-  },
-  title: {
-    fontSize: 14,
-    color: "#000"
-  },
-  dateTime: {
-    fontSize: 12,
-    color: "#0091BE",
-    marginTop: 5
-  },
-  location: {
-    fontSize: 12,
-    color: "#B6B6B6",
-    marginTop: 5
-  },
-  btn: {
-    width: 60,
-    height: 30,
-    borderRadius: 10,
-    backgroundColor: "rgba(0,145,190,0.3)",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  btnText: {
-    fontSize: 12,
-    color: "#0091BE",
-    fontWeight: "bold"
-  }
-});
-
-const UpcomingEvent = ({ event }) => {
-  return (
-    <View style={upcomingEventStyles.container}>
-      <Image source={event.image} style={upcomingEventStyles.image} />
-      <View style={upcomingEventStyles.content}>
-        <Text style={upcomingEventStyles.title}>{event.title}</Text>
-        <Text style={upcomingEventStyles.location}>{event.location}</Text>
-        <View style={upcomingEventStyles.details}>
-          <Image
-            source={require("./assets/usersJoined.png")}
-            style={upcomingEventStyles.icon}
-          />
-          <Text style={upcomingEventStyles.detailsText}>
-            {event.joined} Joined
-          </Text>
-        </View>
-      </View>
-    </View>
-  );
-};
-
-const upcomingEventStyles = StyleSheet.create({
-  container: {
-    width: 220,
-    height: 220,
-    marginHorizontal: 10,
-    elevation: 10,
-    shadowColor: "#000",
-    backgroundColor: "#fff",
-    overflow: "hidden",
-    borderRadius: 10
-  },
-  image: {
-    width: "100%",
-    height: 150,
-    resizeMode: "contain",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10
-  },
-  content: {
-    paddingLeft: 10
-  },
-  title: {
-    fontSize: 14,
-    color: "#000",
-    fontWeight: "bold",
-    marginBottom: 5
-  },
-  location: {
-    fontSize: 12,
-    color: "#B6B6B6",
-    marginBottom: 10
-  },
-  details: {
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  icon: {
-    height: 20,
-    width: 50,
-    resizeMode: "contain",
-    marginRight: 10
-  },
-  detailsText: {
-    fontSize: 12,
-    color: "#27AE60"
-  }
-});
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -506,5 +368,143 @@ const tabViewStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#E4E4E4",
     borderRadius: 10
+  }
+});
+
+const Event = ({ event }) => {
+  return (
+    <View style={eventStyles.container}>
+      <Image source={event.image} style={eventStyles.image} />
+      <View style={eventStyles.content}>
+        <Text style={eventStyles.title}>{event.title}</Text>
+        <Text style={eventStyles.dateTime}>
+          {event.date}, {event.time}
+        </Text>
+        <Text style={eventStyles.location}>{event.location}</Text>
+      </View>
+      <Pressable style={eventStyles.btn}>
+        <Text style={eventStyles.btnText}>Join</Text>
+      </Pressable>
+    </View>
+  );
+};
+
+const eventStyles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: 90,
+    marginHorizontal: 20,
+    marginVertical: 10,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    elevation: 5,
+    shadowColor: "#000"
+  },
+  image: {
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+    marginRight: 10
+  },
+  content: {
+    flex: 1
+  },
+  title: {
+    fontSize: 14,
+    color: "#000"
+  },
+  dateTime: {
+    fontSize: 12,
+    color: "#0091BE",
+    marginTop: 5
+  },
+  location: {
+    fontSize: 12,
+    color: "#B6B6B6",
+    marginTop: 5
+  },
+  btn: {
+    width: 60,
+    height: 30,
+    borderRadius: 10,
+    backgroundColor: "rgba(0,145,190,0.3)",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  btnText: {
+    fontSize: 12,
+    color: "#0091BE",
+    fontWeight: "bold"
+  }
+});
+
+const UpcomingEvent = ({ event }) => {
+  return (
+    <View style={upcomingEventStyles.container}>
+      <Image source={event.image} style={upcomingEventStyles.image} />
+      <View style={upcomingEventStyles.content}>
+        <Text style={upcomingEventStyles.title}>{event.title}</Text>
+        <Text style={upcomingEventStyles.location}>{event.location}</Text>
+        <View style={upcomingEventStyles.details}>
+          <Image
+            source={require("./assets/usersJoined.png")}
+            style={upcomingEventStyles.icon}
+          />
+          <Text style={upcomingEventStyles.detailsText}>
+            {event.joined} Joined
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const upcomingEventStyles = StyleSheet.create({
+  container: {
+    width: 220,
+    height: 220,
+    marginHorizontal: 10,
+    elevation: 10,
+    shadowColor: "#000",
+    backgroundColor: "#fff",
+    overflow: "hidden",
+    borderRadius: 10
+  },
+  image: {
+    width: "100%",
+    height: 150,
+    resizeMode: "contain",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  content: {
+    paddingLeft: 10
+  },
+  title: {
+    fontSize: 14,
+    color: "#000",
+    fontWeight: "bold",
+    marginBottom: 5
+  },
+  location: {
+    fontSize: 12,
+    color: "#B6B6B6",
+    marginBottom: 10
+  },
+  details: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  icon: {
+    height: 20,
+    width: 50,
+    resizeMode: "contain",
+    marginRight: 10
+  },
+  detailsText: {
+    fontSize: 12,
+    color: "#27AE60"
   }
 });
