@@ -2,7 +2,7 @@ import mods from "./*/index.js";
 import { getModules } from "./modules.js";
 
 export const modules = getModules(mods);
-export const initialRoute = "screenExploreList";
+export const initialRoute = "screenFeedback";
 export const slices = modules
   .filter(mod => mod.value.slice)
   .map(mod => mod.value.slice);
