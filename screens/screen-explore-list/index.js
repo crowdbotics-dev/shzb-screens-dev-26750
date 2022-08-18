@@ -14,6 +14,7 @@ const ExploreList = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [data, setData] = useState([]);
   const [related, setRelated] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   useEffect(() => {
     setData([
       {
@@ -73,6 +74,14 @@ const ExploreList = () => {
       }
     ]);
   }, []);
+  const handleSelectFavourite = item => {
+    if (favourites.includes(item)) {
+      setFavourites(favourites.filter(fav => fav !== item));
+    } else {
+      setFavourites([...favourites, item]);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -109,7 +118,13 @@ const ExploreList = () => {
           </View>
         )}
         data={related}
-        renderItem={({ item }) => <RelatedItem event={item} />}
+        renderItem={({ item }) => (
+          <RelatedItem
+            event={item}
+            isFav={favourites.includes(item)}
+            onPress={x => handleSelectFavourite(x)}
+          />
+        )}
         keyExtractor={item => item.id.toString()}
         numColumns={2}
         columnWrapperStyle={styles.columnWrapper}
@@ -129,7 +144,7 @@ const ExploreList = () => {
   );
 };
 
-const RelatedItem = ({ event }) => {
+const RelatedItem = ({ event, isFav, onPress }) => {
   return (
     <View style={relatedItemStyles.container}>
       <Image source={event.image} style={relatedItemStyles.image} />
@@ -140,6 +155,18 @@ const RelatedItem = ({ event }) => {
         </View>
       </View>
       <Text style={relatedItemStyles.description}>{event.description}</Text>
+      <Pressable
+        style={relatedItemStyles.favIconContainer}
+        onPress={() => onPress(event)}>
+        <Image
+          source={
+            isFav
+              ? require("./assets/isFavIcon.png")
+              : require("./assets/favIcon.png")
+          }
+          style={relatedItemStyles.favIcon}
+        />
+      </Pressable>
     </View>
   );
 };
@@ -181,6 +208,18 @@ const relatedItemStyles = StyleSheet.create({
     fontSize: 12,
     color: "#7C7C7C",
     marginLeft: 10
+  },
+  favIconContainer: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    width: 20,
+    height: 20
+  },
+  favIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: "contain"
   }
 });
 const ExploreItem = ({ event }) => {
