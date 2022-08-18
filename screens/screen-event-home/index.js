@@ -76,7 +76,7 @@ const EventHome = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        contentContainerStyle={styles.list}
+        style={styles.list}
         ListHeaderComponent={() => (
           <View>
             <Input
@@ -134,7 +134,8 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   list: {
-    flex: 1
+    flex: 1,
+    marginBottom: 60
   },
   listHeader: {
     flexDirection: "row",
