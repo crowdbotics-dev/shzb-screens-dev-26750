@@ -27,7 +27,7 @@ const ChooseDriver = () => {
   if (rideDetails.rideType === "car") {
     rideImage = require("./assets/carIcon.png");
   } else if (rideDetails.rideType === "bike") {
-    //rideImage = require("./assets/bikeIcon.png");
+    rideImage = require("./assets/bikeIcon.png");
   }
   return (
     <ImageBackground
