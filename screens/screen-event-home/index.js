@@ -14,6 +14,7 @@ const EventHome = () => {
   const [events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedTab, setSelectedTab] = useState(0);
+  const [user, setUser] = useState({});
   useEffect(() => {
     setUpcomingEvents([
       {
@@ -72,6 +73,9 @@ const EventHome = () => {
         image: require("./assets/eventImage-sm.png")
       }
     ]);
+    setUser({
+      name: "User Name"
+    });
   }, []);
   return (
     <View style={styles.container}>
@@ -79,6 +83,8 @@ const EventHome = () => {
         style={styles.list}
         ListHeaderComponent={() => (
           <View>
+            <Text style={styles.greetingText}>Good Morning,</Text>
+            <Text style={styles.username}>{user.name}</Text>
             <Input
               text="Search"
               value={search}
@@ -128,6 +134,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
+  },
+  greetingText: {
+    fontSize: 12,
+    marginLeft: 20
+  },
+  username: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginLeft: 20,
+    marginBottom: 10
   },
   inputContainer: {
     paddingHorizontal: 10,
