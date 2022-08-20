@@ -43,18 +43,20 @@ const FoodCategory = () => {
           }}
           style={styles.header}
         />
-        <ImageBackground
-          style={styles.bannerImage}
-          source={require("./assets/bannerImage.png")}>
-          <View style={styles.bannerTitleContainer}>
-            <Text style={styles.bannerText}>Discover</Text>
-            <Text style={styles.bannerTitle}>Best Dinner of the day</Text>
-          </View>
-          <Image
-            style={styles.arrowIcon}
-            source={require("./assets/arrowIcon.png")}
-          />
-        </ImageBackground>
+        <View style={styles.shadowContainer}>
+          <ImageBackground
+            style={styles.bannerImage}
+            source={require("./assets/bannerImage.png")}>
+            <View style={styles.bannerTitleContainer}>
+              <Text style={styles.bannerText}>Discover</Text>
+              <Text style={styles.bannerTitle}>Best Dinner of the day</Text>
+            </View>
+            <Image
+              style={styles.arrowIcon}
+              source={require("./assets/arrowIcon.png")}
+            />
+          </ImageBackground>
+        </View>
         <Text style={styles.heading}>Filter</Text>
         <TabView
           tabTitles={["Nearby", "Above 4.5", "Cheapest"]}
@@ -99,13 +101,19 @@ const styles = StyleSheet.create({
   header: {
     width: "70%"
   },
+  shadowContainer: {
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    shadowColor: "rgba(0, 0, 0, 0.5)",
+    elevation: 10
+  },
   bannerImage: {
     width: "100%",
     height: 200,
     borderRadius: 15,
     overflow: "hidden",
-    shadowColor: "rgba(0, 0, 0, 0.5)",
-    elevation: 10,
+
     marginTop: 20
   },
   bannerTitleContainer: {
@@ -238,7 +246,10 @@ const tabViewStyles = StyleSheet.create({
   },
   selected: {
     shadowColor: "gray",
-    elevation: 10
+    elevation: 10,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10
   },
   unSelected: {
     backgroundColor: "#f1f1f1"
