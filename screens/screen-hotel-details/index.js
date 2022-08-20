@@ -256,15 +256,18 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 5,
-    elevation: 5
+    elevation: 5,
+    marginVertical: 10,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    overflow: "hidden"
   },
   hotelImage: {
-    marginTop: 10,
     width: 350,
     height: 170,
     borderRadius: 10,
     alignSelf: "center",
-    marginBottom: 20
+    resizeMode: "cover"
   },
   hotelInfoContainer: {
     flexDirection: "row",
@@ -337,9 +340,9 @@ const styles = StyleSheet.create({
   mapImage: {
     width: 350,
     height: 130,
-    resizeMode: "contain",
-    marginVertical: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    alignSelf: "center",
+    resizeMode: "cover"
   },
   locationDetails: {
     flexDirection: "row",
