@@ -192,7 +192,7 @@ const HotelTripDetails = () => {
           <View style={styles.amenitiesContent}>
             {allAmenities &&
               allAmenities.map((item, index) => (
-                <View style={styles.amenityItem}>
+                <View style={styles.amenityItem} key={index}>
                   <Image style={styles.icon} source={getIcon(item)} />
                   <Text style={isProvided(item) ? null : styles.crossed}>
                     {item}
@@ -339,8 +339,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   button: {
-    marginTop: 10,
-    marginHorizontal: 10
+    marginTop: 20,
+    marginHorizontal: 20
   },
   spaceDetailsContainer: {
     paddingHorizontal: 20,
@@ -493,7 +493,7 @@ const Button = params => {
     <View style={[buttonStyles.btnContainer, params.style]}>
       <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
         <Pressable
-          style={[buttonStyles.btn, btnStyle, params.style]}
+          style={[buttonStyles.btn, btnStyle]}
           onPress={params.onPress}>
           <Text style={[buttonStyles.btnText, btnText]}>
             {params.buttonText}
