@@ -1,16 +1,16 @@
 const Button = params => {
-  const backgroundColor = params.color ? params.color : "#000";
-  const textColor = params.textColor ? params.textColor : "#fff";
+  const backgroundColor = params.color || "#000";
+  const textColor = params.textColor || "#fff";
   const btnStyle = {
-    backgroundColor: params.outline ? "#fff" : backgroundColor,
-    borderColor: params.outline ? backgroundColor : null,
-    borderWidth: params.outline ? 1 : 0
+    backgroundColor: backgroundColor,
+    borderColor: params.outlineColor || backgroundColor,
+    borderWidth: 1
   };
   const btnText = {
-    color: params.outline ? "#000" : textColor
+    color: textColor
   };
   return (
-    <View style={buttonStyles.btnContainer}>
+    <View style={[buttonStyles.btnContainer, params.style]}>
       <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
         <Pressable
           style={[buttonStyles.btn, btnStyle, params.style]}
@@ -27,9 +27,7 @@ const Button = params => {
 
 const buttonStyles = StyleSheet.create({
   btnContainer: {
-    paddingHorizontal: 40,
-    justifyContent: "center",
-    marginVertical: 20
+    justifyContent: "center"
   },
   shadowContainer: {
     shadowColor: "rgba(0, 0, 0, 0.5)",
@@ -39,7 +37,6 @@ const buttonStyles = StyleSheet.create({
   },
   btn: {
     height: 50,
-    width: "100%",
     padding: 10,
     paddingHorizontal: 25,
     borderRadius: 10,
