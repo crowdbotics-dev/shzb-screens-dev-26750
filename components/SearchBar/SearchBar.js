@@ -13,7 +13,7 @@ const Input = props => {
         ]}
         placeholder={props.placeholder ? props.placeholder : "Enter"}
         value={props.value}
-        onChangeText={text => props.onChange(text)}
+        onChangeText={() => props.onChange()}
         placeholderTextColor={
           props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
         }
@@ -42,7 +42,6 @@ const inputStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: "column",
     justifyContent: "center"
-    // flex: 1
   },
   inputText: {
     fontSize: 14,
@@ -57,7 +56,8 @@ const inputStyles = StyleSheet.create({
     paddingLeft: 20,
     marginVertical: 10,
     width: "100%",
-    height: 50
+    height: 50,
+    color: "#000"
   },
   iconWithText: {
     position: "absolute",
