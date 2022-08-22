@@ -54,9 +54,7 @@ const NewRideBooking = () => {
                 <View style={styles.detailsContainer}>
                   <View style={styles.flexRow}>
                     <Text style={styles.mainText}>Distance</Text>
-                    <Text style={styles.mainText}>
-                      {ride.distance.toFixed(1)} km
-                    </Text>
+                    <Text style={styles.mainText}>{ride.distance} km</Text>
                   </View>
                   <View style={styles.flexRow}>
                     <Text style={styles.subText}>Time</Text>
