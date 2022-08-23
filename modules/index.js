@@ -2,7 +2,7 @@ import mods from "./*/index.js";
 import { getModules } from "./modules.js";
 
 export const modules = getModules(mods);
-export const initialRoute = "screenRewardsHistory";
+export const initialRoute = "screenRideBokingSuccessful";
 export const slices = modules
   .filter(mod => mod.value.slice)
   .map(mod => mod.value.slice);
