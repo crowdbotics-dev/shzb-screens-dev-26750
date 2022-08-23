@@ -101,8 +101,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderBottomWidth: 1,
     paddingVertical: 20,
-    borderBottomColor: "#000",
-    borderStyle: "dashed"
+    borderBottomColor: "#000"
   },
   image: {
     width: 50,
@@ -122,7 +121,6 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     borderBottomColor: "#000",
     borderBottomWidth: 1,
-    borderStyle: "dashed",
     paddingVertical: 10
   },
   description: {
@@ -141,7 +139,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     borderBottomColor: "#000",
     borderBottomWidth: 1,
-    borderStyle: "dashed",
     marginBottom: 10
   },
   barcode: {
