@@ -501,7 +501,7 @@ const Input = props => {
         ]}
         placeholder={props.placeholder ? props.placeholder : "Enter"}
         value={props.value}
-        onChangeText={text => props.onChangeText(text)}
+        onChangeText={() => props.onChangeText()}
         placeholderTextColor={
           props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
         }
