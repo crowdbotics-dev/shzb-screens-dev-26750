@@ -6,8 +6,7 @@ import {
   Image,
   Pressable,
   ImageBackground,
-  ScrollView,
-  TouchableOpacityBase
+  ScrollView
 } from "react-native";
 
 const RewardsHistory = () => {
