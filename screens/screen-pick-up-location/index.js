@@ -68,13 +68,13 @@ const PickUpLocation = () => {
                   style={styles.progressImage}
                 />
                 <View style={styles.locationDetails}>
-                  <View style={styles.shopLocation}>
+                  <View>
                     <Text style={[styles.black, styles.fnt16]}>
                       {ride.pickUpLocation}
                     </Text>
                     <Text style={styles.grey}>Shop Location</Text>
                   </View>
-                  <View style={styles.deliveryLocation}>
+                  <View>
                     <Text style={[styles.black, styles.fnt16]}>
                       {ride.dropOffLocation}
                     </Text>
@@ -214,7 +214,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     marginLeft: 10,
     justifyContent: "space-between",
-    alignItems: "flex-start"
+    alignItems: "flex-start",
+    height: 100
   },
   button: {
     marginHorizontal: 10,
