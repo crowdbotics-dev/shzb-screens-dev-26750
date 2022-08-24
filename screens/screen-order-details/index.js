@@ -92,13 +92,13 @@ const OrderDetails = () => {
               <Input
                 text="Promo code"
                 value={promoCode}
-                onChange={text => setPromoCode(text)}
+                onChange={setPromoCode}
                 containerStyle={styles.inputContainer}
               />
               <Input
                 text="Card number"
                 value={cardNumber}
-                onChange={text => setCardNumber(text)}
+                onChange={setCardNumber}
                 containerStyle={styles.inputContainer}
                 icon={require("./assets/arrowIcon.png")}
                 placeholder="xxxx-xxxx-xxxx-xxxx"
@@ -264,7 +264,7 @@ const Input = props => {
         ]}
         placeholder={props.placeholder ? props.placeholder : "Enter"}
         value={props.value}
-        onChangeText={() => props.onChange()}
+        onChangeText={text => props.onChange(text)}
         placeholderTextColor={
           props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
         }

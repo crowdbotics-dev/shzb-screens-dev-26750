@@ -8,7 +8,7 @@ import {
   FlatList
 } from "react-native";
 
-const MealProductListingScreen = () => {
+const MealProductListing = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [productList, setProductList] = useState([]);
   const [addedProducts, setAddedProducts] = useState([]);
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MealProductListingScreen;
+export default MealProductListing;
 
 const TabView = ({
   tabTitles,

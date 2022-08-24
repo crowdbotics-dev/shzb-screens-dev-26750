@@ -233,7 +233,7 @@ const HotelAmenities = () => {
             </View>
             <Input
               text="Text review"
-              onChangeText={text => setReviewInput(text)}
+              onChange={setReviewInput}
               value={reviewInput}
               textArea={true}
             />
@@ -501,7 +501,7 @@ const Input = props => {
         ]}
         placeholder={props.placeholder ? props.placeholder : "Enter"}
         value={props.value}
-        onChangeText={text => props.onChangeText(text)}
+        onChangeText={text => props.onChange(text)}
         placeholderTextColor={
           props.placeholderTextColor ? props.placeholderTextColor : "#9B9B9B"
         }
@@ -568,7 +568,6 @@ const inputStyles = StyleSheet.create({
   },
   children: {}
 });
-
 const Button = params => {
   const backgroundColor = params.color ? params.color : "#000";
   const textColor = params.textColor ? params.textColor : "#fff";

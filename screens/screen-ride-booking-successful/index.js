@@ -9,7 +9,7 @@ import {
   ImageBackground
 } from "react-native";
 
-const RideBokingSuccessful = () => {
+const RideBookingSuccessful = () => {
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(() => {}, []);
   return (
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default RideBokingSuccessful;
+export default RideBookingSuccessful;
 const Button = params => {
   const backgroundColor = params.color || "#000";
   const textColor = params.textColor || "#fff";

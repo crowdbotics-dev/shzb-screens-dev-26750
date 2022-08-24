@@ -91,7 +91,7 @@ const ExploreList = () => {
             <Input
               text="Search"
               value={search}
-              onChange={text => setSearch(text)}
+              onChange={setSearch}
               containerStyle={styles.inputContainer}
             />
             <TabView

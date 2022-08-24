@@ -131,6 +131,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
+  list: {
+    flex: 1,
+    marginBottom: 60
+  },
   listHeader: {
     paddingHorizontal: 20,
     paddingBottom: 20

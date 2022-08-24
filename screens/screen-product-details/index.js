@@ -66,9 +66,11 @@ const ProductDetails = () => {
         <View style={styles.counterContainer}>
           <View style={styles.priceContainer}>
             <Text style={styles.priceText}>
-              ${product.discountedPrice.toFixed(2)}
+              ${product.discountedPrice && product.discountedPrice.toFixed(2)}
             </Text>
-            <Text style={styles.acctualPrice}>${product.price.toFixed(2)}</Text>
+            <Text style={styles.acctualPrice}>
+              ${product.price && product.price.toFixed(2)}
+            </Text>
           </View>
           <View style={styles.counter}>
             <Pressable
