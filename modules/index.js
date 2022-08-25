@@ -2,7 +2,7 @@ import mods from "./*/index.js";
 import { getModules } from "./modules.js";
 
 export const modules = getModules(mods);
-export const initialRoute = "screenStripeConnectedAccounts";
+export const initialRoute = "screenStripeProductList";
 export const slices = modules
   .filter(mod => mod.value.slice)
   .map(mod => mod.value.slice);
